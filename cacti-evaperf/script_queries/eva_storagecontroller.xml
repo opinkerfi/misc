@@ -1,0 +1,37 @@
+<interface>
+	<name>Get HP EVA StorageArray</name>
+	<description>Queries all storage array controllers managed by commandview via wmic</description>
+	<script_path>python |path_cacti|/scripts/query_wmi.py</script_path>
+	<arg_prepend>--host |host_hostname| --authentication-file /etc/cacti/|host_hostname|.pw --class Win32_PerfRawData_EVAPMEXT_HPEVAStorageController</arg_prepend>
+	<arg_index>index</arg_index>
+	<arg_query>query</arg_query>
+	<arg_get>get</arg_get>
+	<arg_num_indexes>num_indexes</arg_num_indexes>
+	<output_delimeter>|</output_delimeter>
+	<index_order>name</index_order>
+	<index_order_type>alphabetic</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<name>
+			<name>Controller Name</name>
+			<direction>input</direction>
+			<query_name>Name</query_name>
+		</name>
+		<Name>
+			<name>Controller Name</name>
+			<direction>output</direction>
+			<query_name>Name</query_name>
+		</Name>
+		<PercentDataTransferTime>
+			<name>...</name>
+			<direction>output</direction>
+			<query_name>PercentDataTransferTime</query_name>
+		</PercentDataTransferTime>
+		<PercentProcessorTime>
+			<name>...</name>
+			<direction>output</direction>
+			<query_name>PercentProcessorTime</query_name>
+		</PercentProcessorTime>
+	</fields>
+</interface>

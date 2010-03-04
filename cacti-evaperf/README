@@ -1,0 +1,5 @@
+
+1) put script_queries/* in ~cacti/resource/script_queries
+2) put scripts/query_wmi.php in ~cacti/scripts/
+3) put scripts/wmic in /usr/local/bin/wmic
+4) log into Cacti and to import templates and choose cacti_host_template*xml

@@ -1,5 +1,60 @@
 
-1) put script_queries/* in ~cacti/resource/script_queries
-2) put scripts/query_wmi.php in ~cacti/scripts/
-3) put scripts/wmic in /usr/local/bin/wmic
-4) log into Cacti and to import templates and choose cacti_host_template*xml
+
+== QUICK INSTALLATION ==
+Up to date documentation is here: http://opensource.is/trac/wiki/cacti-evaperf
+
+
+
+== Cacti template for evaperf ==
+
+ * Download: http://pall.sigurdsson.is/filez/cacti-evaperf.tar.gz
+ * Screenshots: http://pall.sigurdsson.is/evaperf/
+
+These templates allow you to get long-term trends for for EVA disk array. Information includes:
+
+ * HostConnection Queue Depth
+ * HostPortStatistics Queue Depth
+ * HostPortStatistics Requests / Seconds
+ * HostPortStatistics MB/Sec
+ * PhysicalDiskgroup Latency
+ * PhysicalDiskgroup Requests/Second
+ * PhysicalDiskgroup MB/Second
+ * StorageArray Average IO Size
+ * StorageArray Average Requests/sec
+ * StorageArray Average MB/Sec
+ * StorageController CPU
+ * VirtualDisk Average IO Size
+ * VirtualDisk Average Requests/Sec
+ * VirtualDisk Average MB/Sec
+
+Additionally data queries allow for dynamic creation of graph per vdisk.
+
+== Installation ==
+These templates require '''cacti version 0.8.7e''' or later. Templates where created and tested on RHEL/Centos 5.x
+ # wget http://pall.sigurdsson.is/filez/cacti-evaperf.tar.gz
+ # tar -zxvf cacti-evaperf.tar.gz
+ # mv cacti-evaperf/scripts/query_wmi.py ~cacti/scripts
+ # mv cacti-evaperf/script_queries/* ~cacti/resource/script_queries
+ # mv cacti-evaperf/scripts/wmic /usr/local/bin
+
+
+Create a password file for WMI:
+ # echo "username=administrator" > /etc/cacti/HOSTNAME.pw
+ # echo "password=MYPASSWORD" >> /etc/cacti/HOSTNAME.pw
+ # echo "domain=mydomain" >> /etc/cacti/HOSTNAME.pw
+
+Note 1: here HOSTNAME represent the name of your command-view server as it appears in cacti. So if you add your server as eva-appliance.example.com in cacti then the password file is named /etc/cacti/eva-appliance.example.com.pw
+
+Note 2: if the account you use to log into the command view server is a local account (i.e. not a domain account) then feel free to skip the last (domain=) line in the example above.
+
+Both apache and user running the cacti poller need write access to the following directories:
+ # /var/tmp/cacti/ # Temporary cache for wmi
+ # /var/log/cacti/ # query_wmi log for debugging purposes
+ # /etc/cacti/HOSTNAME.pw # This file includes password used to access commandview server
+
+Finally log into the cacti web interface and do the following:
+ * Import template: cacti_host_template_eva_commandview.xml
+ * Add Device: Add your commandview server, remember to add the appropriate host template
+ * Create graphs for this host
+
+

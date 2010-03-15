@@ -2,7 +2,7 @@
 	<hash_020019cfff7ce4bc2408b3614890b81eae0671>
 		<name>EVA Commandview</name>
 		<graph_templates></graph_templates>
-		<data_queries>hash_040019970aaae856e5274e1b5aead97553033d|hash_040019137b8bd84c39030d18b662c442beb08c|hash_040019909059013870e197246bcd9fc470f5b6|hash_040019ddf33344057fa17ce4fc623aed98eecc|hash_0400193bac844c4233c6cca489736b6c3ad349</data_queries>
+		<data_queries>hash_040019970aaae856e5274e1b5aead97553033d|hash_040019137b8bd84c39030d18b662c442beb08c|hash_040019909059013870e197246bcd9fc470f5b6|hash_040019ddf33344057fa17ce4fc623aed98eecc|hash_0400193bac844c4233c6cca489736b6c3ad349|hash_04001972d7589ace89d7662b1f3ef1196e1921</data_queries>
 	</hash_020019cfff7ce4bc2408b3614890b81eae0671>
 	<hash_040019970aaae856e5274e1b5aead97553033d>
 		<name>Eva -  Query new VirtualDisk</name>
@@ -31,39 +31,56 @@
 					</item_002>
 				</rrd>
 				<sv_graph>
+					<hash_120019d2354a6dcbe298b347d540ef51fc1b84>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>vdisk latency - |query_friendlyname| </text>
+					</hash_120019d2354a6dcbe298b347d540ef51fc1b84>
 					<hash_120019f0ed31f12a96ce0e2013f04f99c11618>
 						<field_name>Title</field_name>
-						<sequence>1</sequence>
+						<sequence>2</sequence>
 						<text>|query_friendlyname| - Latency</text>
 					</hash_120019f0ed31f12a96ce0e2013f04f99c11618>
 					<hash_120019629c2238bb8ce0a40f78b78704267cef>
 						<field_name>Title</field_name>
-						<sequence>2</sequence>
+						<sequence>3</sequence>
 						<text>|query_name| - Latency</text>
 					</hash_120019629c2238bb8ce0a40f78b78704267cef>
 					<hash_1200198325c6563a0816e9a90b5127335d5247>
 						<field_name>Title</field_name>
-						<sequence>3</sequence>
+						<sequence>4</sequence>
 						<text>Latency</text>
 					</hash_1200198325c6563a0816e9a90b5127335d5247>
 				</sv_graph>
 				<sv_data_source>
+					<hash_1300199c906fdc015d7ce64dce8d1f4f5970f4>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
+						<sequence>1</sequence>
+						<text>EVA vdisk latency - |query_name| </text>
+					</hash_1300199c906fdc015d7ce64dce8d1f4f5970f4>
+					<hash_1300192fab3cd20b34f96414babfbd4e095f03>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
+						<sequence>2</sequence>
+						<text>vdisk latency - |query_name| </text>
+					</hash_1300192fab3cd20b34f96414babfbd4e095f03>
 					<hash_130019141ac4a7d3a8479b324bfee3c2e96fb4>
 						<field_name>Name</field_name>
 						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
-						<sequence>1</sequence>
+						<sequence>3</sequence>
 						<text>EVA - |query_name| latency</text>
 					</hash_130019141ac4a7d3a8479b324bfee3c2e96fb4>
 					<hash_130019da4417da25fd99563fa672fc649e0119>
 						<field_name>Name</field_name>
 						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
-						<sequence>2</sequence>
+						<sequence>4</sequence>
 						<text>|query_Name| Latency</text>
 					</hash_130019da4417da25fd99563fa672fc649e0119>
 					<hash_1300196975b79f8d53c150213a12fc7a6d1972>
 						<field_name>Name</field_name>
 						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
-						<sequence>3</sequence>
+						<sequence>5</sequence>
 						<text>Latency</text>
 					</hash_1300196975b79f8d53c150213a12fc7a6d1972>
 				</sv_data_source>
@@ -89,14 +106,19 @@
 					</item_002>
 				</rrd>
 				<sv_graph>
+					<hash_120019e765ffdaa75f4b4b890b385b48315742>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
+						<text>vdisk IOPS - |query_friendlyname|</text>
+					</hash_120019e765ffdaa75f4b4b890b385b48315742>
 					<hash_120019f6c381420ecd5f24a1af335c991e5835>
 						<field_name>Title</field_name>
-						<sequence>2</sequence>
+						<sequence>3</sequence>
 						<text>|query_friendlyname| - Requests/sec</text>
 					</hash_120019f6c381420ecd5f24a1af335c991e5835>
 					<hash_120019612556adac0b5ac59c53980fdbb5cd2c>
 						<field_name>Title</field_name>
-						<sequence>3</sequence>
+						<sequence>4</sequence>
 						<text>|query_name|</text>
 					</hash_120019612556adac0b5ac59c53980fdbb5cd2c>
 				</sv_graph>
@@ -136,27 +158,33 @@
 					</item_002>
 				</rrd>
 				<sv_graph>
-					<hash_120019e3164159fe95819403981959f3d1c8bb>
-						<field_name>name</field_name>
-						<sequence>1</sequence>
-						<text>|host_description| - |query_name| throughput</text>
-					</hash_120019e3164159fe95819403981959f3d1c8bb>
+					<hash_120019c6ecb387fd0ce6c1529264521a365a1e>
+						<field_name>title</field_name>
+						<sequence>6</sequence>
+						<text>vdisk throughput - |query_friendlyname| </text>
+					</hash_120019c6ecb387fd0ce6c1529264521a365a1e>
 					<hash_120019c93d572ebe5bc406e96657355a8c54d2>
 						<field_name>title</field_name>
-						<sequence>4</sequence>
+						<sequence>7</sequence>
 						<text>|query_friendlyname| throughput</text>
 					</hash_120019c93d572ebe5bc406e96657355a8c54d2>
 					<hash_120019735fce622b722867e4fc2a0b2ad13a7f>
 						<field_name>title</field_name>
-						<sequence>6</sequence>
+						<sequence>8</sequence>
 						<text>|query_name| - Throughput</text>
 					</hash_120019735fce622b722867e4fc2a0b2ad13a7f>
 				</sv_graph>
 				<sv_data_source>
-					<hash_130019ca244c88d39f5535938de2ebbc3fc513>
+					<hash_1300197b167876fcd99b8324250702a6dd9172>
 						<field_name>name</field_name>
 						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
 						<sequence>1</sequence>
+						<text>EVA - VirtualDisk - Throughput - |query_name|</text>
+					</hash_1300197b167876fcd99b8324250702a6dd9172>
+					<hash_130019ca244c88d39f5535938de2ebbc3fc513>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001968f3e8007d9f27c340f7042765ad0281</data_template_id>
+						<sequence>2</sequence>
 						<text>EVA - |query_name| throughput</text>
 					</hash_130019ca244c88d39f5535938de2ebbc3fc513>
 				</sv_data_source>
@@ -185,16 +213,26 @@
 					</item_001>
 				</rrd>
 				<sv_graph>
-					<hash_12001924a7927f390c7c2df6af3dd549692e97>
+					<hash_120019f3ee34b5208db3a9407c738dc5e20a4a>
 						<field_name>title</field_name>
 						<sequence>1</sequence>
+						<text>PhysicalDiskGroup - |query_name| - Requests/second </text>
+					</hash_120019f3ee34b5208db3a9407c738dc5e20a4a>
+					<hash_12001924a7927f390c7c2df6af3dd549692e97>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
 						<text>EVA - |query_name| - Requests/second</text>
 					</hash_12001924a7927f390c7c2df6af3dd549692e97>
 					<hash_1200195bf5129345413e1f47f455d026a9562e>
 						<field_name>title</field_name>
-						<sequence>2</sequence>
+						<sequence>3</sequence>
 						<text>|query_name| requests / second</text>
 					</hash_1200195bf5129345413e1f47f455d026a9562e>
+					<hash_12001997b5f1e7473e478726adafa30b3f8043>
+						<field_name>title</field_name>
+						<sequence>4</sequence>
+						<text>PhysicalDiskGroup - Requests/second </text>
+					</hash_12001997b5f1e7473e478726adafa30b3f8043>
 				</sv_graph>
 				<sv_data_source>
 					<hash_130019ad7e40676315604c7747df1be2d97e0d>
@@ -238,16 +276,26 @@
 					</item_002>
 				</rrd>
 				<sv_graph>
-					<hash_120019f5e5a9e8d61858aa7424e2baad61cf55>
+					<hash_1200195f8e23a5eeff69066f82564b8d6b1991>
 						<field_name>title</field_name>
 						<sequence>2</sequence>
+						<text>PhysicalDiskGroup |query_name| - Latency </text>
+					</hash_1200195f8e23a5eeff69066f82564b8d6b1991>
+					<hash_120019f5e5a9e8d61858aa7424e2baad61cf55>
+						<field_name>title</field_name>
+						<sequence>3</sequence>
 						<text>|query_name| - Latency</text>
 					</hash_120019f5e5a9e8d61858aa7424e2baad61cf55>
 					<hash_120019065ca30c08c177f7647b006bd860740b>
 						<field_name>Title</field_name>
-						<sequence>3</sequence>
+						<sequence>4</sequence>
 						<text>EVA - |query_name| - Latency</text>
 					</hash_120019065ca30c08c177f7647b006bd860740b>
+					<hash_1200198d395488b017bd53a6cc081cfb821aff>
+						<field_name>title</field_name>
+						<sequence>5</sequence>
+						<text>PhysicalDiskGroup -  Latency </text>
+					</hash_1200198d395488b017bd53a6cc081cfb821aff>
 				</sv_graph>
 				<sv_data_source>
 					<hash_130019c846d1fdea13c3b59731c96c44684e13>
@@ -280,16 +328,26 @@
 					</item_001>
 				</rrd>
 				<sv_graph>
+					<hash_120019fd24a9a33f8491c3ae0eada06ba875e7>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>PhysicalDiskGroup |query_name| - Throughput </text>
+					</hash_120019fd24a9a33f8491c3ae0eada06ba875e7>
 					<hash_1200194434422ce52e5f5074c4bea1cbba3671>
 						<field_name>Title</field_name>
-						<sequence>1</sequence>
+						<sequence>2</sequence>
 						<text>|query_name| - Throughput</text>
 					</hash_1200194434422ce52e5f5074c4bea1cbba3671>
 					<hash_1200199c419bb8d7ef3a203805b80e84761874>
 						<field_name>Title</field_name>
-						<sequence>2</sequence>
+						<sequence>3</sequence>
 						<text>EVA - |query_name| - Throughput</text>
 					</hash_1200199c419bb8d7ef3a203805b80e84761874>
+					<hash_1200197456b5ca00b2b5b55272aef266917d02>
+						<field_name>title</field_name>
+						<sequence>4</sequence>
+						<text>PhysicalDiskGroup - Bytes/sec</text>
+					</hash_1200197456b5ca00b2b5b55272aef266917d02>
 				</sv_graph>
 				<sv_data_source>
 					<hash_1300198d233b0ac6d6258f602406621617d57f>
@@ -325,9 +383,14 @@
 					</item_000>
 				</rrd>
 				<sv_graph>
-					<hash_1200196726ce978ca2ffb6d9977705afb8e193>
+					<hash_12001912b6a3f618f8a0414c2204980a98ec8d>
 						<field_name>title</field_name>
 						<sequence>1</sequence>
+						<text>HostConnection - |query_name| - Queue Depth </text>
+					</hash_12001912b6a3f618f8a0414c2204980a98ec8d>
+					<hash_1200196726ce978ca2ffb6d9977705afb8e193>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
 						<text>|query_name| - Queue Depth</text>
 					</hash_1200196726ce978ca2ffb6d9977705afb8e193>
 				</sv_graph>
@@ -359,11 +422,21 @@
 					</item_000>
 				</rrd>
 				<sv_graph>
+					<hash_1200198239fd8d7eb2ca41b077ebf9203231b1>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>StorageArray bytes/sec - |query_name|</text>
+					</hash_1200198239fd8d7eb2ca41b077ebf9203231b1>
 					<hash_120019dc8bfc2793cd7ba7ed9af8910a0b8143>
 						<field_name>Title</field_name>
-						<sequence>1</sequence>
+						<sequence>2</sequence>
 						<text>|query_name| - Throughput</text>
 					</hash_120019dc8bfc2793cd7ba7ed9af8910a0b8143>
+					<hash_120019cb617e5c27e310b9689704d59717bd33>
+						<field_name>title</field_name>
+						<sequence>3</sequence>
+						<text>StorageArray bytes/sec</text>
+					</hash_120019cb617e5c27e310b9689704d59717bd33>
 				</sv_graph>
 				<sv_data_source>
 					<hash_1300193f24e0a6c4fe263fd28ca825a3bc9ffe>
@@ -385,11 +458,21 @@
 					</item_000>
 				</rrd>
 				<sv_graph>
+					<hash_120019b2d828df62de3f0d789d7dc4522fcb78>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>StorageArray Requests/sec - |query_name|</text>
+					</hash_120019b2d828df62de3f0d789d7dc4522fcb78>
 					<hash_1200192d2e421e7d9fb32d62bf9e5bcf9de166>
 						<field_name>Title</field_name>
-						<sequence>1</sequence>
+						<sequence>3</sequence>
 						<text>|query_name| - Requests/sec</text>
 					</hash_1200192d2e421e7d9fb32d62bf9e5bcf9de166>
+					<hash_120019c9662fd8beba0c66571eaca18238e0f2>
+						<field_name>title</field_name>
+						<sequence>4</sequence>
+						<text>StorageArray Requests/sec</text>
+					</hash_120019c9662fd8beba0c66571eaca18238e0f2>
 				</sv_graph>
 				<sv_data_source>
 					<hash_130019a634522a6fb91710b57569cf79cb893f>
@@ -400,6 +483,42 @@
 					</hash_130019a634522a6fb91710b57569cf79cb893f>
 				</sv_data_source>
 			</hash_11001950d9bf1a1737bab3930965da9ab92eb6>
+			<hash_11001912fca5dc1aa10613650a884e13c6b35f>
+				<name>EVA - StorageArray - Average IO Size</name>
+				<graph_template_id>hash_0000192ebca8891044b8291691c0b6e436fcf3</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>TotalhostKBPers</snmp_field_name>
+						<data_template_id>hash_010019edbe0cb7c3db94b62bb2e45ca53cd732</data_template_id>
+						<data_template_rrd_id>hash_080019a93a97a8a76d1c979883aced955a6cf5</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>TotalhostReqPers</snmp_field_name>
+						<data_template_id>hash_010019edbe0cb7c3db94b62bb2e45ca53cd732</data_template_id>
+						<data_template_rrd_id>hash_08001961a635f97929d9152bd74eba0ef7da47</data_template_rrd_id>
+					</item_001>
+				</rrd>
+				<sv_graph>
+					<hash_1200190a9b9a3ae5e5257de955687cefa82d3b>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>StorageArray IO Size - |query_name|</text>
+					</hash_1200190a9b9a3ae5e5257de955687cefa82d3b>
+					<hash_1200193d58602099ea277805241e9d476f1f29>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
+						<text>array iosize - |query_name|</text>
+					</hash_1200193d58602099ea277805241e9d476f1f29>
+				</sv_graph>
+				<sv_data_source>
+					<hash_13001965eff22287a24d5aca9e4e18eb1b7210>
+						<field_name>name</field_name>
+						<data_template_id>hash_010019edbe0cb7c3db94b62bb2e45ca53cd732</data_template_id>
+						<sequence>1</sequence>
+						<text>EVA - StorageArray - Average IO Size |query_name|</text>
+					</hash_13001965eff22287a24d5aca9e4e18eb1b7210>
+				</sv_data_source>
+			</hash_11001912fca5dc1aa10613650a884e13c6b35f>
 		</graphs>
 	</hash_040019ddf33344057fa17ce4fc623aed98eecc>
 	<hash_0400193bac844c4233c6cca489736b6c3ad349>
@@ -434,6 +553,11 @@
 						<sequence>2</sequence>
 						<text>|host_description| - StorageController |query_name|</text>
 					</hash_120019cf100d1a10ebf8d94a48322f75c843b3>
+					<hash_120019b1a75eb31ef6b780e2006dd461965e34>
+						<field_name>title</field_name>
+						<sequence>3</sequence>
+						<text>StorageController CPU</text>
+					</hash_120019b1a75eb31ef6b780e2006dd461965e34>
 				</sv_graph>
 				<sv_data_source>
 					<hash_13001996fc011c131aa825f7f7d059129d8c1d>
@@ -446,6 +570,118 @@
 			</hash_110019e996275ddc5fdc7b4bd417ebff21aa77>
 		</graphs>
 	</hash_0400193bac844c4233c6cca489736b6c3ad349>
+	<hash_04001972d7589ace89d7662b1f3ef1196e1921>
+		<name>Eva - Query HostPortStatistics</name>
+		<description></description>
+		<xml_path>&lt;path_cacti&gt;/resource/script_queries/eva_hostportstatistics.xml</xml_path>
+		<data_input_id>hash_03001980e9e4c4191a5da189ae26d0e237f015</data_input_id>
+		<graphs>
+			<hash_110019d25e2d0bc6110a9c4e8b04b2592acd3c>
+				<name>EVA -HostPortStatistics - Requests / Second</name>
+				<graph_template_id>hash_000019a9912cc9ba55414bcd966017227d514f</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>WriteReqPers</snmp_field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<data_template_rrd_id>hash_080019425a7513340da63dfc7bc7ed8b0a6a58</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>ReadReqPers</snmp_field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<data_template_rrd_id>hash_080019e263cb9eeadae87e81350ccda2dd77a7</data_template_rrd_id>
+					</item_001>
+				</rrd>
+				<sv_graph>
+					<hash_1200197fde4906548e8ae563175ca96eb36ce5>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>HostPort  - |query_name| - Requests/second </text>
+					</hash_1200197fde4906548e8ae563175ca96eb36ce5>
+					<hash_120019e0b9e6dca837d88265184febd3ddbf19>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
+						<text>EVA - |query_name| - Requests/second</text>
+					</hash_120019e0b9e6dca837d88265184febd3ddbf19>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130019b5dd119d620fc4ef759e7204036d3d26>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<sequence>1</sequence>
+						<text>EVA - HostPortStatistics - |query_name|</text>
+					</hash_130019b5dd119d620fc4ef759e7204036d3d26>
+				</sv_data_source>
+			</hash_110019d25e2d0bc6110a9c4e8b04b2592acd3c>
+			<hash_11001917bd382df8fb769444531daddf9cb431>
+				<name>EVA - HostPortStatistics - Throughput</name>
+				<graph_template_id>hash_00001950f3d06bbb00789ef78a52d29ed97c29</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>WriteKBPers</snmp_field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<data_template_rrd_id>hash_080019002b7a84ff4d13bc02e0d1e66f678db3</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>ReadKBPers</snmp_field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<data_template_rrd_id>hash_0800190d3c7331a9e611654da825dbd908ab30</data_template_rrd_id>
+					</item_001>
+				</rrd>
+				<sv_graph>
+					<hash_120019693933e0064b17e0e99f1f1a7baea02a>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>HostPort |query_name| bytes/sec</text>
+					</hash_120019693933e0064b17e0e99f1f1a7baea02a>
+					<hash_120019f7083224e9524f2f431ad3f6892927c3>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
+						<text>HostPortStatistics |query_name|</text>
+					</hash_120019f7083224e9524f2f431ad3f6892927c3>
+				</sv_graph>
+				<sv_data_source>
+					<hash_1300193790ad0c0d8587de50b6400047ea32ef>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - HostPortStatistics - |query_name|</text>
+					</hash_1300193790ad0c0d8587de50b6400047ea32ef>
+				</sv_data_source>
+			</hash_11001917bd382df8fb769444531daddf9cb431>
+			<hash_1100196d20623a92895c2c7a24679324bbf352>
+				<name>EVA - HostPortStatistics - Queue Depth</name>
+				<graph_template_id>hash_0000192b92ec2d1b05015505fb941636847965</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>AvQueueDepth</snmp_field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<data_template_rrd_id>hash_0800192021a462087284ef1ee1758326fb6ff1</data_template_rrd_id>
+					</item_000>
+				</rrd>
+				<sv_graph>
+					<hash_120019916909178b2cc1d1f29c44771672f9b4>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>HostPort |query_name| Queue depth</text>
+					</hash_120019916909178b2cc1d1f29c44771672f9b4>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130019a8e6bdfdda5b7ab394bbb21da27c6ffc>
+						<field_name>name</field_name>
+						<data_template_id>hash_010019c02e192a1ef1017c0b1dc3e44c2b1195</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - HostPortStatistics - |query_name|</text>
+					</hash_130019a8e6bdfdda5b7ab394bbb21da27c6ffc>
+					<hash_130019d7034fb04d9215c122fc4da3cf746843>
+						<field_name>name</field_name>
+						<data_template_id>hash_01001961189654eb161f011fa0d5330b715745</data_template_id>
+						<sequence>1</sequence>
+						<text>HostPortStatistics - |query_name|</text>
+					</hash_130019d7034fb04d9215c122fc4da3cf746843>
+				</sv_data_source>
+			</hash_1100196d20623a92895c2c7a24679324bbf352>
+		</graphs>
+	</hash_04001972d7589ace89d7662b1f3ef1196e1921>
 	<hash_03001980e9e4c4191a5da189ae26d0e237f015>
 		<name>Get Script Data (Indexed)</name>
 		<type_id>4</type_id>
@@ -918,7 +1154,7 @@
 			</hash_100019fcc6146f09168bc463f01580236565c9>
 			<hash_100019d47bd81cf9c940a7eb93a0023ad7493f>
 				<task_item_id>hash_080019bcd6d38827085c6df102b1c90a9825bf</task_item_id>
-				<color_id>3D168B</color_id>
+				<color_id>7EE600</color_id>
 				<alpha>7F</alpha>
 				<graph_type_id>5</graph_type_id>
 				<consolidation_function_id>1</consolidation_function_id>
@@ -931,7 +1167,7 @@
 			</hash_100019d47bd81cf9c940a7eb93a0023ad7493f>
 			<hash_100019d45aad0a6ad39cab8f7e6447cf7df8ee>
 				<task_item_id>hash_080019bcd6d38827085c6df102b1c90a9825bf</task_item_id>
-				<color_id>3D168B</color_id>
+				<color_id>7EE600</color_id>
 				<alpha>CC</alpha>
 				<graph_type_id>7</graph_type_id>
 				<consolidation_function_id>1</consolidation_function_id>
@@ -1675,7 +1911,7 @@
 			<t_slope_mode></t_slope_mode>
 			<slope_mode>on</slope_mode>
 			<t_auto_scale></t_auto_scale>
-			<auto_scale>on</auto_scale>
+			<auto_scale></auto_scale>
 			<t_auto_scale_opts></t_auto_scale_opts>
 			<auto_scale_opts>2</auto_scale_opts>
 			<t_auto_scale_log></t_auto_scale_log>
@@ -1689,7 +1925,7 @@
 			<t_export></t_export>
 			<export>on</export>
 			<t_upper_limit></t_upper_limit>
-			<upper_limit>100</upper_limit>
+			<upper_limit>3</upper_limit>
 			<t_lower_limit></t_lower_limit>
 			<lower_limit>0</lower_limit>
 			<t_base_value></t_base_value>
@@ -1921,7 +2157,7 @@
 			<t_export></t_export>
 			<export>on</export>
 			<t_upper_limit></t_upper_limit>
-			<upper_limit>1048576</upper_limit>
+			<upper_limit>100</upper_limit>
 			<t_lower_limit></t_lower_limit>
 			<lower_limit>0</lower_limit>
 			<t_base_value></t_base_value>
@@ -2009,6 +2245,141 @@
 			</hash_09001920dfe2b27eb4f582cfc6820a1a94cee4>
 		</inputs>
 	</hash_00001973346e375784e4fac938dc04bc6581e8>
+	<hash_0000192ebca8891044b8291691c0b6e436fcf3>
+		<name>EVA - StorageArray - IO Size</name>
+		<graph>
+			<t_title></t_title>
+			<title>EVA - StorageArray - IO Size</title>
+			<t_image_format_id></t_image_format_id>
+			<image_format_id>1</image_format_id>
+			<t_height></t_height>
+			<height>120</height>
+			<t_width></t_width>
+			<width>500</width>
+			<t_slope_mode></t_slope_mode>
+			<slope_mode>on</slope_mode>
+			<t_auto_scale></t_auto_scale>
+			<auto_scale></auto_scale>
+			<t_auto_scale_opts></t_auto_scale_opts>
+			<auto_scale_opts>4</auto_scale_opts>
+			<t_auto_scale_log></t_auto_scale_log>
+			<auto_scale_log></auto_scale_log>
+			<t_scale_log_units></t_scale_log_units>
+			<scale_log_units></scale_log_units>
+			<t_auto_scale_rigid></t_auto_scale_rigid>
+			<auto_scale_rigid></auto_scale_rigid>
+			<t_auto_padding></t_auto_padding>
+			<auto_padding>on</auto_padding>
+			<t_export></t_export>
+			<export>on</export>
+			<t_upper_limit></t_upper_limit>
+			<upper_limit>0</upper_limit>
+			<t_lower_limit></t_lower_limit>
+			<lower_limit>0</lower_limit>
+			<t_base_value></t_base_value>
+			<base_value>1024</base_value>
+			<t_unit_value></t_unit_value>
+			<unit_value></unit_value>
+			<t_unit_exponent_value></t_unit_exponent_value>
+			<unit_exponent_value></unit_exponent_value>
+			<t_vertical_label></t_vertical_label>
+			<vertical_label>bytes</vertical_label>
+		</graph>
+		<items>
+			<hash_1000190fe2c04e240396ecf0fac7176287307c>
+				<task_item_id>hash_080019a93a97a8a76d1c979883aced955a6cf5</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>1</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>1</sequence>
+			</hash_1000190fe2c04e240396ecf0fac7176287307c>
+			<hash_1000191d05d52eca3fb3a313f74909c920fe16>
+				<task_item_id>hash_08001961a635f97929d9152bd74eba0ef7da47</task_item_id>
+				<color_id>7EE600</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_0500194845c983ed5f6678a0252168035ba7e3</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average IO Size</text_format>
+				<hard_return></hard_return>
+				<sequence>2</sequence>
+			</hash_1000191d05d52eca3fb3a313f74909c920fe16>
+			<hash_100019e4eaf47e4171a5e706120d0d357679c8>
+				<task_item_id>hash_08001961a635f97929d9152bd74eba0ef7da47</task_item_id>
+				<color_id>7EE600</color_id>
+				<alpha>7F</alpha>
+				<graph_type_id>7</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_0500194845c983ed5f6678a0252168035ba7e3</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>3</sequence>
+			</hash_100019e4eaf47e4171a5e706120d0d357679c8>
+			<hash_1000190f4211407e964ded9f3a8c091018893b>
+				<task_item_id>hash_08001961a635f97929d9152bd74eba0ef7da47</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>hash_0500194845c983ed5f6678a0252168035ba7e3</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>4</sequence>
+			</hash_1000190f4211407e964ded9f3a8c091018893b>
+			<hash_1000194583726225ce48d92992bde4f7bddd48>
+				<task_item_id>hash_08001961a635f97929d9152bd74eba0ef7da47</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_0500194845c983ed5f6678a0252168035ba7e3</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>5</sequence>
+			</hash_1000194583726225ce48d92992bde4f7bddd48>
+			<hash_1000192f9236456393ecd1bd6bd8b6590cdf5f>
+				<task_item_id>hash_08001961a635f97929d9152bd74eba0ef7da47</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>hash_0500194845c983ed5f6678a0252168035ba7e3</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>6</sequence>
+			</hash_1000192f9236456393ecd1bd6bd8b6590cdf5f>
+		</items>
+		<inputs>
+			<hash_0900198d137ac2b47d06836517586dd314dd96>
+				<name>Data Source [TotalhostKBPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_0000190fe2c04e240396ecf0fac7176287307c</items>
+			</hash_0900198d137ac2b47d06836517586dd314dd96>
+			<hash_09001921a798e1a419c025122f87729705a513>
+				<name>Data Source [TotalhostReqPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_0000191d05d52eca3fb3a313f74909c920fe16|hash_000019e4eaf47e4171a5e706120d0d357679c8|hash_0000190f4211407e964ded9f3a8c091018893b|hash_0000194583726225ce48d92992bde4f7bddd48|hash_0000192f9236456393ecd1bd6bd8b6590cdf5f</items>
+			</hash_09001921a798e1a419c025122f87729705a513>
+		</inputs>
+	</hash_0000192ebca8891044b8291691c0b6e436fcf3>
 	<hash_000019edf09e76edf3c7040d850c4ab1734df9>
 		<name>EVA - StorageController - CPU</name>
 		<graph>
@@ -2183,6 +2554,470 @@
 			</hash_090019caf97e64d4617393f18696ca903c695d>
 		</inputs>
 	</hash_000019edf09e76edf3c7040d850c4ab1734df9>
+	<hash_000019a9912cc9ba55414bcd966017227d514f>
+		<name>EVA - HostPortStatistics - Requests / Second</name>
+		<graph>
+			<t_title>on</t_title>
+			<title>EVA - HostPortStatistics - Requests / Second</title>
+			<t_image_format_id></t_image_format_id>
+			<image_format_id>1</image_format_id>
+			<t_height></t_height>
+			<height>120</height>
+			<t_width></t_width>
+			<width>500</width>
+			<t_slope_mode></t_slope_mode>
+			<slope_mode>on</slope_mode>
+			<t_auto_scale></t_auto_scale>
+			<auto_scale>on</auto_scale>
+			<t_auto_scale_opts></t_auto_scale_opts>
+			<auto_scale_opts>2</auto_scale_opts>
+			<t_auto_scale_log></t_auto_scale_log>
+			<auto_scale_log></auto_scale_log>
+			<t_scale_log_units></t_scale_log_units>
+			<scale_log_units></scale_log_units>
+			<t_auto_scale_rigid></t_auto_scale_rigid>
+			<auto_scale_rigid></auto_scale_rigid>
+			<t_auto_padding></t_auto_padding>
+			<auto_padding>on</auto_padding>
+			<t_export></t_export>
+			<export>on</export>
+			<t_upper_limit></t_upper_limit>
+			<upper_limit>100</upper_limit>
+			<t_lower_limit></t_lower_limit>
+			<lower_limit>0</lower_limit>
+			<t_base_value></t_base_value>
+			<base_value>1000</base_value>
+			<t_unit_value></t_unit_value>
+			<unit_value></unit_value>
+			<t_unit_exponent_value></t_unit_exponent_value>
+			<unit_exponent_value></unit_exponent_value>
+			<t_vertical_label></t_vertical_label>
+			<vertical_label>requests/sec</vertical_label>
+		</graph>
+		<items>
+			<hash_10001939ba0788335eefa32b27a777f572ca4d>
+				<task_item_id>hash_0800198b7e2e325d6a9b22f0a91af40639df86</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Read Requests</text_format>
+				<hard_return></hard_return>
+				<sequence>1</sequence>
+			</hash_10001939ba0788335eefa32b27a777f572ca4d>
+			<hash_1000195c357968f67effe136540cf53f314d37>
+				<task_item_id>hash_0800194eaf7975f379a38601c4170b457ffe87</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>7F</alpha>
+				<graph_type_id>7</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>2</sequence>
+			</hash_1000195c357968f67effe136540cf53f314d37>
+			<hash_100019e1f083f8319b9df9d00282fca1f87997>
+				<task_item_id>hash_080019c20c0335299ed1641c3309acf4d5117e</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>3</sequence>
+			</hash_100019e1f083f8319b9df9d00282fca1f87997>
+			<hash_100019201a08f3ebf2776851b401324abb872a>
+				<task_item_id>hash_0800196f9759bd1b89b483b6e69a36551cd8ce</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>4</sequence>
+			</hash_100019201a08f3ebf2776851b401324abb872a>
+			<hash_100019db111af56083e2c3e93c2f2bf328d333>
+				<task_item_id>hash_080019f04860e570ffdd71cf21c502fe0269be</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>5</sequence>
+			</hash_100019db111af56083e2c3e93c2f2bf328d333>
+			<hash_100019c713a5e375c61f3dfd18737c95e8e225>
+				<task_item_id>hash_080019d3785c4362ea0f073a53e967e1565831</task_item_id>
+				<color_id>FF0000</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Write requests</text_format>
+				<hard_return></hard_return>
+				<sequence>6</sequence>
+			</hash_100019c713a5e375c61f3dfd18737c95e8e225>
+			<hash_100019ef010fe30844cb34dbe9a213662c5897>
+				<task_item_id>hash_0800194ec15c2652729f66f5533dffd2a432f7</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>7</sequence>
+			</hash_100019ef010fe30844cb34dbe9a213662c5897>
+			<hash_100019d12baeaf8c9baa3dcd9fa12dc930e106>
+				<task_item_id>hash_080019ce072d74ec5bf6cac209464bf609619f</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>8</sequence>
+			</hash_100019d12baeaf8c9baa3dcd9fa12dc930e106>
+			<hash_100019ca9d30c2a6529015f4e5727f3a949bfb>
+				<task_item_id>hash_0800192b90aef17d56f378d6ebae18577fd08d</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>9</sequence>
+			</hash_100019ca9d30c2a6529015f4e5727f3a949bfb>
+		</items>
+		<inputs>
+			<hash_090019c5b48a3bf03fec5995a1f8762dcb1dfa>
+				<name>Data Source [ReadReqPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_00001939ba0788335eefa32b27a777f572ca4d|hash_0000195c357968f67effe136540cf53f314d37|hash_000019e1f083f8319b9df9d00282fca1f87997|hash_000019201a08f3ebf2776851b401324abb872a|hash_000019db111af56083e2c3e93c2f2bf328d333</items>
+			</hash_090019c5b48a3bf03fec5995a1f8762dcb1dfa>
+			<hash_0900194cb802db76810f62ed4278c236e2b3c5>
+				<name>Data Source [WriteReqPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_000019c713a5e375c61f3dfd18737c95e8e225|hash_000019ef010fe30844cb34dbe9a213662c5897|hash_000019d12baeaf8c9baa3dcd9fa12dc930e106|hash_000019ca9d30c2a6529015f4e5727f3a949bfb</items>
+			</hash_0900194cb802db76810f62ed4278c236e2b3c5>
+		</inputs>
+	</hash_000019a9912cc9ba55414bcd966017227d514f>
+	<hash_0000192b92ec2d1b05015505fb941636847965>
+		<name>EVA - HostPortStatistics - Queue Depth</name>
+		<graph>
+			<t_title></t_title>
+			<title>EVA - HostPortStatistics - Queue Depth</title>
+			<t_image_format_id></t_image_format_id>
+			<image_format_id>1</image_format_id>
+			<t_height></t_height>
+			<height>120</height>
+			<t_width></t_width>
+			<width>500</width>
+			<t_slope_mode></t_slope_mode>
+			<slope_mode>on</slope_mode>
+			<t_auto_scale></t_auto_scale>
+			<auto_scale></auto_scale>
+			<t_auto_scale_opts></t_auto_scale_opts>
+			<auto_scale_opts>2</auto_scale_opts>
+			<t_auto_scale_log></t_auto_scale_log>
+			<auto_scale_log></auto_scale_log>
+			<t_scale_log_units></t_scale_log_units>
+			<scale_log_units></scale_log_units>
+			<t_auto_scale_rigid></t_auto_scale_rigid>
+			<auto_scale_rigid></auto_scale_rigid>
+			<t_auto_padding></t_auto_padding>
+			<auto_padding>on</auto_padding>
+			<t_export></t_export>
+			<export>on</export>
+			<t_upper_limit></t_upper_limit>
+			<upper_limit>5</upper_limit>
+			<t_lower_limit></t_lower_limit>
+			<lower_limit>0</lower_limit>
+			<t_base_value></t_base_value>
+			<base_value>1000</base_value>
+			<t_unit_value></t_unit_value>
+			<unit_value></unit_value>
+			<t_unit_exponent_value></t_unit_exponent_value>
+			<unit_exponent_value></unit_exponent_value>
+			<t_vertical_label></t_vertical_label>
+			<vertical_label>queue depth</vertical_label>
+		</graph>
+		<items>
+			<hash_1000192a0b5c46565dffe843b8af4646a11a8d>
+				<task_item_id>hash_0800192021a462087284ef1ee1758326fb6ff1</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Queue Depth</text_format>
+				<hard_return></hard_return>
+				<sequence>1</sequence>
+			</hash_1000192a0b5c46565dffe843b8af4646a11a8d>
+			<hash_100019845f8c567839349eca6781f887f4a352>
+				<task_item_id>hash_0800192021a462087284ef1ee1758326fb6ff1</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>7F</alpha>
+				<graph_type_id>7</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>2</sequence>
+			</hash_100019845f8c567839349eca6781f887f4a352>
+			<hash_1000190318813606673d32b79eeddd5251f51a>
+				<task_item_id>hash_0800192021a462087284ef1ee1758326fb6ff1</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>3</sequence>
+			</hash_1000190318813606673d32b79eeddd5251f51a>
+			<hash_100019be77d89a91baf9b21a98c3406b3bdedb>
+				<task_item_id>hash_0800192021a462087284ef1ee1758326fb6ff1</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>4</sequence>
+			</hash_100019be77d89a91baf9b21a98c3406b3bdedb>
+			<hash_1000199590911bc5731cbe708ec0600dcb0bee>
+				<task_item_id>hash_0800192021a462087284ef1ee1758326fb6ff1</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>0</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>5</sequence>
+			</hash_1000199590911bc5731cbe708ec0600dcb0bee>
+		</items>
+		<inputs>
+			<hash_090019fec0a0d0c13638b3e7701a684e541feb>
+				<name>Data Source [AvQueueDepth]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_0000192a0b5c46565dffe843b8af4646a11a8d|hash_000019845f8c567839349eca6781f887f4a352|hash_0000190318813606673d32b79eeddd5251f51a|hash_000019be77d89a91baf9b21a98c3406b3bdedb|hash_0000199590911bc5731cbe708ec0600dcb0bee</items>
+			</hash_090019fec0a0d0c13638b3e7701a684e541feb>
+		</inputs>
+	</hash_0000192b92ec2d1b05015505fb941636847965>
+	<hash_00001950f3d06bbb00789ef78a52d29ed97c29>
+		<name>EVA - HostPortStatistics - Throughput</name>
+		<graph>
+			<t_title></t_title>
+			<title>EVA - HostPortStatistics - Throughput</title>
+			<t_image_format_id></t_image_format_id>
+			<image_format_id>1</image_format_id>
+			<t_height></t_height>
+			<height>120</height>
+			<t_width></t_width>
+			<width>500</width>
+			<t_slope_mode></t_slope_mode>
+			<slope_mode>on</slope_mode>
+			<t_auto_scale></t_auto_scale>
+			<auto_scale></auto_scale>
+			<t_auto_scale_opts></t_auto_scale_opts>
+			<auto_scale_opts>4</auto_scale_opts>
+			<t_auto_scale_log></t_auto_scale_log>
+			<auto_scale_log></auto_scale_log>
+			<t_scale_log_units></t_scale_log_units>
+			<scale_log_units></scale_log_units>
+			<t_auto_scale_rigid></t_auto_scale_rigid>
+			<auto_scale_rigid></auto_scale_rigid>
+			<t_auto_padding></t_auto_padding>
+			<auto_padding>on</auto_padding>
+			<t_export></t_export>
+			<export>on</export>
+			<t_upper_limit></t_upper_limit>
+			<upper_limit>1048576</upper_limit>
+			<t_lower_limit></t_lower_limit>
+			<lower_limit>0</lower_limit>
+			<t_base_value></t_base_value>
+			<base_value>1024</base_value>
+			<t_unit_value></t_unit_value>
+			<unit_value></unit_value>
+			<t_unit_exponent_value></t_unit_exponent_value>
+			<unit_exponent_value></unit_exponent_value>
+			<t_vertical_label></t_vertical_label>
+			<vertical_label>bytes/sec</vertical_label>
+		</graph>
+		<items>
+			<hash_1000192ae37c1892a50512cc38422f3f63109b>
+				<task_item_id>hash_080019bee07d2cc312ddad8bc19e53b3598d60</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>4</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Read Bytes</text_format>
+				<hard_return></hard_return>
+				<sequence>1</sequence>
+			</hash_1000192ae37c1892a50512cc38422f3f63109b>
+			<hash_100019a9edbaed869b51c4383403ff92d87b0b>
+				<task_item_id>hash_080019a1331ad286cd35673f63027f8c15407e</task_item_id>
+				<color_id>7CB3F1</color_id>
+				<alpha>7F</alpha>
+				<graph_type_id>7</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format></text_format>
+				<hard_return></hard_return>
+				<sequence>2</sequence>
+			</hash_100019a9edbaed869b51c4383403ff92d87b0b>
+			<hash_100019da432a306454d2b89d20fd02d161153e>
+				<task_item_id>hash_08001979916d48679707eeb728ded8c6cb5d02</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>3</sequence>
+			</hash_100019da432a306454d2b89d20fd02d161153e>
+			<hash_100019b00000453240aafc7f185631510f361e>
+				<task_item_id>hash_0800196578464403166b2333dbdfc7e79d3d49</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>4</sequence>
+			</hash_100019b00000453240aafc7f185631510f361e>
+			<hash_100019c60207de632f33a18aa5d05510366dcf>
+				<task_item_id>hash_0800196c6e23e3fdfb5c905fbe060f7e9f5de3</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>5</sequence>
+			</hash_100019c60207de632f33a18aa5d05510366dcf>
+			<hash_100019130c3ea0c5b9fb10468258a6b98fed3c>
+				<task_item_id>hash_0800197b275888e92deded28136f4ba1290c77</task_item_id>
+				<color_id>FF0000</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>5</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Write Bytes</text_format>
+				<hard_return></hard_return>
+				<sequence>6</sequence>
+			</hash_100019130c3ea0c5b9fb10468258a6b98fed3c>
+			<hash_100019447110a7dcf1cd9a179814666730a407>
+				<task_item_id>hash_080019992af2ea2c7b6a969d69f8d267069419</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>4</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Current:</text_format>
+				<hard_return></hard_return>
+				<sequence>7</sequence>
+			</hash_100019447110a7dcf1cd9a179814666730a407>
+			<hash_100019436f3da4df6fe5a04b0441c6f99d9182>
+				<task_item_id>hash_080019711cd89890d760ef413ea83a60a3c5d2</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>1</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Average:</text_format>
+				<hard_return></hard_return>
+				<sequence>8</sequence>
+			</hash_100019436f3da4df6fe5a04b0441c6f99d9182>
+			<hash_10001993c9b56efeb1df69e76a31cf4cb9f606>
+				<task_item_id>hash_080019fd248264238de4b4b92310ab778ef25a</task_item_id>
+				<color_id>0</color_id>
+				<alpha>FF</alpha>
+				<graph_type_id>9</graph_type_id>
+				<consolidation_function_id>3</consolidation_function_id>
+				<cdef_id>hash_050019634a23af5e78af0964e8d33b1a4ed26b</cdef_id>
+				<value></value>
+				<gprint_id>hash_060019e9c43831e54eca8069317a2ce8c6f751</gprint_id>
+				<text_format>Maximum:</text_format>
+				<hard_return>on</hard_return>
+				<sequence>9</sequence>
+			</hash_10001993c9b56efeb1df69e76a31cf4cb9f606>
+		</items>
+		<inputs>
+			<hash_090019070b3b8f98c939a098024323355f16df>
+				<name>Data Source [ReadKBPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_000019da432a306454d2b89d20fd02d161153e|hash_000019b00000453240aafc7f185631510f361e|hash_000019c60207de632f33a18aa5d05510366dcf|hash_0000192ae37c1892a50512cc38422f3f63109b|hash_000019a9edbaed869b51c4383403ff92d87b0b</items>
+			</hash_090019070b3b8f98c939a098024323355f16df>
+			<hash_0900195fa2989ff41b471b11197e3d95c7fafc>
+				<name>Data Source [WriteKBPers]</name>
+				<description></description>
+				<column_name>task_item_id</column_name>
+				<items>hash_000019130c3ea0c5b9fb10468258a6b98fed3c|hash_000019447110a7dcf1cd9a179814666730a407|hash_00001993c9b56efeb1df69e76a31cf4cb9f606|hash_000019436f3da4df6fe5a04b0441c6f99d9182</items>
+			</hash_0900195fa2989ff41b471b11197e3d95c7fafc>
+		</inputs>
+	</hash_00001950f3d06bbb00789ef78a52d29ed97c29>
 	<hash_01001968f3e8007d9f27c340f7042765ad0281>
 		<name>EVA - VirtualDisk</name>
 		<ds>
@@ -2590,6 +3425,20 @@
 				<t_data_input_field_id></t_data_input_field_id>
 				<data_input_field_id>0</data_input_field_id>
 			</hash_080019a93a97a8a76d1c979883aced955a6cf5>
+			<hash_080019652805c4d5230c880e05d261dd7b8f43>
+				<t_data_source_name></t_data_source_name>
+				<data_source_name>iosize</data_source_name>
+				<t_rrd_minimum></t_rrd_minimum>
+				<rrd_minimum>0</rrd_minimum>
+				<t_rrd_maximum></t_rrd_maximum>
+				<rrd_maximum>100</rrd_maximum>
+				<t_data_source_type_id></t_data_source_type_id>
+				<data_source_type_id>1</data_source_type_id>
+				<t_rrd_heartbeat></t_rrd_heartbeat>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<t_data_input_field_id></t_data_input_field_id>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_080019652805c4d5230c880e05d261dd7b8f43>
 		</items>
 		<data>
 			<item_000>
@@ -2670,6 +3519,101 @@
 			</item_002>
 		</data>
 	</hash_0100193f262014b6576c2c64378fa278909225>
+	<hash_01001961189654eb161f011fa0d5330b715745>
+		<name>EVA - HostPortStatistics</name>
+		<ds>
+			<t_name></t_name>
+			<name>|host_description| - HostPortStatistics</name>
+			<data_input_id>hash_03001980e9e4c4191a5da189ae26d0e237f015</data_input_id>
+			<t_rra_id></t_rra_id>
+			<t_rrd_step></t_rrd_step>
+			<rrd_step>60</rrd_step>
+			<t_active></t_active>
+			<active>on</active>
+			<rra_items>hash_150019c21df5178e5c955013591239eb0afd46|hash_1500190d9c0af8b8acdc7807943937b3208e29|hash_1500196fc2d038fb42950138b0ce3e9874cc60|hash_150019e36f3adb9f152adfa5dc50fd2b23337e|hash_150019283ea2bf1634d92ce081ec82a634f513</rra_items>
+		</ds>
+		<items>
+			<hash_080019f8df68d9b7be81120105efe9ed4ba999>
+				<data_source_name>ReadLatencyus</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_080019f8df68d9b7be81120105efe9ed4ba999>
+			<hash_0800192193d3aba7d2e28f1c51cabf681662d8>
+				<data_source_name>WriteReqPers</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_0800192193d3aba7d2e28f1c51cabf681662d8>
+			<hash_0800194448875107b509cab88c3e55519ab149>
+				<data_source_name>WriteLatencyus</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_0800194448875107b509cab88c3e55519ab149>
+			<hash_0800197dfb283259a9b92e2be1de01c693adeb>
+				<data_source_name>ReadReqPers</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_0800197dfb283259a9b92e2be1de01c693adeb>
+			<hash_080019b6dc077195bbdbeef66fac79a5cdce7c>
+				<data_source_name>WriteKBPers</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_080019b6dc077195bbdbeef66fac79a5cdce7c>
+			<hash_0800192021a462087284ef1ee1758326fb6ff1>
+				<t_data_source_name></t_data_source_name>
+				<data_source_name>AvQueueDepth</data_source_name>
+				<t_rrd_minimum></t_rrd_minimum>
+				<rrd_minimum>0</rrd_minimum>
+				<t_rrd_maximum></t_rrd_maximum>
+				<rrd_maximum>0</rrd_maximum>
+				<t_data_source_type_id></t_data_source_type_id>
+				<data_source_type_id>1</data_source_type_id>
+				<t_rrd_heartbeat></t_rrd_heartbeat>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<t_data_input_field_id></t_data_input_field_id>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_0800192021a462087284ef1ee1758326fb6ff1>
+			<hash_080019cb0018094990018114b6f4f63f56120c>
+				<data_source_name>ReadKBPers</data_source_name>
+				<rrd_minimum>0</rrd_minimum>
+				<rrd_maximum>0</rrd_maximum>
+				<data_source_type_id>1</data_source_type_id>
+				<rrd_heartbeat>600</rrd_heartbeat>
+				<data_input_field_id>0</data_input_field_id>
+			</hash_080019cb0018094990018114b6f4f63f56120c>
+		</items>
+		<data>
+			<item_000>
+				<data_input_field_id>hash_07001974af2e42dc12956c4817c2ef5d9983f9</data_input_field_id>
+				<t_value>on</t_value>
+				<value></value>
+			</item_000>
+			<item_001>
+				<data_input_field_id>hash_0700193b7caa46eb809fc238de6ef18b6e10d5</data_input_field_id>
+				<t_value>on</t_value>
+				<value></value>
+			</item_001>
+			<item_002>
+				<data_input_field_id>hash_070019d39556ecad6166701bfb0e28c5a11108</data_input_field_id>
+				<t_value>on</t_value>
+				<value></value>
+			</item_002>
+		</data>
+	</hash_01001961189654eb161f011fa0d5330b715745>
 	<hash_150019c21df5178e5c955013591239eb0afd46>
 		<name>Daily (5 Minute Average)</name>
 		<x_files_factor>0.5</x_files_factor>
@@ -2748,4 +3692,24 @@
 			</hash_1400190ef6b8a42dc83b4e43e437960fccd2ea>
 		</items>
 	</hash_050019f1ac79f05f255c02f914c920f1038c54>
+	<hash_0500194845c983ed5f6678a0252168035ba7e3>
+		<name>Ratio, Multiply by 1024</name>
+		<items>
+			<hash_140019714fd4d5c2b7decdd10aae7e8d759665>
+				<sequence>1</sequence>
+				<type>5</type>
+				<value>21</value>
+			</hash_140019714fd4d5c2b7decdd10aae7e8d759665>
+			<hash_1400199ad923c943c45ac3c4ceec93aa379726>
+				<sequence>2</sequence>
+				<type>6</type>
+				<value>1024</value>
+			</hash_1400199ad923c943c45ac3c4ceec93aa379726>
+			<hash_140019225a75658716373483a46725b1dac019>
+				<sequence>3</sequence>
+				<type>2</type>
+				<value>3</value>
+			</hash_140019225a75658716373483a46725b1dac019>
+		</items>
+	</hash_0500194845c983ed5f6678a0252168035ba7e3>
 </cacti>

@@ -15,6 +15,7 @@
 
 class auth {
 	package { "augeas": ensure => installed }
+	package { "nscd": ensure => installed }
 	exec { "authconfig-update":
 		command => "/usr/bin/authconfig --updateall",
 		refreshonly => true,
@@ -26,16 +27,6 @@ class auth {
 			onlyif => "get USEMKHOMEDIR != yes",
 			notify => Exec["authconfig-update"],
 		}
-		file { "/home/os":
-			name => "/home/os",
-			ensure => directory,
-			mode => 0755
-		}
-		file { "/os":
-			name => "/os",
-			ensure => link,
-			target => "/home/os"
-		}
 	}
 	class kerberos {
 		augeas { "kerberos":
@@ -43,7 +34,9 @@ class auth {
 			changes => "set USEKERBEROS yes",
 			onlyif => "get USEKERBEROS != yes",
 			notify => Exec["authconfig-update"],
+			subscribe => Package["pam_krb5"],
 		}
+		package { "pam_krb5": ensure => installed }
 	}
 	class ldap {
 		augeas { "ldap":
@@ -51,13 +44,61 @@ class auth {
 			changes => "set USELDAP yes",
 			onlyif => "get USELDAP != yes",
 			notify => Exec["authconfig-update"],
+			subscribe => Package["nss_ldap"],
 		}
 		augeas { "ldapauth":
 			context => "/files/etc/sysconfig/authconfig",
 			changes => "set USELDAPAUTH yes",
 			onlyif => "get USELDAPAUTH != yes",
 			notify => Exec["authconfig-update"],
+			subscribe => Package["nss_ldap"],
 		}
+		package { "nss_ldap": ensure => installed }
+	}
+
+
+	file { "/etc/krb5.conf":
+		owner   => root,
+		group   => root,
+		mode    => 644,
+		source  => [
+			"puppet://$server/auth/krb5.conf.$hostname",
+			"puppet://$server/auth/krb5.conf.$os.$osver",
+			"puppet://$server/auth/krb5.conf.$os",
+			"puppet://$server/auth/krb5.conf",
+		],
+		sourceselect => first
+	}
+	file { "/etc/ldap.conf":
+		mode => 0644,
+		owner => root,
+		group => root,
+		source  => [
+			"puppet://$server/auth/ldap.conf.$hostname",
+			"puppet://$server/auth/ldap.conf.$os.$osver",
+			"puppet://$server/auth/ldap.conf.$os",
+			"puppet://$server/auth/ldap.conf",
+		],
+		sourceselect => first,
+	}
+	file { "/etc/openldap/ldap.conf":
+		ensure => link,
+		target => "/etc/ldap.conf",
+	}
+
+	exec { "Invalidate NSCD cache and restart daemon":
+		subscribe => [ File["/etc/ldap.conf"], File["/etc/krb5.conf"] ],
+		path => "/bin:/usr/bin:/usr/sbin:/sbin",
+		command => "nscd -i passwd;nscd -i group;/sbin/service nscd restart",
+		refreshonly => true
+	}
+
+	service { "nscd":
+		subscribe => [ File["/etc/ldap.conf"], File["/etc/krb5.conf"], Package["nscd"] ],
+		enable => true,
+		ensure => running,
+		hasstatus => true
 	}
 }
+
 

@@ -1,0 +1,34 @@
+# Firwall config managed by PUPPET - changes will be OVERWRITTEN
+
+
+
+
+
+
+
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:RH-Firewall-1-INPUT - [0:0]
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+
+# Allow localhost traffic
+-A RH-Firewall-1-INPUT -i lo -j ACCEPT
+
+# Allow all ICMP types
+-A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+
+# Allow Established connections and stateful related
+-A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+# Allow SSH
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+
+# Reject everything else
+-A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+

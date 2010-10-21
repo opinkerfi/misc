@@ -1,0 +1,125 @@
+#!/usr/bin/python -tt
+#
+# Copyright 2010, Tomas Edwardsson 
+#
+# ad-fetch-groupmembers is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# ad-fetch-groupmembers is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# This script fetches group members from a LDAP database
+# it has support for nested groups and in it's current form creates
+# Apache httpd "Require users" statements for each group.
+
+
+
+
+import ldap
+
+server = 	''		# eg, server = 'ldap.opensource.is'
+base = 		''		# eg, 'CN=Users,DC=opensource,DC=is'
+binddn = 	''		# 'cn=Manager,DC=opensource,DC=is'
+bindpw = 	''	
+
+# Used for output of username@REALM, I'm using this for kerberized
+# httpd so that's where the realm option comes from
+realm = 	'' 		# eg, realm = 'OPENSOURCE.IS'
+
+# Groups to fetch, full DN for the groups, I might change this,
+# just too lazy right now
+groups = [	
+		'CN=Domain Admins,CN=Users,DC=opensource,DC=is',
+		]
+
+
+# Dict containing results
+users = {}
+
+# Keeping tabs on DNs that are already processed
+processed_dn = []
+
+def main():
+	try:
+		l = ldap.open(server)
+		if binddn:
+			l.simple_bind_s(binddn, bindpw)
+
+	except ldap.LDAPError, error_message:
+		print "Couldn't Connect. %s " % error_message
+
+	last_group = ""
+	# Loop through all users/groups, take note that members are added on the fly
+	# to the groups array
+	
+	# Add realm
+	global realm
+	if realm:
+		realm = '@' + realm.upper()
+	
+	while len(groups):
+		group = groups.pop()
+
+		# Already processed, moving on
+		if group in processed_dn:
+			continue
+
+
+		rs = ldap_search(l, group)
+		for ldap_results in rs:
+			# Got group entry, append 
+			if 'group' in ldap_results[1]['objectClass']:
+				# Init array for this group
+				users[group] = []
+
+				# I think this is broken if we have groups nested
+				# within groups
+				last_group = group
+				for member in ldap_results[1]['member']:
+					groups.append(member)
+
+			# We are dealing with a user, add to the users array
+			elif 'person' in ldap_results[1]['objectClass']:
+				users[last_group].append(ldap_results[1]['sAMAccountName'][0] + realm)
+
+			processed_dn.append(group)
+	# Do some swanky output
+	for group in sorted(users.keys()):
+		print "# %s" % group
+		print "require user %s" % ' '.join(sorted(users[group]))
+		
+
+
+def ldap_search(l, base):
+	scope = ldap.SCOPE_BASE
+	retrieve_attributes = None
+	result_set = []
+	# Right now, settings timeout to anything other than 0, breaks the damn thing
+	timeout = 0
+	#filter = "objectclass=group"
+	try:
+		result_id = l.search(base, scope, "(|(objectclass=person)(objectclass=group))", retrieve_attributes)
+		while 1:
+			result_type, result_data = l.result(result_id, timeout)
+			if (result_data == []):
+				break
+			else:
+				if result_type == ldap.RES_SEARCH_ENTRY:
+					result_set.append(result_data[0])
+		if len(result_set) == 0:
+			print "No Results."
+			return 
+	except ldap.LDAPError, error_message:
+		print error_message
+	return result_set
+
+	
+if __name__=='__main__':
+    main()

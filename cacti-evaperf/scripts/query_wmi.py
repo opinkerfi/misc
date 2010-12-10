@@ -10,6 +10,7 @@ import pprint
 from subprocess import Popen,PIPE,STDOUT
 hostname="commandview"
 credential="/etc/cacti/cactiwmi.pw"
+# This sets debugmode to true
 debugmode=True
 logfile="/var/log/cacti/query_eva.log"
 tmp_dir="/var/tmp/cacti/" # Cache files go here

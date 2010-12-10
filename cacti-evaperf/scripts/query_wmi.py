@@ -14,6 +14,7 @@ credential="/etc/cacti/cactiwmi.pw"
 debugmode=True
 logfile="/var/log/cacti/query_eva.log"
 tmp_dir="/var/tmp/cacti/" # Cache files go here
+# Max cache size
 CACHE_MAX_AGE=50 # How old (in seconds) can be. 60 seconds should be sufficient
 
 
@@ -94,10 +95,8 @@ How to use this dataset:
       error( "KeyError, object '%s' not found in wmi query"%(objectname))
   def index(self):
     "Returns a nice list of the Name of every object" 
-    #results = []
     for key,value in self.objects.items():
       output( key )
-      #results.append( value[fieldname] )
     #return results
   def get(self, objectname, fieldname):
     """

@@ -1,5 +1,14 @@
+# Perty notification command for host checks
+define command{
+        command_name    perty-notify-host-by-email
+        command_line    $USER1$/perty-nagios-mailer.pl -H "$CONTACTEMAIL$" "$LONGDATETIME$" "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTADDRESS$" "$HOSTSTATE$" "$HOSTOUTPUT$ $LONGHOSTOUTPUT$" 
+        }
+
+
+# Perty notification command for service checks
 define command{
         command_name    perty-notify-service-by-email
-        command_line    $USER1$/ok/perty-nagios-mailer.pl "$CONTACTEMAIL$" "$LONGDATETIME$" "$NOTIFICATIONTYPE$" "$HOSTALIAS$" "$HOSTADDRESS$" "$SERVICEDESC$" "$SERVICESTATE$" "$SERVICEOUTPUT$" 
+        command_line    $USER1$/perty-nagios-mailer.pl "$CONTACTEMAIL$" "$LONGDATETIME$" "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTADDRESS$" "$SERVICESTATE$" "$SERVICEOUTPUT$ $LONGSERVICEOUTPUT$" "$SERVICEDESC$"
         }
+
 

@@ -1,0 +1,173 @@
+<interface>
+	<name>Get SNMP Interfaces</name>
+	<description>Queries a host for a list of monitorable interfaces</description>
+	<oid_index>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.1</oid_index>
+	<oid_num_indexes>.1.3.6.1.4.1.1588.2.1.1.1.6.1.0</oid_num_indexes>
+	<index_order>ifDescr:ifHwAddr:ifIndex</index_order>
+	<index_order_type>numeric</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<ifIndex>
+			<name>Index</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.1</oid>
+		</ifIndex>
+		<ifOperStatus>
+			<name>Status</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.4</oid>
+		</ifOperStatus>
+		<ifDescr>
+			<name>Description</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.36</oid>
+		</ifDescr>
+		<ifType>
+			<name>Type</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.7</oid>
+		</ifType>
+		<ifHwAddr>
+			<name>Hardware Address</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.34</oid>
+		</ifHwAddr>
+		<swFCPortTxWords>
+			<name>Fibrechannel words transmitted</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.11</oid>
+		</swFCPortTxWords>
+		<swFCPortRxWords>
+			<name>Fibrechannel words recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.12</oid>
+		</swFCPortRxWords>
+		<swFCPortTxFrames>
+			<name>Fibrechannel frames transmitted</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.13</oid>
+		</swFCPortTxFrames>
+		<swFCPortRxFrames>
+			<name>Fibrechannel frames recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.14</oid>
+		</swFCPortRxFrames>
+		<swFCPortTxC2Frames>
+			<name>Fibrechannel Class2 frames transmitted</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.15</oid>
+		</swFCPortTxC2Frames>
+		<swFCPortRxC3Frames>
+			<name>Fibrechannel Class3 frames recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.16</oid>
+		</swFCPortRxC3Frames>
+		<swFCPortRxMcasts>
+			<name>Fibrechannel Multicast frames recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.18</oid>
+		</swFCPortRxMcasts>
+		<swFCPortRxEncInFrs>
+			<name>Fibrechannel Encoding or disparity errors</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.21</oid>
+		</swFCPortRxEncInFrs>
+		<swFCPortRxCrcs>
+			<name>Fibrechannel CRC errors recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.22</oid>
+		</swFCPortRxCrcs>
+		<swFCPortRxTruncs>
+			<name>Fibrechannel Truncated frames recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.23</oid>
+		</swFCPortRxTruncs>
+		<swFCPortRxTooLongs>
+			<name>Fibrechannel Truncated too-long frames recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.24</oid>
+		</swFCPortRxTooLongs>
+		<swFCPortRxBadEofs>
+			<name>Fibrechannel bad EOF delimited frames</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.25</oid>
+		</swFCPortRxBadEofs>
+		<swFCPortRxEncOutFrs>
+			<name>Fibrechannel error/disparity errors recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.26</oid>
+		</swFCPortRxEncOutFrs>
+		<swFCPortRxBadOs>
+			<name>Fibrechannel invalid Ordered sets recieved</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.27</oid>  
+		</swFCPortRxBadOs>
+		<swFCPortC3Discards>
+			<name>Fibrechannel discarded Class 3 frames</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.28</oid>
+		</swFCPortC3Discards>
+		<swFCPortMcastTimedOuts>
+			<name>Fibrechannel timed-out Multicast frames</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.29</oid>
+		</swFCPortMcastTimedOuts>
+		<swFCPortTxMcasts>
+			<name>Fibrechannel Multicast frames transmitted</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>output</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.30</oid>
+		</swFCPortTxMcasts>
+		<swFCPortSpecifier>
+			<name>Fibrechannel Port Specifier</name>
+			<method>walk</method>
+			<source>value</source>
+			<direction>input</direction>
+			<oid>.1.3.6.1.4.1.1588.2.1.1.1.6.2.1.37</oid>
+		</swFCPortSpecifier>
+	</fields>
+</interface>

@@ -1,0 +1,2 @@
+*  *  * * * root /var/www/ok-batch/ok-batch.sh
+01 00 1 * * root /var/www/ok-batch/ok-logrotate.sh

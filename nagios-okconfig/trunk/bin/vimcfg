@@ -1,4 +1,0 @@
-#!/bin/sh
-
-
-find -L /etc/nagios -wholename "*${1}" -exec vim {} \;

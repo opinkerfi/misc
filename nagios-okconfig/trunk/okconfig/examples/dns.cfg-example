@@ -1,8 +1,0 @@
-define service {
-        use                     HOSTNAME,check_reverse_lookup
-}
-define service {
-        use                     HOSTNAME,check_forward_lookup
-}
-
-

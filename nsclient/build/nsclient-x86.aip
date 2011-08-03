@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="8.2" version="8.2" Modules="enterprise" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiValidationComponent">
+    <ROW Table="Services" Column="Attributes" MinValue="0" MaxValue="65536" Category="Integer" Description="Vital=1" Options="9" ColumnType="3" ColumnIndex="5" ColumnSize="4"/>
+    <ROW Table="Services" Column="Component_" Category="Identifier" Description="Foreign key into the Component table referencing component that controls the firewall configuration." Options="8" ColumnType="1" ColumnIndex="6" ColumnSize="72"/>
+    <ROW Table="Services" Column="Description" Category="Formatted" Description="The description" Options="9" ColumnType="1" ColumnIndex="3" ColumnSize="255"/>
+    <ROW Table="Services" Column="Id" Category="Identifier" Description="The primary key, a non-localized token." Options="10" ColumnType="1" ColumnIndex="0" ColumnSize="72"/>
+    <ROW Table="Services" Column="LongName" Category="Formatted" Description="Service long name." Options="9" ColumnType="1" ColumnIndex="2" ColumnSize="255"/>
+    <ROW Table="Services" Column="Program" Category="Formatted" Description="Exception for a program (formatted path name)." Options="9" ColumnType="1" ColumnIndex="4" ColumnSize="255"/>
+    <ROW Table="Services" Column="ShortName" Category="Formatted" Description="Service name." Options="13" ColumnType="1" ColumnIndex="1" ColumnSize="255"/>
+    <ROW Table="WixFirewallException" Column="Attributes" MinValue="0" MaxValue="65536" Category="Integer" Description="Vital=1" Options="9" ColumnType="3" ColumnIndex="6" ColumnSize="4"/>
+    <ROW Table="WixFirewallException" Column="Component_" Category="Identifier" Description="Foreign key into the Component table referencing component that controls the firewall configuration." Options="8" ColumnType="1" ColumnIndex="7" ColumnSize="72"/>
+    <ROW Table="WixFirewallException" Column="Id" Category="Identifier" Description="The primary key, a non-localized token." Options="10" ColumnType="1" ColumnIndex="0" ColumnSize="72"/>
+    <ROW Table="WixFirewallException" Column="Name" Category="Formatted" Description="Localizable display name." Options="13" ColumnType="1" ColumnIndex="1" ColumnSize="255"/>
+    <ROW Table="WixFirewallException" Column="Port" MinValue="1" Category="Formatted" Description="Port number." Options="9" ColumnType="2" ColumnIndex="3" ColumnSize="2"/>
+    <ROW Table="WixFirewallException" Column="Program" Category="Formatted" Description="Exception for a program (formatted path name)." Options="9" ColumnType="1" ColumnIndex="5" ColumnSize="255"/>
+    <ROW Table="WixFirewallException" Column="Protocol" MinValue="6" MaxValue="17" Category="Integer" Description="Protocol (6=TCP; 17=UDP)." Options="9" ColumnType="2" ColumnIndex="4" ColumnSize="2"/>
+    <ROW Table="WixFirewallException" Column="RemoteAddresses" Category="Formatted" Description="Remote address to accept incoming connections from." Options="9" ColumnType="1" ColumnIndex="2" ColumnSize="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="ALLOWED_HOSTS_DEFAULT" Value="$EMPTY$"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="NSClient++ is a" ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="michael@medin.name"/>
+    <ROW Property="ARPHELPLINK" Value="http://nsclient.org"/>
+    <ROW Property="ARPHELPTELEPHONE" Value="http://nsclient.org"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://nsclient.org"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="http://nsclient.org"/>
+    <ROW Property="CUSTOM_CONFIGURATION_FILE" Value="NSC.ini"/>
+    <ROW Property="HELP_LINK" Value="http://nsclient.org/nscp/"/>
+    <ROW Property="INSCON_CONFIGURE" Value="1"/>
+    <ROW Property="KEEP_WHICH_CONFIG" Value="NEW"/>
+    <ROW Property="MAIN_CONFIGURATION_FILE" Value="NSC.ini"/>
+    <ROW Property="Manufacturer" Value="MySolutions NORDIC" ValueLocId="*"/>
+    <ROW Property="NSCLIENT_PWD_DEFAULT" Value="$EMPTY$"/>
+    <ROW Property="ProductCode" Value="1033:{153416AC-F2FF-42C9-B69A-3E6D34DBB260} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="NSClient++ (Win32)" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="0.3.9.321"/>
+    <ROW Property="SHOW_DONATE_ON_EXIT" Value="1"/>
+    <ROW Property="SHOW_START_ON_EXIT" Value="1"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;OLDAPPFOUND"/>
+    <ROW Property="UpgradeCode" Value="{0B36E3B7-0042-452D-B376-57E0C07ADDAA}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WixUIRMOption" Value="UseRM"/>
+    <ROW Property="WixUI_ConfigureDlgBack" Value="OldConfigureDlg"/>
+    <ROW Property="WixUI_ConfigureDlgNext" Value="VerifyReadyDlg"/>
+    <ROW Property="WixUI_CustomizeDlg_BackChange" Value="MaintenanceTypeDlg"/>
+    <ROW Property="WixUI_CustomizeDlg_BackCustom" Value="SetupTypeDlg"/>
+    <ROW Property="WixUI_CustomizeDlg_BackFeatureTree" Value="LicenseAgreementDlg"/>
+    <ROW Property="WixUI_CustomizeDlg_Next" Value="VerifyReadyDlg"/>
+    <ROW Property="WixUI_CustomizeDlg_Next_Conf" Value="OldConfigureDlg"/>
+    <ROW Property="WixUI_LicenseAgreementDlg_Back" Value="WelcomeDlg"/>
+    <ROW Property="WixUI_LicenseAgreementDlg_Next" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_MaintenanceTypeDlg_Back" Value="MaintenanceWelcomeDlg"/>
+    <ROW Property="WixUI_MaintenanceTypeDlg_Change" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_MaintenanceTypeDlg_Remove" Value="VerifyReadyDlg"/>
+    <ROW Property="WixUI_MaintenanceTypeDlg_Repair" Value="VerifyReadyDlg"/>
+    <ROW Property="WixUI_MaintenanceWelcomeDlg_Next" Value="MaintenanceTypeDlg"/>
+    <ROW Property="WixUI_Mode" Value="FeatureTree"/>
+    <ROW Property="WixUI_OldConfigureDlgBack" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_OldConfigureDlgNext" Value="ConfigureDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_Back" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackChange" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackComplete" Value="SetupTypeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackConf" Value="ConfigureDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackCustom" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackFeatureTree" Value="CustomizeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackRemove" Value="MaintenanceTypeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackRepair" Value="MaintenanceTypeDlg"/>
+    <ROW Property="WixUI_VerifyReadyDlg_BackTypical" Value="SetupTypeDlg"/>
+    <ROW Property="WixUI_WelcomeDlg_Next" Value="LicenseAgreementDlg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="INSTALLDIR" Directory_Parent="TARGETDIR" DefaultDir="INSTAL~1|INSTALLDIR" IsPseudoRoot="1"/>
+    <ROW Directory="INSTALLLOCATION" Directory_Parent="ProgramFilesFolder" DefaultDir="NSClient|NSClient++"/>
+    <ROW Directory="INSTALLLOCATION_MODS" Directory_Parent="INSTALLLOCATION" DefaultDir="modules"/>
+    <ROW Directory="INSTALLLOCATION_SCRIPTS" Directory_Parent="INSTALLLOCATION" DefaultDir="scripts"/>
+    <ROW Directory="INSTALLLOCATION_SCRIPTS_LIB" Directory_Parent="INSTALLLOCATION_SCRIPTS" DefaultDir="lib"/>
+    <ROW Directory="ProgramFilesFolder" Directory_Parent="TARGETDIR" DefaultDir="Progra~1|ProgramFilesFolder" IsPseudoRoot="1"/>
+    <ROW Directory="ProgramMenuDir" Directory_Parent="ProgramMenuFolder" DefaultDir="NSClient|NSClient++"/>
+    <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PMenu~1|ProgramMenuFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="Documentation" ComponentId="{9B490E67-5472-4267-889C-DD5862EE637B}" Directory_="INSTALLLOCATION" Attributes="0" KeyPath="doc.usage.nagios"/>
+    <ROW Component="MainClient" ComponentId="{F6636DB0-A0B9-4DD2-B74C-DD5862EE637B}" Directory_="INSTALLLOCATION" Attributes="0" KeyPath="NSClientEXE"/>
+    <ROW Component="NRPEListener" ComponentId="{5A0246F8-5167-45DB-B246-DD5862EE637B}" Directory_="INSTALLLOCATION_MODS" Attributes="0" KeyPath="NRPEListenerDLL"/>
+    <ROW Component="NSCA" ComponentId="{8820A304-C596-4393-A72F-DD5862EE637B}" Directory_="INSTALLLOCATION_MODS" Attributes="0" KeyPath="NSCAAgentDLL"/>
+    <ROW Component="NSCListener" ComponentId="{6DAF8BB9-9A56-48F5-B2C5-DD5862EE637B}" Directory_="INSTALLLOCATION_MODS" Attributes="0" KeyPath="NSCListenerDLL"/>
+    <ROW Component="Plugins" ComponentId="{9B490E67-5472-4266-96DC-DD5862EE637B}" Directory_="INSTALLLOCATION_MODS" Attributes="0" KeyPath="A_DebugLogMetrics.dll"/>
+    <ROW Component="ScriptLibs" ComponentId="{9B490E67-5472-4267-96DF-DD5862EE637B}" Directory_="INSTALLLOCATION_SCRIPTS_LIB" Attributes="0" KeyPath="lib001"/>
+    <ROW Component="Scripts" ComponentId="{9B490E67-5472-4268-96DF-DD5862EE637B}" Directory_="INSTALLLOCATION_SCRIPTS" Attributes="0" KeyPath="script001"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="CheckPlugins" Feature_Parent="Plugins" Title="Check Plugins" Description="Various plugins to check your system. (Includes all check plugins)" Display="2" Level="1" Directory_="APPDIR" Attributes="0" Components="Plugins"/>
+    <ROW Feature="Documentation" Feature_Parent="ProductFeature" Title="Documentation (pdf)" Description="Documentation for NSClient++ and how to use it from Nagios" Display="8" Level="1" Directory_="APPDIR" Attributes="0" Components="Documentation"/>
+    <ROW Feature="FireWallException" Feature_Parent="ProductFeature" Title="Firewall Exception" Description="Add an exception to the windows firewall" Display="4" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ROW Feature="MainProgram" Feature_Parent="ProductFeature" Title="Program" Description="Main Service" Display="2" Level="1" Directory_="APPDIR" Attributes="16" Components="MainClient"/>
+    <ROW Feature="NRPEPlugins" Feature_Parent="Plugins" Title="NRPE Support" Description="NRPE Listener Plugin. Support for the more vercitile NRPE protocol (check_nrpe)" Display="4" Level="1" Directory_="APPDIR" Attributes="16" Components="NRPEListener"/>
+    <ROW Feature="NSCAPlugin" Feature_Parent="Plugins" Title="NSCA plugin" Description="Plugin to submit passive results to an NSCA server" Display="8" Level="1" Directory_="APPDIR" Attributes="16" Components="NSCA"/>
+    <ROW Feature="NSCPlugins" Feature_Parent="Plugins" Title="NSClient support" Description="NSClient Listener Plugin. Support for the old NSClient protocol (check_nt)" Display="6" Level="1" Directory_="APPDIR" Attributes="16" Components="NSCListener"/>
+    <ROW Feature="Plugins" Feature_Parent="ProductFeature" Title="Plugins" Description="Plugins" Display="10" Level="1" Directory_="APPDIR" Attributes="16"/>
+    <ROW Feature="ProductFeature" Title="NSClient++ Win32" Description="Binaries for Win32" Display="1" Level="1" Directory_="APPDIR" Attributes="16"/>
+    <ROW Feature="SampleScripts" Feature_Parent="Plugins" Title="Sample Scripts" Description="Some sample client-side scripts to use with NRPE" Display="10" Level="1" Directory_="APPDIR" Attributes="16" Components="ScriptLibs Scripts"/>
+    <ROW Feature="ServiceRegistration" Feature_Parent="ProductFeature" Title="Register service" Description="Register the NSClient++ service" Display="6" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="Documentation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="A_DebugLogMetrics.dll" Component_="Plugins" FileName="ADebug.dll|A_DebugLogMetrics.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\A_DebugLogMetrics.dll" SelfReg="false" NextFile="ModCheckEventLog.dll"/>
+    <ROW File="Changelog" Component_="MainClient" FileName="change.log|changelog.txt" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\changelog.txt" SelfReg="false" NextFile="Counters"/>
+    <ROW File="Counters" Component_="MainClient" FileName="counters.def|counters.defs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\counters.defs" SelfReg="false" NextFile="License"/>
+    <ROW File="License" Component_="MainClient" FileName="license.txt" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\license.txt" SelfReg="false" NextFile="doc.usage.nagios"/>
+    <ROW File="ModCheckDisk.dll" Component_="Plugins" FileName="CheckDsk.dll|CheckDisk.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckDisk.dll" SelfReg="false" NextFile="ModCheckTaskSched.dll"/>
+    <ROW File="ModCheckEventLog.dll" Component_="Plugins" FileName="EvntLg.dll|CheckEventLog.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckEventLog.dll" SelfReg="false" NextFile="ModCheckExternalScripts.dll"/>
+    <ROW File="ModCheckExternalScripts.dll" Component_="Plugins" FileName="ExtScr.dll|CheckExternalScripts.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckExternalScripts.dll" SelfReg="false" NextFile="ModCheckHelpers.dll"/>
+    <ROW File="ModCheckHelpers.dll" Component_="Plugins" FileName="Helpers.dll|CheckHelpers.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckHelpers.dll" SelfReg="false" NextFile="ModCheckSystem.dll"/>
+    <ROW File="ModCheckNSCP.dll" Component_="Plugins" FileName="CNSCP.dll|CheckNSCP.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckNSCP.dll" SelfReg="false" NextFile="script001"/>
+    <ROW File="ModCheckSystem.dll" Component_="Plugins" FileName="System.dll|CheckSystem.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckSystem.dll" SelfReg="false" NextFile="ModCheckWMI.dll"/>
+    <ROW File="ModCheckTaskSched.dll" Component_="Plugins" FileName="TaskSch.dll|CheckTaskSched.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckTaskSched.dll" SelfReg="false" NextFile="ModCheckTaskSched2.dll"/>
+    <ROW File="ModCheckTaskSched2.dll" Component_="Plugins" FileName="TaskSch2.dll|CheckTaskSched2.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckTaskSched2.dll" SelfReg="false" NextFile="ModCheckNSCP.dll"/>
+    <ROW File="ModCheckWMI.dll" Component_="Plugins" FileName="WMI.dll|CheckWMI.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\CheckWMI.dll" SelfReg="false" NextFile="ModFileLogger.dll"/>
+    <ROW File="ModFileLogger.dll" Component_="Plugins" FileName="Logger.dll|FileLogger.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\FileLogger.dll" SelfReg="false" NextFile="ModLUAScript.dll"/>
+    <ROW File="ModLUAScript.dll" Component_="Plugins" FileName="LUAScr.dll|LUAScript.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\LUAScript.dll" SelfReg="false" NextFile="ModRemoteConfiguration.dll"/>
+    <ROW File="ModRemoteConfiguration.dll" Component_="Plugins" FileName="RmtCfg.dll|RemoteConfiguration.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\RemoteConfiguration.dll" SelfReg="false" NextFile="ModSysTray.dll"/>
+    <ROW File="ModSysTray.dll" Component_="Plugins" FileName="SysTray.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\SysTray.dll" SelfReg="false" NextFile="ModCheckDisk.dll"/>
+    <ROW File="NRPEClientDLL" Component_="NRPEListener" FileName="NRPEClnt.dll|NRPEClient.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\NRPEClient.dll" SelfReg="false" NextFile="NSCListenerDLL"/>
+    <ROW File="NRPEListenerDLL" Component_="NRPEListener" FileName="NRPELsnr.dll|NRPEListener.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\NRPEListener.dll" SelfReg="false" NextFile="NRPEClientDLL"/>
+    <ROW File="NSCAAgentDLL" Component_="NSCA" FileName="NSCAAgnt.dll|NSCAAgent.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\NSCAAgent.dll" SelfReg="false" NextFile="A_DebugLogMetrics.dll"/>
+    <ROW File="NSCListenerDLL" Component_="NSCListener" FileName="NSCLsnr.dll|NSClientListener.dll" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\modules\NSClientListener.dll" SelfReg="false" NextFile="NSCAAgentDLL"/>
+    <ROW File="NSClientEXE" Component_="MainClient" FileName="nsclient.exe|nsclient++.exe" Attributes="512" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\nsclient++.exe" SelfReg="false" NextFile="NSClientTRAY"/>
+    <ROW File="NSClientErrorReporter" Component_="MainClient" FileName="reporter.exe" Attributes="512" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\reporter.exe" SelfReg="false" NextFile="NSClientINI"/>
+    <ROW File="NSClientINI" Component_="MainClient" FileName="NSC.ini" Attributes="512" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\NSC.ini" SelfReg="false" NextFile="Changelog"/>
+    <ROW File="NSClientTRAY" Component_="MainClient" FileName="nstray.exe" Attributes="512" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\nstray.exe" SelfReg="false" NextFile="NSClientErrorReporter"/>
+    <ROW File="doc.reference" Component_="Documentation" FileName="nsclient.pdf|NSClient++ Reference Manual.pdf" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\NSClient++ Reference Manual.pdf" SelfReg="false" NextFile="NRPEListenerDLL"/>
+    <ROW File="doc.usage.nagios" Component_="Documentation" FileName="nagios.pdf|Nagios Usage Guide.pdf" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\Nagios Usage Guide.pdf" SelfReg="false" NextFile="doc.reference"/>
+    <ROW File="lib001" Component_="ScriptLibs" FileName="nagplug.vbs|NagiosPlugins.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\lib\NagiosPlugins.vbs" SelfReg="false" NextFile="lib002"/>
+    <ROW File="lib002" Component_="ScriptLibs" FileName="wrapper.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\lib\wrapper.vbs" SelfReg="false"/>
+    <ROW File="lua001" Component_="Scripts" FileName="test.lua" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\test.lua" SelfReg="false" NextFile="lib001"/>
+    <ROW File="sample002" Component_="Scripts" FileName="c_test.ps1|check_test.ps1" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_test.ps1" SelfReg="false" NextFile="sample003"/>
+    <ROW File="sample003" Component_="Scripts" FileName="c_test.vbs|check_test.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_test.vbs" SelfReg="false" NextFile="lua001"/>
+    <ROW File="script001" Component_="Scripts" FileName="c_60s.bat|check_60s.bat" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_60s.bat" SelfReg="false" NextFile="script002"/>
+    <ROW File="script002" Component_="Scripts" FileName="c_btry.vbs|check_battery.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_battery.vbs" SelfReg="false" NextFile="script003"/>
+    <ROW File="script003" Component_="Scripts" FileName="c_nrdb.bat|check_no_rdp.bat" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_no_rdp.bat" SelfReg="false" NextFile="script004"/>
+    <ROW File="script004" Component_="Scripts" FileName="c_prt.vbs|check_printer.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_printer.vbs" SelfReg="false" NextFile="script005"/>
+    <ROW File="script005" Component_="Scripts" FileName="c_ok.bat|check_ok.bat" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_ok.bat" SelfReg="false" NextFile="script006"/>
+    <ROW File="script006" Component_="Scripts" FileName="c_files.vbs|check_files.vbs" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_files.vbs" SelfReg="false" NextFile="script007"/>
+    <ROW File="script007" Component_="Scripts" FileName="c_ping.bat|check_ping.bat" Attributes="0" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Files\NSClient++\scripts\check_ping.bat" SelfReg="false" NextFile="sample002"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" Languages="en" InstallationType="4"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="RegisterProduct" Description="Registering product" Template="[1]" DescriptionLocId="ActionText.Description.RegisterProduct" MsiKey="RegisterProduct"/>
+    <ROW Action="RegisterUser" Description="Registering user" Template="[1]" DescriptionLocId="ActionText.Description.RegisterUser" MsiKey="RegisterUser"/>
+    <ROW Action="Rollback" Description="Rolling back action:" Template="[1]" DescriptionLocId="ActionText.Description.Rollback" MsiKey="Rollback"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="InstallerHelper" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\InstallerHelper"/>
+    <ROW Name="WixFirewallCA" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixFirewallCA"/>
+    <ROW Name="WixUIWixca" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUIWixca"/>
+    <ROW Name="WixUI_Bmp_Banner" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Bmp_Banner"/>
+    <ROW Name="WixUI_Bmp_Dialog" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Bmp_Dialog"/>
+    <ROW Name="WixUI_Bmp_New" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Bmp_New"/>
+    <ROW Name="WixUI_Bmp_Up" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Bmp_Up"/>
+    <ROW Name="WixUI_Ico_Exclam" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Ico_Exclam"/>
+    <ROW Name="WixUI_Ico_Info" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Binary\WixUI_Ico_Info"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCheckBoxComponent">
+    <ROW Property="CONF_CHECKS" Value="1"/>
+    <ROW Property="CONF_NSCLIENT" Value="1"/>
+    <ROW Property="CONF_NRPE" Value="1"/>
+    <ROW Property="CONF_NSCA" Value="1"/>
+    <ROW Property="CONF_WMI" Value="1"/>
+    <ROW Property="START_SERVICE_ON_EXIT" Value="1"/>
+    <ROW Property="DONATE_ON_EXIT" Value="1"/>
+    <ROW Property="LicenseAccepted" Value="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Print" Type="PushButton" X="112" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Print" Control_Next="Back"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Please read the following license agreement carefully" Control_Next="BannerLine"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="End-User License Agreement" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="LicenseAcceptedCheckBox" Type="CheckBox" X="20" Y="207" Width="330" Height="18" Attributes="3" Property="LicenseAccepted" Text="I &amp;accept the terms in the License Agreement" Control_Next="BottomLine"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Print"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="LicenseText"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control="LicenseText" Type="FileScrollableText" X="20" Y="60" Width="330" Height="140" Attributes="7" Text="resources\NSClient++ (Win32) 0.3.9.321\rtfF3.tmp" Control_Next="LicenseAcceptedCheckBox"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Description" Type="Text" X="135" Y="70" Width="220" Height="60" Attributes="196611" Text="The Setup Wizard will install [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." Control_Next="BottomLine"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="Welcome to the [ProductName] Setup Wizard" TextStyle="WixUI_Font_Bigger" Control_Next="Description"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="WelcomeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Text" Type="Text" X="25" Y="55" Width="320" Height="20" Attributes="3" Text="Click the icons in the tree below to change the way features will be installed." Control_Next="ItemDescription"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Browse" Type="PushButton" X="304" Y="210" Width="56" Height="17" Attributes="3" Text="B&amp;rowse..." Control_Next="BottomLine"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Reset" Type="PushButton" X="25" Y="243" Width="73" Height="17" Attributes="3" Text="Re&amp;set" Control_Next="DiskCost"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="DiskCost" Type="PushButton" X="111" Y="243" Width="56" Height="17" Attributes="3" Text="Disk &amp;Usage" Control_Next="Back"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Select the way you want features to be installed." Control_Next="BannerLine"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="210" Height="15" Attributes="196611" Text="Custom Setup" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Tree" Type="SelectionTree" X="25" Y="85" Width="175" Height="115" Attributes="7" Property="_BrowseProperty" Text="Tree of selections" Control_Next="Box"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Location" Type="Text" X="90" Y="210" Width="210" Height="20" Attributes="3" Text="CustomizeDlgLocation-CustomizeDlgLocation" Control_Next="Browse"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="ItemSize" Type="Text" X="215" Y="140" Width="131" Height="50" Attributes="3" Text="CustomizeDlgItemSize-CustomizeDlgItemSize" Control_Next="LocationLabel"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="ItemDescription" Type="Text" X="215" Y="90" Width="131" Height="50" Attributes="3" Text="CustomizeDlgItemDescription-CustomizeDlgItemDescription" Control_Next="Tree"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="LocationLabel" Type="Text" X="25" Y="210" Width="65" Height="10" Attributes="3" Text="Location:" Control_Next="Location"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Reset"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="CustomizeDlg_1" Control="Box" Type="GroupBox" X="210" Y="81" Width="150" Height="118" Attributes="3" Control_Next="ItemSize"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="ChangeButton" Type="PushButton" X="40" Y="65" Width="80" Height="17" Attributes="3" Text="&amp;Change" Control_Next="ChangeText" Help="Change Installation|"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="RepairButton" Type="PushButton" X="40" Y="118" Width="80" Height="17" Attributes="3" Text="Re&amp;pair" Control_Next="RepairText" Help="Repair Installation|"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="RemoveButton" Type="PushButton" X="40" Y="171" Width="80" Height="17" Attributes="3" Text="&amp;Remove" Control_Next="RemoveText" Help="Remove Installation|"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="20" Attributes="196611" Text="Select the operation you wish to perform." Control_Next="BannerLine"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="240" Height="15" Attributes="196611" Text="Change, repair, or remove installation" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="ChangeText" Type="Text" X="60" Y="85" Width="280" Height="20" Attributes="3" Text="Lets you change the way features are installed." Control_Next="ChangeDisabledText"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="ChangeDisabledText" Type="Text" X="60" Y="85" Width="280" Height="20" Attributes="2" Text="[ProductName] has no independently selectable features." Control_Next="RepairButton"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="RepairText" Type="Text" X="60" Y="138" Width="280" Height="30" Attributes="3" Text="Repairs errors in the most recent installation by fixing missing and corrupt files, shortcuts, and registry entries." Control_Next="RemoveButton"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="RemoveText" Type="Text" X="60" Y="191" Width="280" Height="20" Attributes="3" Text="Removes [ProductName] from your computer." Control_Next="BottomLine"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="ChangeButton"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="TypicalButton" Type="PushButton" X="40" Y="65" Width="80" Height="17" Attributes="3" Text="&amp;Typical" Control_Next="TypicalText" Help="Typical Installation|"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="CustomButton" Type="PushButton" X="40" Y="118" Width="80" Height="17" Attributes="3" Text="C&amp;ustom" Control_Next="CustomText" Help="Custom Installation|"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="CompleteButton" Type="PushButton" X="40" Y="171" Width="80" Height="17" Attributes="3" Text="C&amp;omplete" Control_Next="CompleteText" Help="Complete Installation|"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Choose the setup type that best suits your needs" Control_Next="BannerLine"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Choose Setup Type" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="TypicalButton"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="TypicalText" Type="Text" X="60" Y="85" Width="280" Height="20" Attributes="3" Text="Installs the most common program features. Recommended for most users." Control_Next="CustomButton"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="CustomText" Type="Text" X="60" Y="138" Width="280" Height="30" Attributes="3" Text="Allows users to choose which program features will be installed and where they will be installed. Recommended for advanced users." Control_Next="CompleteButton"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control="CompleteText" Type="Text" X="60" Y="191" Width="280" Height="20" Attributes="3" Text="All program features will be installed. Requires the most disk space." Control_Next="BottomLine"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Change"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Change" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="2" Text="&amp;Change" Control_Next="Repair"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Repair" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="2" Text="Re&amp;pair" Control_Next="Remove"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Remove" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="2" Text="&amp;Remove" Control_Next="Install"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="Install" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="2" Text="&amp;Install" Control_Next="Cancel"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="ChangeText" Type="Text" X="25" Y="70" Width="320" Height="80" Attributes="2" Text="Click Change to begin the installation. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard." Control_Next="InstallText"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="InstallTitle" Type="Text" X="15" Y="15" Width="300" Height="15" Attributes="196610" Text="Ready to install [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="ChangeTitle"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="InstallText" Type="Text" X="25" Y="70" Width="320" Height="80" Attributes="2" Text="Click Install to begin the installation. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard." Control_Next="RepairText"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="ChangeTitle" Type="Text" X="15" Y="15" Width="300" Height="15" Attributes="196610" Text="Ready to change [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="RepairTitle"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="RepairTitle" Type="Text" X="15" Y="15" Width="300" Height="15" Attributes="196610" Text="Ready to repair [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="RemoveTitle"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="RepairText" Type="Text" X="25" Y="70" Width="320" Height="80" Attributes="2" Text="Click Repair to repair the installation of [ProductName]. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard." Control_Next="RemoveText"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="RemoveTitle" Type="Text" X="15" Y="15" Width="300" Height="15" Attributes="196610" Text="Ready to remove [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="BannerLine"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="RemoveText" Type="Text" X="25" Y="70" Width="320" Height="80" Attributes="2" Text="Click Remove to remove [ProductName] from your computer. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard." Control_Next="BottomLine"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="InstallTitle"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="ChangeText"/>
+    <ROW Dialog_="OldConfigureDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="OldConfigureDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="OldConfigureDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="OldConfigureDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196610" Text="Which configuration file do you want to use?" Control_Next="BannerLine"/>
+    <ROW Dialog_="OldConfigureDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="NSClient++ Configuration" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="OldConfigureDlg" Control="WhichConfigOption" Type="RadioButtonGroup" X="45" Y="53" Width="260" Height="45" Attributes="3" Property="KEEP_WHICH_CONFIG" Control_Next="HelpTextOld"/>
+    <ROW Dialog_="OldConfigureDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="OldConfigureDlg" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="OldConfigureDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="WhichConfigOption"/>
+    <ROW Dialog_="OldConfigureDlg" Control="HelpTextOld" Type="Text" X="45" Y="100" Width="260" Height="40" Attributes="196611" Text="If you choose the old configuration the new one will be renamed to nsc.new. You will not be able to make any configuration changes in this installer" Control_Next="HelpTextNew"/>
+    <ROW Dialog_="OldConfigureDlg" Control="HelpTextNew" Type="Text" X="45" Y="140" Width="260" Height="100" Attributes="196611" Text="If you choose the new configuration the old one (if found) will be renamed to nsc.old. And you will be able to configure some basics settings which will be imported from the old. NOTICE this is experimental and may not always work so you should check and edit the config afterwards!" Control_Next="BottomLine"/>
+    <ROW Dialog_="ConfigureDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="ConfigureDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="ConfigureDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="ConfigureDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196610" Text="Unsupported configuration file found!" Control_Next="DescriptionWrite"/>
+    <ROW Dialog_="ConfigureDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="NSClient++ Configuration" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="ConfigureDlg" Control="allowed_hostsLabel" Type="Text" X="45" Y="53" Width="260" Height="15" Attributes="3" Text="&amp;Allowed hosts: (this is the IP of the nagios (or other) server)" Control_Next="allowed_hosts"/>
+    <ROW Dialog_="ConfigureDlg" Control="allowed_hosts" Type="Edit" X="45" Y="65" Width="280" Height="18" Attributes="3" Property="ALLOWED_HOSTS" Text="{255}" Control_Next="nsclient_pwdLabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="nsclient_pwdEdit" Type="Edit" X="45" Y="97" Width="280" Height="18" Attributes="3" Property="NSCLIENT_PWD" Text="{255}" Control_Next="checkLabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkPluginsLabel" Type="CheckBox" X="50" Y="130" Width="260" Height="20" Attributes="3" Property="CONF_CHECKS" Text="Enable common check plugins" Control_Next="checkNSClientLabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkNSClientLabel" Type="CheckBox" X="50" Y="145" Width="260" Height="20" Attributes="3" Property="CONF_NSCLIENT" Text="Enable nsclient server (check_nt)" Control_Next="checkNRPELabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkNRPELabel" Type="CheckBox" X="50" Y="160" Width="260" Height="20" Attributes="3" Property="CONF_NRPE" Text="Enable NRPE server (check_nrpe)" Control_Next="checkNSCALabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkNSCALabel" Type="CheckBox" X="50" Y="175" Width="260" Height="20" Attributes="3" Property="CONF_NSCA" Text="Enable NSCA client (dont enable unless you really use NSCA)" Control_Next="checkWMILabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkWMILabel" Type="CheckBox" X="50" Y="190" Width="260" Height="20" Attributes="3" Property="CONF_WMI" Text="Enable WMI checks" Control_Next="BottomLine"/>
+    <ROW Dialog_="ConfigureDlg" Control="DescriptionWrite" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196610" Text="Basic Configuration (default values from old configuration)" Control_Next="DescriptionNotFound"/>
+    <ROW Dialog_="ConfigureDlg" Control="DescriptionNotFound" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196610" Text="Old configuration was not found!" Control_Next="BannerLine"/>
+    <ROW Dialog_="ConfigureDlg" Control="nsclient_pwdLabel" Type="Text" X="45" Y="85" Width="260" Height="15" Attributes="3" Text="&amp;NSClient password (only used via check_nt):" Control_Next="nsclient_pwdEdit"/>
+    <ROW Dialog_="ConfigureDlg" Control="checkLabel" Type="GroupBox" X="45" Y="120" Width="280" Height="95" Attributes="3" Text="Modules to load:" Control_Next="checkPluginsLabel"/>
+    <ROW Dialog_="ConfigureDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="ConfigureDlg" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="ConfigureDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="allowed_hostsLabel"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Description" Type="Text" X="135" Y="70" Width="220" Height="60" Attributes="196611" Text="The Setup Wizard allows you to change the way [ProductName] features are installed on your computer or to remove it from your computer. Click Next to continue or Cancel to exit the Setup Wizard." Control_Next="BottomLine"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="Welcome to the [ProductName] Setup Wizard" TextStyle="WixUI_Font_Bigger" Control_Next="Description"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="CancelDlg_1" Control="Text" Type="Text" X="48" Y="15" Width="194" Height="30" Attributes="3" Text="Are you sure you want to cancel [ProductName] installation?" Control_Next="Yes"/>
+    <ROW Dialog_="CancelDlg_1" Control="No" Type="PushButton" X="132" Y="57" Width="56" Height="17" Attributes="3" Text="&amp;No" Control_Next="Icon"/>
+    <ROW Dialog_="CancelDlg_1" Control="Yes" Type="PushButton" X="72" Y="57" Width="56" Height="17" Attributes="3" Text="&amp;Yes" Control_Next="No"/>
+    <ROW Dialog_="CancelDlg_1" Control="Icon" Type="Icon" X="15" Y="15" Width="24" Height="24" Attributes="5242881" Text="WixUI_Ico_Info" Control_Next="Text" Help="Information icon|"/>
+    <ROW Dialog_="BrowseDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="BrowseDlg_1" Control="OK" Type="PushButton" X="240" Y="243" Width="56" Height="17" Attributes="3" Text="OK" Control_Next="Cancel"/>
+    <ROW Dialog_="BrowseDlg_1" Control="WixUI_Bmp_Up" Type="PushButton" X="298" Y="55" Width="19" Height="19" Attributes="3670019" Text="WixUI_Bmp_Up" Control_Next="NewFolder" Help="Up one level|"/>
+    <ROW Dialog_="BrowseDlg_1" Control="NewFolder" Type="PushButton" X="325" Y="55" Width="19" Height="19" Attributes="3670019" Text="WixUI_Bmp_New" Control_Next="DirectoryCombo" Help="Create a new folder|"/>
+    <ROW Dialog_="BrowseDlg_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Browse to the destination folder" Control_Next="BannerLine"/>
+    <ROW Dialog_="BrowseDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Change destination folder" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="BrowseDlg_1" Control="PathEdit" Type="PathEdit" X="25" Y="202" Width="320" Height="18" Attributes="11" Property="_BrowseProperty" Control_Next="BottomLine"/>
+    <ROW Dialog_="BrowseDlg_1" Control="DirectoryCombo" Type="DirectoryCombo" X="70" Y="55" Width="220" Height="80" Attributes="393227" Property="_BrowseProperty" Control_Next="DirectoryList"/>
+    <ROW Dialog_="BrowseDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="BrowseDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="OK"/>
+    <ROW Dialog_="BrowseDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="ComboLabel"/>
+    <ROW Dialog_="BrowseDlg_1" Control="ComboLabel" Type="Text" X="25" Y="58" Width="44" Height="10" Attributes="3" Text="&amp;Look in:" Control_Next="WixUI_Bmp_Up"/>
+    <ROW Dialog_="BrowseDlg_1" Control="DirectoryList" Type="DirectoryList" X="25" Y="83" Width="320" Height="98" Attributes="15" Property="_BrowseProperty" Control_Next="PathLabel"/>
+    <ROW Dialog_="BrowseDlg_1" Control="PathLabel" Type="Text" X="25" Y="190" Width="320" Height="10" Attributes="3" Text="&amp;Folder name:" Control_Next="PathEdit"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="Text" Type="Text" X="20" Y="53" Width="330" Height="50" Attributes="3" Text="Highlighted volumes do not have enough disk space available for selected features. You can either remove some files from the highlighted volumes, install fewer features, or select different destination drives." Control_Next="VolumeList"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="OK" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="OK" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="Description" Type="Text" X="20" Y="20" Width="280" Height="20" Attributes="196611" Text="The disk space required for the installation of the selected features." Control_Next="BannerLine"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Disk Space Requirements" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="OK"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="DiskCostDlg_1" Control="VolumeList" Type="VolumeCostList" X="20" Y="100" Width="330" Height="120" Attributes="393223" Text="{120}{70}{70}{70}{70}" Control_Next="BottomLine"/>
+    <ROW Dialog_="ExitDialog_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Finish"/>
+    <ROW Dialog_="ExitDialog_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="1" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="ExitDialog_1" Control="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Finish" Control_Next="Cancel"/>
+    <ROW Dialog_="ExitDialog_1" Control="Description" Type="Text" X="135" Y="70" Width="220" Height="40" Attributes="196611" Text="Click the Finish button to exit the Setup Wizard." Control_Next="StartCheck"/>
+    <ROW Dialog_="ExitDialog_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="Completed the [ProductName] Setup Wizard" TextStyle="WixUI_Font_Bigger" Control_Next="Description"/>
+    <ROW Dialog_="ExitDialog_1" Control="StartCheck" Type="CheckBox" X="135" Y="110" Width="220" Height="20" Attributes="3" Property="START_SERVICE_ON_EXIT" Text="Start service" Control_Next="DonateCheck"/>
+    <ROW Dialog_="ExitDialog_1" Control="DonateCheck" Type="CheckBox" X="135" Y="130" Width="220" Height="20" Attributes="3" Property="DONATE_ON_EXIT" Text="Become a fan today by DONATING to the project" Control_Next="BottomLine"/>
+    <ROW Dialog_="ExitDialog_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="ExitDialog_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="FatalError_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Finish"/>
+    <ROW Dialog_="FatalError_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="1" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="FatalError_1" Control="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Finish" Control_Next="Cancel"/>
+    <ROW Dialog_="FatalError_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="[ProductName] Setup Wizard ended prematurely" TextStyle="WixUI_Font_Bigger" Control_Next="Description1"/>
+    <ROW Dialog_="FatalError_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="FatalError_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="FatalError_1" Control="Description1" Type="Text" X="135" Y="70" Width="220" Height="40" Attributes="196611" Text="[ProductName] Setup Wizard ended prematurely because of an error. Your system has not been modified. To install this program at a later time, run Setup Wizard again." Control_Next="Description2"/>
+    <ROW Dialog_="FatalError_1" Control="Description2" Type="Text" X="135" Y="115" Width="220" Height="20" Attributes="196611" Text="Click the Finish button to exit the Setup Wizard." Control_Next="BottomLine"/>
+    <ROW Dialog_="FilesInUse_1" Control="Text" Type="Text" X="20" Y="55" Width="330" Height="30" Attributes="3" Text="The following applications are using files that need to be updated by this setup. Close these applications and then click &amp;Retry to continue the installation or Exit to exit it." Control_Next="List"/>
+    <ROW Dialog_="FilesInUse_1" Control="Exit" Type="PushButton" X="166" Y="243" Width="56" Height="17" Attributes="3" Text="E&amp;xit" Control_Next="Ignore"/>
+    <ROW Dialog_="FilesInUse_1" Control="Retry" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Retry" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="FilesInUse_1" Control="Ignore" Type="PushButton" X="235" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Ignore" Control_Next="Retry"/>
+    <ROW Dialog_="FilesInUse_1" Control="Description" Type="Text" X="20" Y="23" Width="280" Height="20" Attributes="196611" Text="Some files that need to be updated are currently in use." Control_Next="BannerLine"/>
+    <ROW Dialog_="FilesInUse_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Files in Use" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="FilesInUse_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="FilesInUse_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Exit"/>
+    <ROW Dialog_="FilesInUse_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="FilesInUse_1" Control="List" Type="ListBox" X="20" Y="87" Width="330" Height="130" Attributes="7" Property="FileInUseProcess" Control_Next="BottomLine"/>
+    <ROW Dialog_="WaitForCostingDlg_1" Control="Text" Type="Text" X="48" Y="15" Width="194" Height="30" Attributes="3" Text="Please wait while the installer finishes determining your disk space requirements." Control_Next="Return"/>
+    <ROW Dialog_="WaitForCostingDlg_1" Control="Return" Type="PushButton" X="102" Y="57" Width="56" Height="17" Attributes="3" Text="&amp;Return" Control_Next="Icon"/>
+    <ROW Dialog_="WaitForCostingDlg_1" Control="Icon" Type="Icon" X="15" Y="15" Width="24" Height="24" Attributes="5242881" Text="WixUI_Ico_Exclam" Control_Next="Text" Help="Exclamation icon|"/>
+    <ROW Dialog_="ProgressDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="ProgressDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="ProgressDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="ProgressDlg_1" Control="ActionText" Type="Text" X="70" Y="100" Width="265" Height="10" Attributes="3" Control_Next="ProgressBar"/>
+    <ROW Dialog_="ProgressDlg_1" Control="ProgressBar" Type="ProgressBar" X="35" Y="115" Width="300" Height="10" Attributes="65537" Text="Progress done" Control_Next="BottomLine"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TextInstalling" Type="Text" X="35" Y="65" Width="300" Height="20" Attributes="2" Text="Please wait while the Setup Wizard installs [ProductName]." Control_Next="TextChanging"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TitleInstalling" Type="Text" X="20" Y="15" Width="300" Height="15" Attributes="196610" Text="Installing [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="TitleChanging"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TextChanging" Type="Text" X="35" Y="65" Width="300" Height="20" Attributes="2" Text="Please wait while the Setup Wizard changes [ProductName]." Control_Next="TextRepairing"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TitleChanging" Type="Text" X="20" Y="15" Width="300" Height="15" Attributes="196610" Text="Changing [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="TitleRepairing"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TextRepairing" Type="Text" X="35" Y="65" Width="300" Height="20" Attributes="2" Text="Please wait while the Setup Wizard repairs [ProductName]." Control_Next="TextRemoving"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TitleRepairing" Type="Text" X="20" Y="15" Width="300" Height="15" Attributes="196610" Text="Repairing [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="TitleRemoving"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TextRemoving" Type="Text" X="35" Y="65" Width="300" Height="20" Attributes="2" Text="Please wait while the Setup Wizard removes [ProductName]." Control_Next="StatusLabel"/>
+    <ROW Dialog_="ProgressDlg_1" Control="TitleRemoving" Type="Text" X="20" Y="15" Width="300" Height="15" Attributes="196610" Text="Removing [ProductName]" TextStyle="WixUI_Font_Title" Control_Next="BannerLine"/>
+    <ROW Dialog_="ProgressDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="TitleInstalling"/>
+    <ROW Dialog_="ProgressDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="ProgressDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="TextInstalling"/>
+    <ROW Dialog_="ProgressDlg_1" Control="StatusLabel" Type="Text" X="35" Y="100" Width="35" Height="10" Attributes="3" Text="Status:" Control_Next="ActionText"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="Text" Type="Text" X="20" Y="55" Width="330" Height="45" Attributes="3" Text="The following applications are using files that need to be updated by this setup. You can let Setup Wizard close them and attempt to restart them or reboot the machine later." Control_Next="List"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="OK" Type="PushButton" X="240" Y="243" Width="56" Height="17" Attributes="3" Text="OK" Control_Next="Cancel"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="Description" Type="Text" X="20" Y="23" Width="280" Height="20" Attributes="196611" Text="Some files that need to be updated are currently in use." Control_Next="BannerLine"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Files in Use" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="OK"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="List" Type="ListBox" X="20" Y="100" Width="330" Height="100" Attributes="7" Property="FileInUseProcess" Control_Next="ShutdownOption"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control="ShutdownOption" Type="RadioButtonGroup" X="26" Y="190" Width="305" Height="45" Attributes="3" Property="WixUIRMOption" Control_Next="BottomLine"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Next"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Next" Control_Next="Cancel"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Description" Type="Text" X="135" Y="70" Width="220" Height="20" Attributes="196611" Text="Please wait while the Setup Wizard prepares to guide you through the installation." Control_Next="ActionText"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="Welcome to the [ProductName] Setup Wizard" TextStyle="WixUI_Font_Bigger" Control_Next="Description"/>
+    <ROW Dialog_="PrepareDlg_1" Control="ActionText" Type="Text" X="135" Y="100" Width="220" Height="20" Attributes="196611" Control_Next="ActionData"/>
+    <ROW Dialog_="PrepareDlg_1" Control="ActionData" Type="Text" X="135" Y="125" Width="220" Height="30" Attributes="196611" Control_Next="BottomLine"/>
+    <ROW Dialog_="PrepareDlg_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="PrepareDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Install"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Install" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Install" Control_Next="Cancel"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Description" Type="Text" X="135" Y="70" Width="220" Height="30" Attributes="196611" Text="The Setup Wizard will complete the installation of [ProductName] on your computer. Click Install to continue or Cancel to exit the Setup Wizard." Control_Next="BottomLine"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="Resuming the [ProductName] Setup Wizard" TextStyle="WixUI_Font_Bigger" Control_Next="Description"/>
+    <ROW Dialog_="ResumeDlg_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="ResumeDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="Text" Type="Text" X="20" Y="53" Width="330" Height="40" Attributes="3" Text="The highlighted volumes do not have enough disk space available for the currently selected features. You can remove some files from the highlighted volumes, install fewer features, or select a different destination drive." Control_Next="Text2"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="No" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;No" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="Yes" Type="PushButton" X="240" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Yes" Control_Next="No"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="Description" Type="Text" X="20" Y="20" Width="280" Height="20" Attributes="196611" Text="Disk space required for the installation exceeds available disk space." Control_Next="BannerLine"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Out of Disk Space" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Yes"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="VolumeList" Type="VolumeCostList" X="20" Y="140" Width="330" Height="80" Attributes="4587527" Text="{120}{70}{70}{70}{70}" Control_Next="BottomLine"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control="Text2" Type="Text" X="20" Y="94" Width="330" Height="40" Attributes="3" Text="Alternatively, you may choose to disable the installer&apos;s rollback functionality. Disabling rollback prevents the installer from restoring your computer&apos;s original state should the installation be interrupted in any way. Click Yes if you wish to take the risk of disabling rollback." Control_Next="VolumeList"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="Text" Type="Text" X="20" Y="53" Width="330" Height="40" Attributes="3" Text="The highlighted volumes do not have enough disk space available for the currently selected features. You can remove some files from the highlighted volumes, install fewer features, or select a different destination drive." Control_Next="VolumeList"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="OK" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="OK" Control_Next="BannerBitmap"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="Description" Type="Text" X="20" Y="20" Width="280" Height="20" Attributes="196611" Text="Disk space required for the installation exceeds available disk space." Control_Next="BannerLine"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Out of Disk Space" TextStyle="WixUI_Font_Title" Control_Next="Description"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1" Text="WixUI_Bmp_Banner" Control_Next="Title"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="OK"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" Attributes="1" Control_Next="Text"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control="VolumeList" Type="VolumeCostList" X="20" Y="100" Width="330" Height="120" Attributes="393223" Text="{120}{70}{70}{70}{70}" Control_Next="BottomLine"/>
+    <ROW Dialog_="UserExit_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="&amp;Back" Control_Next="Finish"/>
+    <ROW Dialog_="UserExit_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="1" Text="Cancel" Control_Next="Bitmap"/>
+    <ROW Dialog_="UserExit_1" Control="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="&amp;Finish" Control_Next="Cancel"/>
+    <ROW Dialog_="UserExit_1" Control="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Attributes="196611" Text="[ProductName] Setup Wizard was interrupted" TextStyle="WixUI_Font_Bigger" Control_Next="Description1"/>
+    <ROW Dialog_="UserExit_1" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1" Text="WixUI_Bmp_Dialog" Control_Next="Title"/>
+    <ROW Dialog_="UserExit_1" Control="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" Attributes="1" Control_Next="Back"/>
+    <ROW Dialog_="UserExit_1" Control="Description1" Type="Text" X="135" Y="70" Width="220" Height="40" Attributes="196611" Text="[ProductName] setup was interrupted. Your system has not been modified. To install this program at a later time, please run the installation again." Control_Next="Description2"/>
+    <ROW Dialog_="UserExit_1" Control="Description2" Type="Text" X="135" Y="115" Width="220" Height="20" Attributes="196611" Text="Click the Finish button to exit the Setup Wizard." Control_Next="BottomLine"/>
+    <ATTRIBUTE name="FixedSizeBitmaps" value="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
+    <ROW Dialog_="LicenseAgreementDlg_1" Control_="Next" Action="Enable" Condition="LicenseAccepted = &quot;1&quot;"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control_="Next" Action="Disable" Condition="LicenseAccepted &lt;&gt; &quot;1&quot;"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Browse" Action="Disable" Condition="Installed"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Browse" Action="Hide" Condition="Installed"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Location" Action="Hide" Condition="Installed"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="LocationLabel" Action="Hide" Condition="Installed"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="ChangeButton" Action="Disable" Condition="ARPNOMODIFY"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="ChangeText" Action="Hide" Condition="ARPNOMODIFY"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="ChangeDisabledText" Action="Show" Condition="ARPNOMODIFY"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Back" Action="Default" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Action="Show" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Action="Default" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Action="Show" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Action="Default" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Action="Show" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Action="Show" Condition="NOT Installed"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Action="Default" Condition="NOT Installed"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="ChangeText" Action="Show" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="InstallTitle" Action="Show" Condition="NOT Installed"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="InstallText" Action="Show" Condition="NOT Installed"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="ChangeTitle" Action="Show" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="RepairTitle" Action="Show" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="RepairText" Action="Show" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="RemoveTitle" Action="Show" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="RemoveText" Action="Show" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+    <ROW Dialog_="OldConfigureDlg" Control_="WhichConfigOption" Action="Enable" Condition="CONF_OLD_NOT_FOUND = &quot;0&quot;"/>
+    <ROW Dialog_="OldConfigureDlg" Control_="WhichConfigOption" Action="Disable" Condition="CONF_OLD_NOT_FOUND = &quot;1&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="Description" Action="Show" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="allowed_hosts" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="allowed_hosts" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="nsclient_pwdEdit" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="nsclient_pwdEdit" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkPluginsLabel" Action="Enable" Condition="CONF_CHECKS_GRAY &lt;&gt; &quot;1&quot; AND CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkPluginsLabel" Action="Disable" Condition="CONF_CHECKS_GRAY = &quot;1&quot; OR CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNSClientLabel" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNSClientLabel" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNRPELabel" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNRPELabel" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNSCALabel" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkNSCALabel" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkWMILabel" Action="Enable" Condition="CONF_CAN_WRITE = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="checkWMILabel" Action="Disable" Condition="CONF_CAN_WRITE = &quot;0&quot; OR KEEP_WHICH_CONFIG = &quot;OLD&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="DescriptionWrite" Action="Show" Condition="CONF_CAN_WRITE = &quot;1&quot; AND CONF_OLD_NOT_FOUND = &quot;0&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ConfigureDlg" Control_="DescriptionNotFound" Action="Show" Condition="CONF_CAN_WRITE = &quot;1&quot; AND CONF_OLD_NOT_FOUND = &quot;1&quot; AND KEEP_WHICH_CONFIG = &quot;NEW&quot;"/>
+    <ROW Dialog_="ExitDialog_1" Control_="StartCheck" Action="Hide" Condition="SHOW_START_ON_EXIT = &quot;0&quot; OR Installed"/>
+    <ROW Dialog_="ExitDialog_1" Control_="DonateCheck" Action="Hide" Condition="SHOW_DONATE_ON_EXIT = &quot;0&quot; OR Installed"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TextInstalling" Action="Show" Condition="NOT Installed OR (Installed AND (RESUME OR Preselected) AND NOT PATCH)"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TitleInstalling" Action="Show" Condition="NOT Installed OR (Installed AND (RESUME OR Preselected) AND NOT PATCH)"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TextChanging" Action="Show" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TitleChanging" Action="Show" Condition="WixUI_InstallMode = &quot;Change&quot;"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TextRepairing" Action="Show" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TitleRepairing" Action="Show" Condition="WixUI_InstallMode = &quot;Repair&quot;"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TextRemoving" Action="Show" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="TitleRemoving" Action="Show" Condition="WixUI_InstallMode = &quot;Remove&quot;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="301"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control_="Next" Event="SpawnWaitDialog" Argument="WaitForCostingDlg" Condition="CostingComplete = 1" Ordering="1"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="LicenseAgreementDlg_1" Control_="Print" Event="DoAction" Argument="WixUIPrintEula" Condition="1" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Next" Event="DoAction" Argument="ImportConfig" Condition="INSCON_CONFIGURE=1" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Browse" Event="SelectionBrowse" Argument="BrowseDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Reset" Event="Reset" Argument="0" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="DiskCost" Event="SpawnDialog" Argument="DiskCostDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="ChangeButton" Event="[WixUI_InstallMode]" Argument="Change" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="RepairButton" Event="[WixUI_InstallMode]" Argument="Repair" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg_1" Control_="RemoveButton" Event="[WixUI_InstallMode]" Argument="Remove" Condition="1" Ordering="1"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="TypicalButton" Event="[WixUI_InstallMode]" Argument="InstallTypical" Condition="1" Ordering="1"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="TypicalButton" Event="SetInstallLevel" Argument="3" Condition="1" Ordering="2"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="CustomButton" Event="[WixUI_InstallMode]" Argument="InstallCustom" Condition="1" Ordering="1"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="CompleteButton" Event="[WixUI_InstallMode]" Argument="InstallComplete" Condition="1" Ordering="1"/>
+    <ROW Dialog_="SetupTypeDlg_1" Control_="CompleteButton" Event="SetInstallLevel" Argument="1000" Condition="1" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="(OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;)" Ordering="5"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Change" Event="EnableRollback" Argument="False" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="4"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="4"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="(OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;)" Ordering="7"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="3"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="5"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="EnableRollback" Argument="False" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="6"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="ReinstallMode" Argument="ecmus" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Repair" Event="Reinstall" Argument="All" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="3"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="(OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;)" Ordering="6"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="4"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="Remove" Argument="ALL" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Remove" Event="EnableRollback" Argument="False" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="5"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="(OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;)" Ordering="5"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3"/>
+    <ROW Dialog_="VerifyReadyDlg_1" Control_="Install" Event="EnableRollback" Argument="False" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="4"/>
+    <ROW Dialog_="OldConfigureDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="ConfigureDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control_="Next" Event="SpawnWaitDialog" Argument="WaitForCostingDlg" Condition="CostingComplete = 1" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CancelDlg_1" Control_="No" Event="EndDialog" Argument="Return" Condition="1" Ordering="1"/>
+    <ROW Dialog_="CancelDlg_1" Control_="Yes" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="Cancel" Event="EndDialog" Argument="Return" Condition="1" Ordering="2"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="Cancel" Event="Reset" Argument="0" Condition="1" Ordering="1"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="OK" Event="EndDialog" Argument="Return" Condition="1" Ordering="2"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="OK" Event="SetTargetPath" Argument="[_BrowseProperty]" Condition="1" Ordering="1"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="WixUI_Bmp_Up" Event="DirectoryListUp" Argument="0" Condition="1" Ordering="1"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="NewFolder" Event="DirectoryListNew" Argument="0" Condition="1" Ordering="1"/>
+    <ROW Dialog_="DiskCostDlg_1" Control_="OK" Event="EndDialog" Argument="Return" Condition="1" Ordering="1"/>
+    <ROW Dialog_="ExitDialog_1" Control_="Finish" Event="EndDialog" Argument="Return" Condition="1" Ordering="2"/>
+    <ROW Dialog_="ExitDialog_1" Control_="Finish" Event="DoAction" Argument="ExitDialogExec" Condition="NOT REMOVE = &quot;ALL&quot;" Ordering="1"/>
+    <ROW Dialog_="FatalError_1" Control_="Finish" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+    <ROW Dialog_="FilesInUse_1" Control_="Exit" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+    <ROW Dialog_="FilesInUse_1" Control_="Retry" Event="EndDialog" Argument="Retry" Condition="1" Ordering="1"/>
+    <ROW Dialog_="FilesInUse_1" Control_="Ignore" Event="EndDialog" Argument="Ignore" Condition="1" Ordering="1"/>
+    <ROW Dialog_="WaitForCostingDlg_1" Control_="Return" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control_="Cancel" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control_="OK" Event="EndDialog" Argument="Return" Condition="1" Ordering="1"/>
+    <ROW Dialog_="MsiRMFilesInUse_1" Control_="OK" Event="RMShutdownAndRestart" Argument="0" Condition="WixUIRMOption~=&quot;UseRM&quot;" Ordering="2"/>
+    <ROW Dialog_="PrepareDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="3"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="(OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;)" Ordering="6"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace &lt;&gt; 1" Ordering="2"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="EndDialog" Argument="Return" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="4"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="SpawnWaitDialog" Argument="WaitForCostingDlg" Condition="CostingComplete = 1" Ordering="1"/>
+    <ROW Dialog_="ResumeDlg_1" Control_="Install" Event="EnableRollback" Argument="False" Condition="OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="5"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control_="No" Event="EndDialog" Argument="Return" Condition="1" Ordering="1"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control_="Yes" Event="EndDialog" Argument="Return" Condition="1" Ordering="2"/>
+    <ROW Dialog_="OutOfRbDiskDlg_1" Control_="Yes" Event="EnableRollback" Argument="False" Condition="1" Ordering="1"/>
+    <ROW Dialog_="OutOfDiskDlg_1" Control_="OK" Event="EndDialog" Argument="Return" Condition="1" Ordering="1"/>
+    <ROW Dialog_="UserExit_1" Control_="Finish" Event="EndDialog" Argument="Exit" Condition="1" Ordering="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="ExecCopyFileDefered" Type="3073" Source="InstallerHelper" Target="ExecCopyFileDefered"/>
+    <ROW Action="ExecWriteConfig" Type="3073" Source="InstallerHelper" Target="ExecWriteConfig"/>
+    <ROW Action="ExitDialogExec" Type="2049" Source="InstallerHelper" Target="ExitDialogExec"/>
+    <ROW Action="ImportConfig" Type="2049" Source="InstallerHelper" Target="ImportConfig"/>
+    <ROW Action="NeedUninstall" Type="2049" Source="InstallerHelper" Target="NeedUninstall"/>
+    <ROW Action="PreventDowngrading" Type="19" Target="Newer version already installed."/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="SchedServiceInstall" Type="2049" Source="InstallerHelper" Target="ScheduleInstallService"/>
+    <ROW Action="SchedServiceUnInstall" Type="2049" Source="InstallerHelper" Target="ScheduleUnInstallService"/>
+    <ROW Action="SchedStopAllServices" Type="2049" Source="InstallerHelper" Target="SchedStopAllServices"/>
+    <ROW Action="ScheduleWriteConfig" Type="2049" Source="InstallerHelper" Target="ScheduleWriteConfig"/>
+    <ROW Action="StartAllServices" Type="3073" Source="InstallerHelper" Target="StartAllServices"/>
+    <ROW Action="StopAllServices" Type="3073" Source="InstallerHelper" Target="StopAllServices"/>
+    <ROW Action="WixExecFirewallExceptionsInstall" Type="3073" Source="WixFirewallCA" Target="ExecFirewallExceptions"/>
+    <ROW Action="WixExecFirewallExceptionsUninstall" Type="3073" Source="WixFirewallCA" Target="ExecFirewallExceptions"/>
+    <ROW Action="WixExecServiceInstall" Type="3073" Source="InstallerHelper" Target="ExecServiceInstall"/>
+    <ROW Action="WixExecServiceUninstall" Type="3073" Source="InstallerHelper" Target="ExecServiceInstall"/>
+    <ROW Action="WixRollbackFirewallExceptionsInstall" Type="3329" Source="WixFirewallCA" Target="ExecFirewallExceptions"/>
+    <ROW Action="WixRollbackFirewallExceptionsUninstall" Type="3329" Source="WixFirewallCA" Target="ExecFirewallExceptions"/>
+    <ROW Action="WixRollbackServiceInstall" Type="3329" Source="InstallerHelper" Target="ExecServiceInstall"/>
+    <ROW Action="WixRollbackServiceUninstall" Type="3329" Source="InstallerHelper" Target="ExecServiceInstall"/>
+    <ROW Action="WixSchedFirewallExceptionsInstall" Type="2049" Source="WixFirewallCA" Target="SchedFirewallExceptionsInstall"/>
+    <ROW Action="WixSchedFirewallExceptionsUninstall" Type="2049" Source="WixFirewallCA" Target="SchedFirewallExceptionsUninstall"/>
+    <ROW Action="WixUIPrintEula" Type="65" Source="WixUIWixca" Target="PrintEula"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
+    <ROW Dialog="BrowseDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="OK" Control_Cancel="Cancel"/>
+    <ROW Dialog="CancelDlg_1" HCentering="50" VCentering="10" Width="260" Height="85" Attributes="7" Title="[ProductName] Setup" Control_First="Icon" Control_Default="No" Control_Cancel="No"/>
+    <ROW Dialog="ConfigureDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_First="BannerBitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="CustomizeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="39" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="DiskCostDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="OK" Control_Cancel="OK"/>
+    <ROW Dialog="ExitDialog_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Finish" Control_Cancel="Finish"/>
+    <ROW Dialog="FatalError_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Finish" Control_Cancel="Finish"/>
+    <ROW Dialog="FilesInUse_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="23" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="Retry" Control_Cancel="Retry"/>
+    <ROW Dialog="LicenseAgreementDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="MaintenanceTypeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="ChangeButton" Control_Cancel="Cancel"/>
+    <ROW Dialog="MaintenanceWelcomeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="MsiRMFilesInUse_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="23" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="OK" Control_Cancel="Cancel"/>
+    <ROW Dialog="OldConfigureDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_First="BannerBitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="OutOfDiskDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="OK" Control_Cancel="OK"/>
+    <ROW Dialog="OutOfRbDiskDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="No" Control_Cancel="No"/>
+    <ROW Dialog="PrepareDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="5" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Cancel" Control_Cancel="Cancel"/>
+    <ROW Dialog="ProgressDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="5" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="Cancel" Control_Cancel="Cancel"/>
+    <ROW Dialog="ResumeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Install" Control_Cancel="Cancel"/>
+    <ROW Dialog="SetupTypeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="TypicalButton" Control_Cancel="Cancel"/>
+    <ROW Dialog="UserExit_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Finish" Control_Cancel="Finish"/>
+    <ROW Dialog="VerifyReadyDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="39" Title="[ProductName] Setup" Control_First="BannerBitmap" Control_Default="Repair" Control_Cancel="Cancel"/>
+    <ROW Dialog="WaitForCostingDlg_1" HCentering="50" VCentering="10" Width="260" Height="85" Attributes="7" Title="[ProductName] Setup" Control_First="Icon" Control_Default="Return" Control_Cancel="Return"/>
+    <ROW Dialog="WelcomeDlg_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="7" Title="[ProductName] Setup" Control_First="Bitmap" Control_Default="Next" Control_Cancel="Cancel"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiEventMappingComponent">
+    <ROW Dialog_="CustomizeDlg_1" Control_="Next" Event="SelectionNoItems" Attribute="Enabled"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Reset" Event="SelectionNoItems" Attribute="Enabled"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="DiskCost" Event="SelectionNoItems" Attribute="Enabled"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Location" Event="SelectionPath" Attribute="Text"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="Location" Event="SelectionPathOn" Attribute="Visible"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="ItemSize" Event="SelectionSize" Attribute="Text"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="ItemDescription" Event="SelectionDescription" Attribute="Text"/>
+    <ROW Dialog_="CustomizeDlg_1" Control_="LocationLabel" Event="SelectionPathOn" Attribute="Visible"/>
+    <ROW Dialog_="BrowseDlg_1" Control_="DirectoryCombo" Event="IgnoreChange" Attribute="IgnoreChange"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="ActionText" Event="ActionText" Attribute="Text"/>
+    <ROW Dialog_="ProgressDlg_1" Control_="ProgressBar" Event="SetProgress" Attribute="Progress"/>
+    <ROW Dialog_="PrepareDlg_1" Control_="ActionText" Event="ActionText" Attribute="Text"/>
+    <ROW Dialog_="PrepareDlg_1" Control_="ActionData" Event="ActionData" Attribute="Text"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="doc.ico" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Icon\doc.ico.ico" Index="0"/>
+    <ROW Name="nsclient.exe" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Icon\nsclient.exe.ico" Index="0"/>
+    <ROW Name="nstray.exe" SourcePath="resources\NSClient++ (Win32) 0.3.9.321\Icon\nstray.exe.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIniFileComponent">
+    <ROW IniFile="CPU_Load_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# CPU Load checks" Value="# CPU Load checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="CheckExternalScripts.dll" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="modules" Key="CheckExternalScripts.dll" Value="CheckExternalScripts.dll" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Counter_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Counter checks" Value="# Counter checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Disk_IO_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Disk IO checks" Value="# Disk IO checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Disk_percentage_used_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Disk percentage used checks" Value="# Disk percentage used checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Enumeration_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Enumeration checks" Value="# Enumeration checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_1" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_2" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_3" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_4" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_5" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_call_from_check_nrpe_6" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example call from check_nrpe:" Value="# Example call from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_calls_from_check_nrpe" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example calls from check_nrpe:" Value="# Example calls from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Example_calls_from_check_nrpe_1" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Example calls from check_nrpe:" Value="# Example calls from check_nrpe:" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Memory_percentage_used_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Memory percentage used checks" Value="# Memory percentage used checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="NSCAAgent.dll" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="modules" Key="NSCAAgent.dll" Value="NSCAAgent.dll" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Network_IO_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Network IO checks" Value="# Network IO checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Note_The_above_counter_plug_ins_are_also_used_further_below_for_obtainin" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Note: The above counter plug-ins are also used further below for obtaining information about specific Windows applications.  At present the" Value="# Note: The above counter plug-ins are also used further below for obtaining information about specific Windows applications.  At present the" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Process_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Process checks" Value="# Process checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Service_checks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Service checks" Value="# Service checks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="Updated_checks_from_V1" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# Updated checks from V1" Value="# Updated checks from V1" Action="0" Component_="Documentation"/>
+    <ROW IniFile="_" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__1" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__10" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__11" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__12" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__13" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__14" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__15" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__16" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__17" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__18" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__19" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__2" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__3" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__4" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__5" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__6" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__7" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__8" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="__9" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#" Value="================================" Action="0" Component_="Documentation"/>
+    <ROW IniFile="at_present_this_plug_in_does_not_support_thresholds_as_minimums" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#   (at present this plug-in does not support thresholds as minimums)" Value="#   (at present this plug-in does not support thresholds as minimums)" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_mailbox_health" FileName="exchange.ini" DirProperty="INSTALLLOCATION" Section="NRPE Handlers" Key="check_mailbox_health" Value="cmd /c echo Scripts\check_exchange\MailboxHealth.ps1 | PowerShell.exe -Command -" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_100nsec_timer_a_IP2_Win32_PerfRawData_PerfOS_Proc" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_100nsec_timer -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Processor Name" Value="_Total PercentUserTime 80 90" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_counter_bulk_count_a_IP2_Win32_PerfRawData_PerfOS" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_counter_bulk_count -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_System &apos;*&apos; FileControlBytesPerSec 50000 100000" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_counter_bulk_count -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_System &apos;*&apos; FileControlBytesPerSec 50000 100000" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_counter_counter_a_IP2_Win32_PerfRawData_PerfOS_Pr" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_counter_counter -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Processor Name" Value="0,Name=1 InterruptsPerSec 20000 30000" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_counter_large_rawcount_a_IP2_Win32_PerfRawData_Pe" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_counter_large_rawcount -a &lt;IP2&gt; Win32_PerfRawData_PerfProc_Process Name" Value="spoolsv WorkingSet 10000000 20000000" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_counter_rawcount_a_IP2_Win32_PerfRawData_PerfProc" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_counter_rawcount -a &lt;IP2&gt; Win32_PerfRawData_PerfProc_Process Name" Value="spoolsv HandleCount 200 400" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_cpu_a_IP2_CPU0_80_90" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_cpu -a &lt;IP2&gt; CPU0 80,90" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_cpu -a &lt;IP2&gt; CPU0 80,90" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_disk_a_IP2_WindowsVolume_D_80_90_70_60" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_disk -a &lt;IP2&gt; [WindowsVolume],D: 80,90:70,60" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_disk -a &lt;IP2&gt; [WindowsVolume],D: 80,90:70,60" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_diskio_a_IP2_WindowsVolume_DiskReadBytesPerSec_Di" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_diskio -a &lt;IP2&gt; [WindowsVolume] &quot;DiskReadBytesPerSec,DiskWriteBytesPerSec&quot; 300,1000:500,2000" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_diskio -a &lt;IP2&gt; [WindowsVolume] &quot;DiskReadBytesPerSec,DiskWriteBytesPerSec&quot; 300,1000:500,2000" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_mem_a_IP2_RAM_TOTAL_80_90_80_90" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_mem -a &lt;IP2&gt; RAM,_TOTAL 80,90:80,90" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_mem -a &lt;IP2&gt; RAM,_TOTAL 80,90:80,90" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_netio_a_IP2_MS_TCP_Loopback_Interface_BytesReceiv" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_netio -a &lt;IP2&gt; &quot;MS TCP Loopback Interface&quot; &quot;BytesReceivedPerSec&quot; 300,1000" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_netio -a &lt;IP2&gt; &quot;MS TCP Loopback Interface&quot; &quot;BytesReceivedPerSec&quot; 300,1000" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_process_a_IP2_Name" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_process -a &lt;IP2&gt; Name" Value="svchost.exe,Name=cmd.exe 15 20" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_raw_fraction_a_IP2_Win32_PerfRawData_PerfDisk_Log" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_raw_fraction -a &lt;IP2&gt; Win32_PerfRawData_PerfDisk_LogicalDisk Name" Value="[WindowsVolume] PercentFreeSpace 40 60" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_get_service_a_IP2_winmgmt_msdtc" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c get_service -a &lt;IP2&gt; winmgmt,msdtc" Value="#     ./check_nrpe -H &lt;IP1&gt; -c get_service -a &lt;IP2&gt; winmgmt,msdtc" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_show_properties_a_IP2_Win32_PerfRawData_PerfOS_Memory" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c show_properties -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Memory" Value="#     ./check_nrpe -H &lt;IP1&gt; -c show_properties -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Memory" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_nrpe_H_IP1_c_show_property_type_a_IP2_Win32_PerfRawData_PerfOS_Mem" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="#     ./check_nrpe -H &lt;IP1&gt; -c show_property_type -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Memory WriteCopiesPersec" Value="#     ./check_nrpe -H &lt;IP1&gt; -c show_property_type -a &lt;IP2&gt; Win32_PerfRawData_PerfOS_Memory WriteCopiesPersec" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_public_folders" FileName="exchange.ini" DirProperty="INSTALLLOCATION" Section="NRPE Handlers" Key="check_public_folders" Value="cmd /c echo Scripts\check_exchange\PublicFoldersMounted.ps1 | PowerShell.exe -Command -" Action="0" Component_="Documentation"/>
+    <ROW IniFile="check_replication" FileName="exchange.ini" DirProperty="INSTALLLOCATION" Section="NRPE Handlers" Key="check_replication" Value="cmd /c echo Scripts\check_exchange\ReplicationHealth.ps1 | PowerShell.exe -Command -" Action="0" Component_="Documentation"/>
+    <ROW IniFile="eva_check_controllers" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="eva-check_controllers" Value="cmd /c scripts\check_eva\check_eva.exe --mode check_controllers --host localhost --username evauser--password Root1234 --nagios_myhostname commandview.okhysing.is --phone-home" Action="0" Component_="Documentation"/>
+    <ROW IniFile="eva_check_diskgroups" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="eva-check_diskgroups" Value="cmd /c scripts\check_eva\check_eva.exe --mode check_diskgroups --host localhost --username evauser--password Root1234 --nagios_myhostname commandview.okhysing.is --phone-home" Action="0" Component_="Documentation"/>
+    <ROW IniFile="eva_check_disks" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="eva-check_disks" Value="cmd /c scripts\check_eva\check_eva.exe --mode check_disks --host localhost --username evauser--password Root1234 --nagios_myhostname commandview.okhysing.is --phone-home" Action="0" Component_="Documentation"/>
+    <ROW IniFile="eva_check_diskshelfs" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="eva-check_diskshelfs" Value="cmd /c scripts\check_eva\check_eva.exe --mode check_diskshelfs --host localhost --username evauser--password Root1234 --nagios_myhostname commandview.okhysing.is --phone-home" Action="0" Component_="Documentation"/>
+    <ROW IniFile="eva_check_systems" FileName="check_~1.ini|check_eva.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="eva-check_systems" Value="cmd /c scripts\check_eva\check_eva.exe --mode check_systems --host localhost --username evauser --password Root1234 --nagios_myhostname commandview.okhysing.is --phone-home" Action="0" Component_="Documentation"/>
+    <ROW IniFile="for_documentation_on_performance_counter_types." FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# for documentation on performance counter types." Value="# for documentation on performance counter types." Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_100nsec_timer" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_100nsec_timer" Value="cscript.exe //nologo //T:60 scripts\wmi\check_100nsec_timer.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_100nsec_timer_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_100nsec_timer_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_100nsec_timer.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_bulk_count" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_bulk_count" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_bulk_count_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_bulk_count_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_counter" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_counter" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_counter_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_counter_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_large_rawcount" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_large_rawcount" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_large_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_large_rawcount_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_large_rawcount_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_large_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_rawcount" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_rawcount" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_counter_rawcount_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_counter_rawcount_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_cpu" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_cpu" Value="cscript.exe //nologo //T:60 scripts\wmi\check_cpu_load_percentage.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_cpu_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_cpu_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_cpu_load_percentage.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_disk" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_disk" Value="cscript.exe //nologo //T:60 scripts\wmi\check_disks_percentage_space_used.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_disk_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_disk_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_disks_percentage_space_used.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_diskio" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_diskio" Value="cscript.exe //nologo //T:60 scripts\wmi\check_disks_io.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -prop &quot;$ARG3$&quot; -t &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_diskio_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_diskio_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_disks_io.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -prop &quot;$ARG3$&quot; -t &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_disktransfers" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_disktransfers" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfDisk_PhysicalDisk&quot; -inst &quot;$ARG2$&quot; -prop &quot;DiskTransfersPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_disktransfers_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_disktransfers_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfDisk_PhysicalDisk&quot; -inst &quot;$ARG2$&quot; -prop &quot;DiskTransfersPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mbox_recvq" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mbox_recvq" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISMailbox&quot; -inst &quot;Name=_Total&quot; -prop &quot;ReceiveQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mbox_recvq_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mbox_recvq_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISMailbox&quot; -inst &quot;Name=_Total&quot; -prop &quot;ReceiveQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mbox_sendq" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mbox_sendq" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISMailbox&quot; -inst &quot;Name=_Total&quot; -prop &quot;SendQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mbox_sendq_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mbox_sendq_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISMailbox&quot; -inst &quot;Name=_Total&quot; -prop &quot;SendQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mta_workq" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mta_workq" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeMTA_MSExchangeMTA&quot; -inst &quot;*&quot; -prop &quot;WorkQueueLength&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_mta_workq_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_mta_workq_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeMTA_MSExchangeMTA&quot; -inst &quot;*&quot; -prop &quot;WorkQueueLength&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_pub_recvq" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_pub_recvq" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISPublic&quot; -inst &quot;Name=_Total&quot; -prop &quot;ReceiveQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_pub_recvq_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_pub_recvq_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISPublic&quot; -inst &quot;Name=_Total&quot; -prop &quot;ReceiveQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_pub_sendq" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_pub_sendq" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISPublic&quot; -inst &quot;Name=_Total&quot; -prop &quot;SendQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_exchange_pub_sendq_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_exchange_pub_sendq_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSExchangeIS_MSExchangeISPublic&quot; -inst &quot;Name=_Total&quot; -prop &quot;SendQueueSize&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_received" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_received" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesReceivedPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_received_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_received_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesReceivedPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_sent" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_sent" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesSentPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_sent_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_sent_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesSentPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_total" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_total" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesTotalPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_bytes_total_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_bytes_total_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_bulk_count.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;BytesTotalPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_curnonanonusers" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_curnonanonusers" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;CurrentNonAnonymousUsers&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_curnonanonusers_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_curnonanonusers_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;CurrentNonAnonymousUsers&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_currentconnections" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_currentconnections" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;CurrentConnections&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_currentconnections_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_currentconnections_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;CurrentConnections&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_get_requests" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_get_requests" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;GetRequestsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_get_requests_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_get_requests_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;GetRequestsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_maximumconnections" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_maximumconnections" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;MaximumConnections&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_maximumconnections_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_maximumconnections_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;MaximumConnections&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_post_requests" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_post_requests" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;PostRequestsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_post_requests_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_post_requests_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;PostRequestsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_privatebytes" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_privatebytes" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_large_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfProc_Process&quot; -inst &quot;Name=inetinfo&quot; -prop &quot;PrivateBytes&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_privatebytes_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_privatebytes_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_large_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfProc_Process&quot; -inst &quot;Name=inetinfo&quot; -prop &quot;PrivateBytes&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_totalnotfounderrors" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_totalnotfounderrors" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;TotalNotFoundErrors&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_iis_totalnotfounderrors_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_iis_totalnotfounderrors_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_W3SVC_WebService&quot; -inst &quot;$ARG2$&quot; -prop &quot;TotalNotFoundErrors&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mem" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mem" Value="cscript.exe //nologo //T:60 scripts\wmi\check_memory_percentage_space_used.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mem_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mem_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_memory_percentage_space_used.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -t &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_buf_cache_hit" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_buf_cache_hit" Value="cscript.exe //nologo //T:60 scripts\wmi\check_raw_fraction.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerBufferManager&quot; -inst &quot;*&quot; -prop &quot;Buffercachehitratio&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_buf_cache_hit_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_buf_cache_hit_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_raw_fraction.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerBufferManager&quot; -inst &quot;*&quot; -prop &quot;Buffercachehitratio&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_deadlocks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_deadlocks" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;NumberofDeadlocksPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_deadlocks_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_deadlocks_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;NumberofDeadlocksPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_fullscans" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_fullscans" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerAccessMethods&quot; -inst &quot;*&quot; -prop &quot;FullScansPersec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_fullscans_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_fullscans_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerAccessMethods&quot; -inst &quot;*&quot; -prop &quot;FullScansPersec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_latch_waits" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_latch_waits" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLatches&quot; -inst &quot;*&quot; -prop &quot;Latchwaitspersec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_latch_waits_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_latch_waits_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLatches&quot; -inst &quot;*&quot; -prop &quot;Latchwaitspersec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_lock_wait_time" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_lock_wait_time" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;LockWaitTimems&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_lock_wait_time_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_lock_wait_time_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;LockWaitTimems&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_lock_waits" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_lock_waits" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;LockWaitsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_lock_waits_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_lock_waits_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerLocks&quot; -inst &quot;$ARG2$&quot; -prop &quot;LockWaitsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_log_growth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_log_growth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;LogGrowths&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_log_growth_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_log_growth_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;LogGrowths&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_log_used" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_log_used" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;PercentLogUsed&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_log_used_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_log_used_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;PercentLogUsed&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_memgrantspending" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_memgrantspending" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerMemoryManager&quot; -inst &quot;*&quot; -prop &quot;MemoryGrantsPending&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_memgrantspending_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_memgrantspending_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerMemoryManager&quot; -inst &quot;*&quot; -prop &quot;MemoryGrantsPending&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_transactions" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_transactions" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;TransactionsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_transactions_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_transactions_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerDatabases&quot; -inst &quot;$ARG2$&quot; -prop &quot;TransactionsPersec&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_users" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_users" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerGeneralStatistics&quot; -inst &quot;*&quot; -prop &quot;UserConnections&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_mssql_users_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_mssql_users_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_MSSQLSERVER_SQLServerGeneralStatistics&quot; -inst &quot;*&quot; -prop &quot;UserConnections&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_netio" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_netio" Value="cscript.exe //nologo //T:60 scripts\wmi\check_network_io.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -prop &quot;$ARG3$&quot; -t &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_netio_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_netio_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_network_io.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -prop &quot;$ARG3$&quot; -t &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_printqueue" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_printqueue" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_Spooler_PrintQueue&quot; -inst &quot;$ARG2$&quot; -prop &quot;Jobs&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_printqueue_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_printqueue_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_rawcount.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_Spooler_PrintQueue&quot; -inst &quot;$ARG2$&quot; -prop &quot;Jobs&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_process" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_process" Value="cscript.exe //nologo //T:60 scripts\wmi\check_proc_num.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_process_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_process_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_proc_num.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -w &quot;$ARG3$&quot; -c &quot;$ARG4$&quot; -user &quot;$ARG5$&quot; -pass &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_raw_fraction" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_raw_fraction" Value="cscript.exe //nologo //T:60 scripts\wmi\check_raw_fraction.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_raw_fraction_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_raw_fraction_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_raw_fraction.vbs -h &quot;$ARG1$&quot; -class &quot;$ARG2$&quot; -inst &quot;$ARG3$&quot; -prop &quot;$ARG4$&quot; -w &quot;$ARG5$&quot; -c &quot;$ARG6$&quot; -user &quot;$ARG7$&quot; -pass &quot;$ARG8$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_service" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_service" Value="cscript.exe //nologo //T:60 scripts\wmi\check_services_states.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_service_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_service_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_services_states.vbs -h &quot;$ARG1$&quot; -inst &quot;$ARG2$&quot; -user &quot;$ARG3$&quot; -pass &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_swapping" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_swapping" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfOS_Memory&quot; -inst &quot;*&quot; -prop &quot;PagesPerSec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="get_swapping_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="get_swapping_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\check_counter_counter.vbs -h &quot;$ARG1$&quot; -class &quot;Win32_PerfRawData_PerfOS_Memory&quot; -inst &quot;*&quot; -prop &quot;PagesPerSec&quot; -w &quot;$ARG2$&quot; -c &quot;$ARG3$&quot; -user &quot;$ARG4$&quot; -pass &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="plug_ins_don_t_supprt_thresholds_as_minimums._Refer_to_http_windowssdk.m" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="# plug-ins don&apos;t supprt thresholds as minimums.  Refer to http://windowssdk.msdn.microsoft.com/en-us/library/ms758298.aspx" Value="# plug-ins don&apos;t supprt thresholds as minimums.  Refer to http://windowssdk.msdn.microsoft.com/en-us/library/ms758298.aspx" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_cpus" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_cpus" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i all_processors" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_cpus_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_cpus_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i all_processors -user &quot;$ARG2$&quot; -pass &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_disks" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_disks" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i logical_disks" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_disks_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_disks_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i logical_disks -user &quot;$ARG2$&quot; -pass &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_net" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_net" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i network_interfaces" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_net_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_net_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i network_interfaces -user &quot;$ARG2$&quot; -pass &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_os" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_os" Value="cscript.exe //nologo //T:60 scripts\wmi\verify_wmi_status.vbs -h &quot;$ARG1$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_os_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_os_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\verify_wmi_status.vbs -h &quot;$ARG1$&quot; -user &quot;$ARG2$&quot; -pass &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_procs" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_procs" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i running_processes" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_procs_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_procs_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_computer_info.vbs -h &quot;$ARG1$&quot; -i running_processes -user &quot;$ARG2$&quot; -pass &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_properties" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_properties" Value="cscript.exe //nologo //T:60 scripts\wmi\get_counter_type.vbs &quot;$ARG1$&quot; &quot;$ARG2$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_properties_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_properties_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_counter_type.vbs &quot;$ARG1$&quot; &quot;$ARG2$&quot; &quot;$ARG3$&quot; &quot;$ARG4$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_property_type" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_property_type" Value="cscript.exe //nologo //T:60 scripts\wmi\get_counter_type.vbs &quot;$ARG1$&quot; &quot;$ARG2$&quot; &quot;$ARG3$&quot;" Action="0" Component_="Documentation"/>
+    <ROW IniFile="show_property_type_auth" FileName="wmi.ini" DirProperty="INSTALLLOCATION" Section="External Scripts" Key="show_property_type_auth" Value="cscript.exe //nologo //T:60 scripts\wmi\get_counter_type.vbs &quot;$ARG1$&quot; &quot;$ARG2$&quot; &quot;$ARG3$&quot; &quot;$ARG4$&quot; &quot;$ARG5$&quot;" Action="0" Component_="Documentation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
+    <ROW Action="PreventDowngrading" Condition="NEWAPPFOUND" Sequence="219"/>
+    <ROW Action="SchedServiceUnInstall" Sequence="3210"/>
+    <ROW Action="SchedStopAllServices" Sequence="3211"/>
+    <ROW Action="WixSchedFirewallExceptionsUninstall" Condition="VersionNT &gt;= 501 AND (ServicePackLevel &gt;= 2 OR VersionNT &gt;= 600)" Sequence="3212"/>
+    <ROW Action="WixSchedFirewallExceptionsInstall" Condition="VersionNT &gt;= 501 AND (ServicePackLevel &gt;= 2 OR VersionNT &gt;= 600)" Sequence="4013"/>
+    <ROW Action="ScheduleWriteConfig" Sequence="4014"/>
+    <ROW Action="SchedServiceInstall" Sequence="4015"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
+    <ROW Action="PreventDowngrading" Condition="NEWAPPFOUND" Sequence="220"/>
+    <ROW Action="NeedUninstall" Sequence="221"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="NOT VersionNT64" Description="x64 bit version not supported (by installer) on Win32 bit platform (get Win32 bit version instead)"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRadioButtonComponent">
+    <ROW Property="KEEP_WHICH_CONFIG" Order="1" Value="OLD" X="0" Y="0" Width="250" Height="16" Text="Use the old configuration file"/>
+    <ROW Property="KEEP_WHICH_CONFIG" Order="2" Value="NEW" X="0" Y="20" Width="295" Height="16" Text="Use the new configuration file"/>
+    <ROW Property="WixUIRMOption" Order="1" Value="UseRM" X="0" Y="0" Width="295" Height="16" Text="&amp;Close the applications and attempt to restart them."/>
+    <ROW Property="WixUIRMOption" Order="2" Value="DontUseRM" X="0" Y="20" Width="295" Height="16" Text="&amp;Do not close applications. A reboot will be required."/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRemoveFileComponent">
+    <ROW FileKey="LogFile1" Component_="MainClient" FileName="nsclient.log" DirProperty="INSTALLLOCATION" InstallMode="2"/>
+    <ROW FileKey="LogFile2" Component_="MainClient" FileName="nsc.log" DirProperty="INSTALLLOCATION" InstallMode="2"/>
+    <ROW FileKey="NewConfig" Component_="MainClient" FileName="nsc.new" DirProperty="INSTALLLOCATION" InstallMode="2"/>
+    <ROW FileKey="OldConfig" Component_="MainClient" FileName="nsc.old" DirProperty="INSTALLLOCATION" InstallMode="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="StarmentNSCHelp" Directory_="ProgramMenuDir" Name="Help|Documentation" Component_="MainClient" Target="[HELP_LINK]" Description="Visit the NSClient++ WIKI for documentation" Hotkey="0" Icon_="doc.ico" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Startmenu.doc.nagios" Directory_="ProgramMenuDir" Name="nagios|Nagios Usage Guide" Component_="Documentation" Target="[#doc.usage.nagios]" Description="Nagios Usage Guide" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+    <ROW Shortcut="Startmenu.doc.ref" Directory_="ProgramMenuDir" Name="refman|NSClient++ Reference Manual" Component_="Documentation" Target="[#doc.reference]" Description="NSClient++ Reference Manual" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+    <ROW Shortcut="StartmenuNSClientStart" Directory_="ProgramMenuDir" Name="NSCPStrt|Start NSClient++ (Win32)" Component_="MainClient" Target="[#NSClientEXE]" Arguments="/start" Description="Start the NSClient++ service" Hotkey="0" Icon_="nsclient.exe" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+    <ROW Shortcut="StartmenuNSClientStop" Directory_="ProgramMenuDir" Name="NSCPStop|Stop NSClient++ (Win32)" Component_="MainClient" Target="[#NSClientEXE]" Arguments="/stop" Description="Stop the NSClient++ service" Hotkey="0" Icon_="nsclient.exe" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+    <ROW Shortcut="StartmenuNSClientTest" Directory_="ProgramMenuDir" Name="NSCPTest|NSClient++ (Win32, test)" Component_="MainClient" Target="[#NSClientEXE]" Arguments="/test" Description="Run NSClient++ in test mode" Hotkey="0" Icon_="nsclient.exe" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+    <ROW Shortcut="StartmenuNSClientTray" Directory_="ProgramMenuDir" Name="NSCPTray|NSClient++ (Win32) system tray)" Component_="MainClient" Target="[#NSClientTRAY]" Description="Start the NSClient++ systemtray agent" Hotkey="0" Icon_="nstray.exe" IconIndex="0" ShowCmd="1" WkDir="INSTALLDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
+    <ROW TextStyle="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" Color="0" StyleBits="0"/>
+    <ROW TextStyle="WixUI_Font_Normal" FaceName="Tahoma" Size="8" Color="0" StyleBits="0"/>
+    <ROW TextStyle="WixUI_Font_Title" FaceName="Tahoma" Size="9" Color="0" StyleBits="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.3.0.0" VersionMax="[|ProductVersion]" Attributes="768" ActionProperty="OLDAPPFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.ServicesComponent">
+    <ROW Id="SVC" ShortName="NSClientpp" LongName="NSClient++ (Win32)" Description="Monitoring agent for nagios (and others) used to respond to status queries." Program="[#NSClientEXE]" Component_="ServiceRegistration"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.WixFirewallExceptionComponent">
+    <ROW Id="FWX1" Name="NSClient++ Monitoring Agent" Program="[#NSClientEXE]" Component_="FireWallException"/>
+  </COMPONENT>
+</DOCUMENT>

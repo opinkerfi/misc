@@ -1,0 +1,23 @@
+Import nsclient\msi.packages\pakki.msi
+	- resource = build\resource
+
+copy build\resources\NSCLient++*\Icon\nstray.exe.ico -> nsclient.exe.ico
+copy src\datafiles\nsc.ini -> \build\resources\NSClient++ (x64) 0.3.9.322\Files\NSClient++
+
+
+Install Parameters:
+	Application Folder: [ProgramFilesFolder]\[ProductName]
+
+Files and folders ->
+	Delete	  -> scripts\*.*
+	new folder -> scripts\{check_ad|wmi|check_exchange}
+	Add files -> src\datafiles\scripts\* og exchange,wmi.ini
+
+Services ->
+	Services to Install -> New Service Installation
+	- velja nsclient++.exe og gera ok
+	- Service Name: nsclient++.exe
+	- Display Name: NSClientpp
+	- Description NSClient monitor for Nagios
+	New Configure Operation
+	- Service Name: nsclient++.exe

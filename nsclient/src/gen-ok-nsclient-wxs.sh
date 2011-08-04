@@ -91,6 +91,13 @@ rm -f $CLIST
 cat <<tac
   </Feature>
 
+  <CustomAction Id='ACTRunBat' FileKey='FILEdatafilesXmsiXpostinstXbatX'
+                ExeCommand='' Return='asyncNoWait' />
+
+  <InstallExecuteSequence>
+   <Custom Action='ACTRunBat' After='InstallFinalize'>NOT Installed</Custom>
+  </InstallExecuteSequence>
+
  </Product>
 
 </Wix>

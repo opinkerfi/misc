@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Quick and Dirty script to generate a MS WiX .wxs packaging description.
+# Based on this tutorial: http://wix.tramontana.co.hu/
 #
 # Usage:
 #    gen-ok-nsclient-wxs.sh >ok-nsclient.wxs 

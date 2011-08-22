@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Quick and Dirty script to generate a MS WiX .wxs packaging description.
+# Based on this tutorial: http://wix.tramontana.co.hu/
 #
 # Usage:
 #    gen-ok-nsclient-wxs.sh >ok-nsclient.wxs 
@@ -90,6 +91,13 @@ cat $CLIST
 rm -f $CLIST
 cat <<tac
   </Feature>
+
+  <CustomAction Id='ACTRunBat' FileKey='FILEdatafilesXmsiXpostinstXbatX'
+                ExeCommand='' Return='asyncNoWait' />
+
+  <InstallExecuteSequence>
+   <Custom Action='ACTRunBat' After='InstallFinalize'>NOT Installed</Custom>
+  </InstallExecuteSequence>
 
  </Product>
 

@@ -20,6 +20,9 @@ yum install -y nrpe nagios-okplugin-check_yum nagios-plugins-load nagios-plugins
 echo "cp -r $INSTALL_DIR/$HOSTTYPE/etc/nrpe.d/ /etc/"
 cp -r $INSTALL_DIR/$HOSTTYPE/etc/nrpe.d/ /etc/
 
+echo "cp -r $INSTALL_DIR/$HOSTTYPE/usr/ /"
+cp -r $INSTALL_DIR/$HOSTTYPE/usr/ /
+
 echo "Modifying /etc/nagios/nrpe.cfg"
 
 test -f /etc/nagios/nrpe.cfg && cp /etc/nagios/nrpe.cfg /etc/nagios/nrpe.cfg-old

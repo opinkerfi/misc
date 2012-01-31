@@ -14,7 +14,7 @@ echo 'rpm -ihv http://opensource.is/repo/ok-release-6-5.noarch.rpm'
 rpm -Uhv http://opensource.is/repo/ok-release-6-5.noarch.rpm > /dev/null
 
 echo 'yum install -y nrpe nagios-okplugin-check_yum nagios-plugins-load nagios-plugins-procs  nagios-plugins-swap'
-yum install -y nrpe nagios-okplugin-check_yum nagios-plugins-load nagios-plugins-procs  nagios-plugins-swap > /dev/null
+yum install -y nrpe nagios-okplugin-check_yum nagios-plugins-load nagios-plugins-procs  nagios-plugins-swap  nagios-plugins-check_cpu > /dev/null
 
 
 echo "cp -r $INSTALL_DIR/$HOSTTYPE/etc/nrpe.d/ /etc/"

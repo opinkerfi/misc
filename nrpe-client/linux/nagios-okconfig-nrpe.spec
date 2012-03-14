@@ -2,8 +2,8 @@
 
 Summary:	OKConfig nrpe base configuration package
 Name:		nagios-okconfig-nrpe
-Version:	0.0.1
-Release:	2%{?dist}
+Version:	0.0.2
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/System
 URL:		http://opensource.ok.is/trac/wiki/Nagios-OKConfig
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/nrpe.d/ok-bundle.cfg
 
 %changelog
+* Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.2-1
+- new package built with tito
+
 * Tue Feb 14 2012  Tomas Edwardsson <tommi@opensource.is> 0.0.1-2
 - Initial RPM packaging
 

@@ -2,7 +2,7 @@
 
 Summary:	OKConfig nrpe base configuration package
 Name:		nagios-okconfig-nrpe
-Version:	0.0.2
+Version:	0.0.3
 Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/System
@@ -41,6 +41,11 @@ rm -rf %{buildroot}
 %{_libdir}/nagios/plugins/check_procs.sh
 
 %changelog
+* Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.3-1
+- typo fixed in spec file (palli@opensource.is)
+- typo fixed in spec file (palli@opensource.is)
+- typo fixed in spec file (palli@opensource.is)
+
 * Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.2-1
 - new package built with tito
 

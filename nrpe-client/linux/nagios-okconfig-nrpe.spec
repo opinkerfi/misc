@@ -38,6 +38,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc README
 %config(noreplace) %{_sysconfdir}/nrpe.d/ok-bundle.cfg
+%{_libdir}/nagios/plugins/check_procs.sh
 
 %changelog
 * Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.2-1

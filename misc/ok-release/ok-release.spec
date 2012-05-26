@@ -1,6 +1,6 @@
 Name:           ok-release       
 Version:        8
-Release:        1
+Release:        1%{dist}
 Summary:        This package contains the OK packages for redhat based systems.
 
 Group:          System Environment/Base 

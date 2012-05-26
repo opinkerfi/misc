@@ -1,5 +1,5 @@
 Name:           ok-release       
-Version:        8
+Version:        9
 Release:        1%{dist}
 Summary:        This package contains the OK packages for redhat based systems.
 
@@ -72,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat May 26 2012 Tomas Edwardsson <tommi@tommi.org> 9-1
+- dist added to release in package name (tommi@tommi.org)
+
 * Sat May 26 2012 Tomas Edwardsson <tommi@tommi.org> 8-1
 - working build
 

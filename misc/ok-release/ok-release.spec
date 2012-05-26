@@ -10,28 +10,25 @@ License:        GPLv2
 # our distribution.  Thus the source is only available from
 # within this srpm.
 URL:            http://download.fedora.redhat.com/pub/epel
-Source0:        GPL	
-Source1:        ok.repo	
+Source0:        ok-release-%{version}.tar.gz	
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:     noarch
 %if 0%{?rhel}
 Requires:      redhat-release
-Conflicts:     fedora-release
 %endif
 
 %if 0%{?fedora}
 Requires:      fedora-release
-Conflicts:     redhat-release
 %endif
 
 %description
 This package contains the OK packages for redhat based systems.
 
 %prep
-%setup -q  -c -T
-install -pm 644 %{SOURCE0} .
+%setup -q 
+#install -pm 644 %{SOURCE0} .
 
 %build
 
@@ -46,10 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 # yum
 install -dm 755 $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 %if 0%{?rhel}
-sed 's/_DIST_/rhel%{rhel}/g' ${SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
+sed 's/_DIST_/rhel%{rhel}/g' ok.repo > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
 %endif
 %if 0%{?fedora}
-sed 's/_DIST_/fedora%{fedora}/g' ${SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
+sed 's/_DIST_/fedora%{fedora}/g' ok.repo >  $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
 %endif
 
 %clean

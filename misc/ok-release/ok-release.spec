@@ -1,5 +1,5 @@
 Name:           ok-release       
-Version:        7
+Version:        8
 Release:        1
 Summary:        This package contains the OK packages for redhat based systems.
 
@@ -72,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat May 26 2012 Tomas Edwardsson <tommi@tommi.org> 8-1
+- working build
+
 * Tue May 23 2011 Tomas Edwardsson <tommi@opensource.is> - 6-5
 - Re-done from RHEL6 EPEL release
 

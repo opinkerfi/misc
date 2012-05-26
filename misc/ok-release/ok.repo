@@ -6,7 +6,7 @@ enabled=1
 gpgcheck=0
 
 [ok-testing]
-name=Opin Kerfi Public Repo - $basearch
+name=Opin Kerfi Public Repo - Testing - $basearch
 baseurl=http://opensource.is/repo/testing/_DIST_/$basearch
 failovermethod=priority
 enabled=0

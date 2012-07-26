@@ -50,9 +50,5 @@ find /var/lib/dirsrv/slapd-${DIRSRV_NAME}/bak -maxdepth 1 -mindepth 1 -mtime +${
 echo
 echo "Done at $(date)"
 
-<<<<<<< HEAD
 ) &>> /var/log/ipabackup.log
-=======
-) &> /var/log/ipabackup.log
->>>>>>> 743bca511b6db16a8b615b7b02eb5ea6540df6a2
 

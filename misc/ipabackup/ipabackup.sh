@@ -23,10 +23,10 @@
 BACKUP_DAYS=10
 
 # Manager password (with I wouldn't have to save this here
-MANAGER_PW=''
+BACKUPUSER_PW=''
 
 # Directory Manager DN
-ROOTDN='cn=directory manager'
+BACKUPUSER_DN='cn=directory manager'
 
 # Directory Server Name, eg EXAMPLE-COM
 DIRSRV_NAME=''
@@ -40,8 +40,8 @@ PKIDIRSRV_SCRIPTDIR="/usr/lib64/dirsrv/slapd-${PKIDIRSRV_NAME}"
 
 (
 echo "Started at $(date)"
-${DIRSRV_SCRIPTDIR}/db2bak.pl -D "${ROOTDN}" -w "${MANAGER_PW}"
-${PKIDIRSRV_SCRIPTDIR}/db2bak.pl -D "${ROOTDN}" -w "${MANAGER_PW}"
+${DIRSRV_SCRIPTDIR}/db2bak.pl -D "${BACKUPUSER_DN}" -w "${BACKUPUSER_PW}"
+${PKIDIRSRV_SCRIPTDIR}/db2bak.pl -D "${BACKUPUSER_DN}" -w "${BACKUPUSER_PW}"
 
 
 find /var/lib/dirsrv/slapd-${PKIDIRSRV_NAME}/bak -maxdepth 1 -mindepth 1 -mtime +${BACKUP_DAYS} -exec rm -rf {} \;

@@ -1,0 +1,36 @@
+= Overview =
+ipabackup schedules backups of the databse for IPA, both PKI and the main
+directory server
+
+= Install =
+
+== Create a dedicated backup user ==
+Run prepare-backupuser.sh, you need you directory manager password handy.
+
+What this does is create a user, cn=backupuser,cn=config and create a access
+rule to allow the user to create a backup task, cn=backup,cn=tasks,cn=config.
+
+
+== ipabackup.sh ==
+You should open the script and change the following:
+ * BACKUP_DAYS=
+ * BACKUPUSER_PW=
+ * DIRSRV_NAME=
+
+Then copy the script to somewhere sane, eg /usr/local/bin/ipabackup.sh
+
+== Periodic runs ==
+This is only tested on Fedora/RHEL
+{{{
+ln -s /usr/local/bin/ipabackup.sh /etc/cron.daily/ipabackup.sh
+}}}
+
+== Logrotate ==
+{{{
+cp ipabackup-logrotate /etc/logrotate.d/ipabackup
+}}}
+
+
+= Test =
+* Run /usr/local/bin/ipabackup.sh
+* Check /var/log/ipabackup.log

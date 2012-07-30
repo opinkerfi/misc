@@ -22,11 +22,11 @@
 # Keep backups
 BACKUP_DAYS=10
 
-# Manager password (with I wouldn't have to save this here
+# Backup user password (see prepare-backupuser.sh)
 BACKUPUSER_PW=''
 
 # Directory Manager DN
-BACKUPUSER_DN='cn=directory manager'
+BACKUPUSER_DN='cn=backupuser,cn=config'
 
 # Directory Server Name, eg EXAMPLE-COM
 DIRSRV_NAME=''

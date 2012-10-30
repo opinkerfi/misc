@@ -126,7 +126,7 @@ namespace check_certificates
                     return EXIT_WARN;
                 }
 
-                Console.WriteLine("OK:  No certificates expiring in " + warn_in_days + "days.");
+                Console.WriteLine("OK:  No certificates expiring in " + warn_in_days + " days.");
                 return EXIT_OK;
             } else {
                 Console.WriteLine("Incorrect arguments");

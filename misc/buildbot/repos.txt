@@ -1,0 +1,11 @@
+http://github.com/opinkerfi/adagios.git
+http://github.com/opinkerfi/check_hpasm.git
+http://github.com/opinkerfi/check_mssql_health.git
+http://github.com/opinkerfi/check_mysql_health.git
+http://github.com/opinkerfi/check_oracle_health.git
+http://github.com/opinkerfi/DBD-Sybase.git
+http://github.com/opinkerfi/misc
+http://github.com/opinkerfi/okconfig.git
+http://github.com/pynag/pynag.git
+http://github.com/opinkerfi/winexe.git
+

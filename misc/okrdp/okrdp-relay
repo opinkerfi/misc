@@ -1,0 +1,114 @@
+#!/usr/bin/python 
+
+import ConfigParser
+import sys
+import os.path
+import time
+import requests
+
+from pynag import Parsers
+import simplejson as json
+from pynag.Plugins import PluginHelper, warning, critical
+
+config_file = "/etc/okrdp.conf"
+
+def main():
+    global config_file
+    server = apikey = ""
+
+    np = PluginHelper()
+    np.parser.add_option("-c", "--config", dest="filename", default=config_file,
+                         help="Alternate configuration file", metavar="FILE")
+    np.parser.add_option("-s", "--stale", dest="stale", default="60",
+                         help="How old the status.dat file can be in seconds", metavar="STALE")
+    np.parse_arguments()
+
+    config = ConfigParser.SafeConfigParser(allow_no_value=True)
+    try:
+        config.readfp(open(np.options.filename, "r"))
+    except IOError, e:
+        np.add_summary("Unable to open configuration file: %s" % e)
+        np.exit(exit_code=warning)
+    except Exception, e:
+        np.add_summary("Unable to parse configuration file: %s" % e)
+        np.exit(exit_code=warning)
+
+    # We are using value less keys in configuration
+    hosts = [x[0] for x in config.items('hosts')]
+
+    try:
+        server = config.get('main', 'server')
+        apikey = config.get('main', 'apikey')
+    except Exception, e:
+        np.add_summary("Invalid configuration in %s: %s" % (np.options.filename, e))
+        np.exit(exit_code=warning)
+
+    # Post payload to okrdp api
+    payload = {
+        'apikey': apikey,
+        'hosts': [],
+        'services': [],
+    }
+
+    # Parse the nagios configuration
+    p = Parsers.status()
+    try:
+        if (os.path.getmtime(p.filename) + int(np.options.stale)) < time.time():
+            np.add_summary("%s information is stale: %s" % (p.filename, time.ctime(os.path.getmtime(p.filename))))
+            np.exit(exit_code=critical)
+    except OSError, e:
+        np.add_summary("Unable to query if status.dat is stale: %s" % e)
+        np.exit(exit_code=critical)
+    try:
+        p.parse()
+    except Exception, e:
+        print >> sys.stderr, "Unable to parse Nagios status: %s" % e
+        sys.exit(2)
+
+    for required in ['hoststatus', 'servicestatus']:
+        if not required in p.data:
+            np.add_summary("No %s found in status.dat" % required)
+            np.exit(exit_code=critical)
+
+    for host in p.data['hoststatus']:
+        if host['host_name'] in hosts or not len(hosts):
+            payload['hosts'].append(host)
+    for service in p.data['servicestatus']:
+        if service['host_name'] in hosts or not len(hosts):
+            payload['services'].append(service)
+
+    if not len(payload['hosts']):
+        np.add_summary("No hosts found")
+        np.add_status(warning)
+    if not len(payload['services']):
+        np.add_summary("No services found")
+        np.add_status(warning)
+
+    # Early exit, we have non OK status
+    if not np.get_status():
+        np.exit()
+
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/plain"}
+
+    try:
+        r = requests.post(server, data=payload)
+	if r.status_code != 200:
+		np.add_summary("Error, OKRDP API returned %i, bad apikey? : %s" % (r.status_code, r.content))
+		np.exit(exit_code=warning)
+        conn.request("POST", "/cgi-bin/nagios-config-bridge.py", urllib.urlencode({'json': json.dumps(payload)}), headers)
+        response = conn.getresponse()
+        hdata = response.read()
+        conn.close()
+        np.add_summary("Send OKRDP payload Hosts: %i Services: %i" % (len(payload['hosts']), len(payload['services'])))
+        np.add_metric('hosts', len(payload['hosts']))
+        np.add_metric('services', len(payload['services']))
+
+    except Exception, e:
+        np.add_summary("Unable to post to OKRDP API: %s" % (e))
+        np.add_status(warning)
+
+    np.exit()
+
+if __name__ == '__main__':
+    main()

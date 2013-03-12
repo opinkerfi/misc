@@ -12,6 +12,7 @@ from pynag.Plugins import PluginHelper, warning, critical
 
 config_file = "/etc/okrdp.conf"
 
+
 def main():
     global config_file
     server = apikey = ""
@@ -93,13 +94,9 @@ def main():
 
     try:
         r = requests.post(server, data=payload)
-	if r.status_code != 200:
-		np.add_summary("Error, OKRDP API returned %i, bad apikey? : %s" % (r.status_code, r.content))
-		np.exit(exit_code=warning)
-        conn.request("POST", "/cgi-bin/nagios-config-bridge.py", urllib.urlencode({'json': json.dumps(payload)}), headers)
-        response = conn.getresponse()
-        hdata = response.read()
-        conn.close()
+        if r.status_code != 200:
+            np.add_summary("Error, OKRDP API returned %i, bad apikey? : %s" % (r.status_code, r.content))
+            np.exit(exit_code=warning)
         np.add_summary("Send OKRDP payload Hosts: %i Services: %i" % (len(payload['hosts']), len(payload['services'])))
         np.add_metric('hosts', len(payload['hosts']))
         np.add_metric('services', len(payload['services']))

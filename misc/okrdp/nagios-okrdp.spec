@@ -1,5 +1,5 @@
 Name:		nagios-okrdp
-Version:	1.0
+Version:	1.1
 Release:	1%{?dist}
 Summary:	Sends Nagios host/service status to a remote OKRDP host
 
@@ -42,5 +42,8 @@ install -D -m 755 okrdp-relay $RPM_BUILD_ROOT/%{_bindir}/okrdp-relay
 
 
 %changelog
+* Tue Mar 12 2013 Tomas Edwardsson <tommi@tommi.org> 1.1-1
+- new package built with tito
+
 * Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.8-1
 - 

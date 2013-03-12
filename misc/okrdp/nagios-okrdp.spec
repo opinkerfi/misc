@@ -44,26 +44,3 @@ install -D -m 755 okrdp-relay $RPM_BUILD_ROOT/%{_bindir}/okrdp-relay
 %changelog
 * Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.8-1
 - 
-
-* Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.7-1
-- 
-
-* Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.6-1
-- 
-
-* Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.5-1
-- Minor fix (tommi@tommi.org)
-
-* Thu Feb 28 2013 Tomas Edwardsson <tommi@tommi.org> 1.4-1
-- Added releasers configuration (tommi@tommi.org)
-- Initialized to use tito. (tommi@tommi.org)
-
-* Thu Feb 28 2013 HUT Build <midtolvuhopur@lsh.is> 1.3-1
-- 
-
-* Thu Feb 28 2013 Tomas Edwardsson
-- new package built with tito
-
-* Thu Feb 14 2013 Tomas Edwardsson <tommi@tommi.org> 1.0-1
-Initial packaging
-

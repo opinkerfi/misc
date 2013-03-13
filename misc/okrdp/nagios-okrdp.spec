@@ -9,7 +9,7 @@ URL:		https://opensource.ok.is/source
 Source0:	%{name}-%{version}.tar.gz
 
 Requires: python-requests
-Requires: pynag
+Requires: pynag >= 0.4.8
 Requires: nagios
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch

@@ -6,6 +6,7 @@ import os.path
 import time
 import requests
 import platform
+from subprocess import Popen, PIPE
 
 from pynag import Parsers
 import simplejson as json
@@ -47,6 +48,11 @@ def main():
     except Exception, e:
         np.add_summary("Invalid configuration in %s: %s" % (np.options.filename, e))
         np.exit(exit_code=warning)
+
+    if apikey == "unconfigured":
+        apikey = generate_apikey()
+        config.set('main', 'apikey', apikey)
+        config.write(open(np.options.filename, "w"))
 
     # Post payload to okrdp api
     payload = {
@@ -108,6 +114,9 @@ def main():
         np.add_status(warning)
 
     np.exit()
+
+def generate_apikey():
+    return Popen(["openssl", "rand", "-hex", "16"], stdout=PIPE).communicate()[0].strip()
 
 if __name__ == '__main__':
     main()

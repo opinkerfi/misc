@@ -39,7 +39,7 @@ install -D -m 755 okrdp-relay $RPM_BUILD_ROOT/%{_bindir}/okrdp-relay
 
 %files
 %doc README.md gpl-3.0.txt okrdp.cfg
-%{_sysconfdir}/okrdp.conf
+%attr(0640,root,nagios) %config(noreplace %{_sysconfdir}/okrdp.conf
 %{_bindir}/okrdp-relay
 
 

@@ -10,6 +10,7 @@ Source0:	%{name}-%{version}.tar.gz
 
 Requires: python-requests
 Requires: pynag
+Requires: nagios
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
@@ -37,7 +38,7 @@ install -D -m 600 okrdp.conf $RPM_BUILD_ROOT/%{_sysconfdir}/okrdp.conf
 install -D -m 755 okrdp-relay $RPM_BUILD_ROOT/%{_bindir}/okrdp-relay
 
 %files
-%doc README.md gpl-3.0.txt
+%doc README.md gpl-3.0.txt okrdp.cfg
 %{_sysconfdir}/okrdp.conf
 %{_bindir}/okrdp-relay
 

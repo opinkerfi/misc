@@ -5,6 +5,7 @@ import sys
 import os.path
 import time
 import requests
+import platform
 
 from pynag import Parsers
 import simplejson as json
@@ -51,6 +52,7 @@ def main():
     payload = {
         'apikey': apikey,
         'objects': [],
+        'hostname': platform.node(),
     }
 
     # Parse the nagios configuration

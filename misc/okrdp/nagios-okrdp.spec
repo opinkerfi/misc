@@ -8,6 +8,8 @@ License:	GPLv3
 URL:		https://opensource.ok.is/source
 Source0:	%{name}-%{version}.tar.gz
 
+Requires: python-requests
+Requires: pynag
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 

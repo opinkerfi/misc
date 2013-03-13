@@ -8,7 +8,7 @@ import requests
 
 from pynag import Parsers
 import simplejson as json
-from pynag.Plugins import PluginHelper, warning, critical
+from pynag.Plugins import PluginHelper, warning, critical, ok
 
 config_file = "/etc/okrdp.conf"
 
@@ -24,7 +24,10 @@ def main():
                          help="How old the status.dat file can be in seconds", metavar="STALE")
     np.parse_arguments()
 
-    config = ConfigParser.SafeConfigParser(allow_no_value=True)
+    try:
+        config = ConfigParser.SafeConfigParser(allow_no_value=True)
+    except TypeError:
+        config = ConfigParser.SafeConfigParser()
     try:
         config.readfp(open(np.options.filename, "r"))
     except IOError, e:
@@ -47,8 +50,7 @@ def main():
     # Post payload to okrdp api
     payload = {
         'apikey': apikey,
-        'hosts': [],
-        'services': [],
+        'objects': [],
     }
 
     # Parse the nagios configuration
@@ -66,40 +68,38 @@ def main():
         print >> sys.stderr, "Unable to parse Nagios status: %s" % e
         sys.exit(2)
 
-    for required in ['hoststatus', 'servicestatus']:
+    for required in ["hoststatus", "servicestatus"]:
         if not required in p.data:
             np.add_summary("No %s found in status.dat" % required)
             np.exit(exit_code=critical)
 
+    num_services = num_hosts = 0
     for host in p.data['hoststatus']:
         if host['host_name'] in hosts or not len(hosts):
-            payload['hosts'].append(host)
+            payload['objects'].append(host)
+            num_hosts += 1
     for service in p.data['servicestatus']:
         if service['host_name'] in hosts or not len(hosts):
-            payload['services'].append(service)
+            payload['objects'].append(service)
+            num_services += 1
 
-    if not len(payload['hosts']):
-        np.add_summary("No hosts found")
-        np.add_status(warning)
-    if not len(payload['services']):
-        np.add_summary("No services found")
+    if not len(payload['objects']):
+        np.add_summary("No status data found")
         np.add_status(warning)
 
     # Early exit, we have non OK status
     if not np.get_status():
         np.exit()
 
-    headers = {"Content-type": "application/x-www-form-urlencoded",
-               "Accept": "text/plain"}
-
     try:
-        r = requests.post(server, data=payload)
+        r = requests.post(server, data={ 'json': json.dumps(payload) })
         if r.status_code != 200:
             np.add_summary("Error, OKRDP API returned %i, bad apikey? : %s" % (r.status_code, r.content))
             np.exit(exit_code=warning)
-        np.add_summary("Send OKRDP payload Hosts: %i Services: %i" % (len(payload['hosts']), len(payload['services'])))
-        np.add_metric('hosts', len(payload['hosts']))
-        np.add_metric('services', len(payload['services']))
+        np.add_summary("Sent OKRDP payload Hosts: %i Services: %i" % (num_hosts, num_services))
+    np.add_status(ok)
+        np.add_metric('hosts', num_hosts)
+        np.add_metric('services', num_services)
 
     except Exception, e:
         np.add_summary("Unable to post to OKRDP API: %s" % (e))

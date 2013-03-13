@@ -11,6 +11,7 @@ Source0:	%{name}-%{version}.tar.gz
 Requires: python-requests
 Requires: pynag >= 0.4.8
 Requires: nagios
+Requires: python-simplejson
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 

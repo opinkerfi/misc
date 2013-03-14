@@ -34,6 +34,9 @@ install -D -p -m 0755 usr/lib64/nagios/plugins/check_procs.sh %{buildroot}%{_lib
 %clean
 rm -rf %{buildroot}
 
+%post
+/sbin/service nrpe reload
+
 %files
 %defattr(-,root,root,-)
 %doc README

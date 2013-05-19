@@ -41,13 +41,16 @@ rm -rf $RPM_BUILD_ROOT
 #    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 
 # yum
+# yum
 install -dm 755 $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
-%if 0%{?rhel}
-sed 's/_DIST_/rhel%{rhel}/g' ok.repo > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
-%endif
-%if 0%{?fedora}
-sed 's/_DIST_/fedora%{fedora}/g' ok.repo >  $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
-%endif
+
+DISTRO=unknown
+test -f /etc/redhat-release && DISTRO=rhel
+test -f /etc/fedora-release && DISTRO=fedora
+
+echo DISTRO=$DISTRO
+sed "s/_DIST_/$DISTRO/g" ok.repo > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/ok.repo
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT

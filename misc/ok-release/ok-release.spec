@@ -1,5 +1,5 @@
 Name:           ok-release       
-Version:        10
+Version:        11
 Release:        1%{dist}
 Summary:        This package contains the OK packages for redhat based systems.
 
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun May 19 2013 Pall Sigurdsson <palli@opensource.is> 
+- More generic rpm packages. Handles more distros. (palli@opensource.is)
+
 * Sat May 26 2012 Tomas Edwardsson <tommi@tommi.org> 10-1
 - Fixed title to include Testing (tommi@tommi.org)
 

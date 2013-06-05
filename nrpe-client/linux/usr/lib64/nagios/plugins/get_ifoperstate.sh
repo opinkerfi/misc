@@ -19,6 +19,9 @@
 
 for dev in /sys/class/net/*
 do
+	if [ ! -d "${dev}" ]; then
+		continue
+	fi
 	devname=$(basename ${dev})
 	echo -n ${devname}:
 	cat ${dev}/operstate;

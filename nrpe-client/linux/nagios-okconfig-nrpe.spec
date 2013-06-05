@@ -29,6 +29,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/nrpe.d
 sed "s^/usr/lib64^%{_libdir}^g" etc/nrpe.d/ok-bundle.cfg >  %{buildroot}%{_sysconfdir}/nrpe.d/ok-bundle.cfg
 install -D -p -m 0755 usr/lib64/nagios/plugins/check_procs.sh %{buildroot}%{_libdir}/nagios/plugins/check_procs.sh
+install -D -p -m 0755 usr/lib64/nagios/plugins/get_ifoperstate.sh %{buildroot}%{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 
 %clean
@@ -42,6 +43,7 @@ rm -rf %{buildroot}
 %doc README
 %config(noreplace) %{_sysconfdir}/nrpe.d/ok-bundle.cfg
 %{_libdir}/nagios/plugins/check_procs.sh
+%{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 %changelog
 * Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.3-1

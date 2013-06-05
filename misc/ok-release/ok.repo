@@ -1,13 +1,13 @@
 [ok]
 name=Opin Kerfi Public Repo - $basearch
-baseurl=http://opensource.is/repo/_DIST_/$basearch
+baseurl=http://opensource.is/repo/_DIST_$releasever/$basearch
 failovermethod=priority
 enabled=1
 gpgcheck=0
 
 [ok-testing]
 name=Opin Kerfi Public Repo - Testing - $basearch
-baseurl=http://opensource.is/repo/testing/_DIST_/$basearch
+baseurl=http://opensource.is/repo/testing/_DIST_$releasever/$basearch
 failovermethod=priority
 enabled=0
 gpgcheck=0

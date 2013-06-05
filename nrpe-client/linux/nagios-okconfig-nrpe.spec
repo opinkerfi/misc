@@ -2,7 +2,7 @@
 
 Summary:	OKConfig nrpe base configuration package
 Name:		nagios-okconfig-nrpe
-Version:	0.0.4
+Version:	0.0.5
 Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/System
@@ -46,6 +46,9 @@ rm -rf %{buildroot}
 %{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 %changelog
+* Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 0.0.5-1
+- Ignore non directories, they are not network interfaces (tommi@tommi.org)
+
 * Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 0.0.4-1
 - Disabled reload for nrpe not running (tommi@tommi.org)
 - Added get_ifoperstate to get up/down/unknown for network device links

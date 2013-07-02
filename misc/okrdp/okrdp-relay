@@ -88,6 +88,8 @@ def main():
             payload['objects'].append(host)
             num_hosts += 1
     for service in p.data['servicestatus']:
+        if service['service_description'] == 'OKRDP Relay' and service['host_name'] == payload['hostname']:
+            continue
         if service['host_name'] in hosts or not len(hosts):
             payload['objects'].append(service)
             num_services += 1

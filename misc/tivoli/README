@@ -1,0 +1,6 @@
+This repo contains startup scripts for TSM Backup client that are cluster-aware.
+
+It contains the following files:
+
+init.d/dsmc		- Master dsmc startup script that replaces the default one
+init.d/dsmc-service1	- Example startup script for a clustered service

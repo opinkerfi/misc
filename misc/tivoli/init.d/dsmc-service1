@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export DSM_CONFIG=/opt/tivoli/tsm/client/ba/bin/dsm.opt
+/etc/init.d/dsmc $1

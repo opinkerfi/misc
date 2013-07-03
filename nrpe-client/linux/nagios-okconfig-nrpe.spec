@@ -2,7 +2,7 @@
 
 Summary:	OKConfig nrpe base configuration package
 Name:		nagios-okconfig-nrpe
-Version:	0.0.3
+Version:	0.0.5
 Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/System
@@ -28,22 +28,34 @@ Default configuration file for base monitoring of a linux system
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/nrpe.d
 sed "s^/usr/lib64^%{_libdir}^g" etc/nrpe.d/ok-bundle.cfg >  %{buildroot}%{_sysconfdir}/nrpe.d/ok-bundle.cfg
+sed -i "s^/usr/lib64^%{_libdir}^g" usr/lib64/nagios/plugins/check_procs.sh
 install -D -p -m 0755 usr/lib64/nagios/plugins/check_procs.sh %{buildroot}%{_libdir}/nagios/plugins/check_procs.sh
+install -D -p -m 0755 usr/lib64/nagios/plugins/get_ifoperstate.sh %{buildroot}%{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 
 %clean
 rm -rf %{buildroot}
 
 %post
-/sbin/service nrpe reload
+/sbin/service nrpe status && /sbin/service nrpe reload
 
 %files
 %defattr(-,root,root,-)
 %doc README
 %config(noreplace) %{_sysconfdir}/nrpe.d/ok-bundle.cfg
 %{_libdir}/nagios/plugins/check_procs.sh
+%{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 %changelog
+* Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 0.0.5-1
+- Ignore non directories, they are not network interfaces (tommi@tommi.org)
+
+* Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 0.0.4-1
+- Disabled reload for nrpe not running (tommi@tommi.org)
+- Added get_ifoperstate to get up/down/unknown for network device links
+  (tommi@tommi.org)
+- Added nrpe reload to post section (tommi@tommi.org)
+
 * Wed Mar 14 2012 Pall Sigurdsson <palli@opensource.is> 0.0.3-1
 - typo fixed in spec file (palli@opensource.is)
 - typo fixed in spec file (palli@opensource.is)

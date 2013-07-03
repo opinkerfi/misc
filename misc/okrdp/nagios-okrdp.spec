@@ -1,5 +1,5 @@
 Name:		nagios-okrdp
-Version:	1.2
+Version:	1.3
 Release:	1%{?dist}
 Summary:	Sends Nagios host/service status to a remote OKRDP host
 
@@ -46,6 +46,19 @@ install -D -m 755 okrdp-relay $RPM_BUILD_ROOT/%{_bindir}/okrdp-relay
 
 
 %changelog
+* Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 1.3-1
+- Added output if apikey was generated (tommi@tommi.org)
+- Added autogeneration of API KEY (tommi@tommi.org)
+- Added reporting of own hostname (platform.node()) (tommi@tommi.org)
+- Added python-simplejson (tommi@tommi.org)
+- Close brace in rpm (tommi@tommi.org)
+- Fixed permissions and config replace bug (tommi@tommi.org)
+- Added dependancy pynag-0.4.8 (tommi@tommi.org)
+- Invalid indent fixed (tommi@tommi.org)
+- Added demo configuration (tommi@tommi.org)
+- Updated requirements, added nagios (tommi@tommi.org)
+- Numerous fixes for running under rhel5 (tommi@tommi.org)
+
 * Tue Mar 12 2013 Tomas Edwardsson <tommi@tommi.org> 1.2-1
 - Removed legacy urlib/httplib code (tommi@tommi.org)
 - Added blank readme (tommi@tommi.org)

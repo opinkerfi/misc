@@ -53,7 +53,8 @@ def main():
         apikey = generate_apikey()
         config.set('main', 'apikey', apikey)
         config.write(open(np.options.filename, "w"))
-        np.add_summary("First run, generated apikey")
+        np.add_summary("First run, generated apikey %s" % (apikey))
+        np.exit(exit_code=ok)
 
     # Post payload to okrdp api
     payload = {
@@ -88,6 +89,8 @@ def main():
             payload['objects'].append(host)
             num_hosts += 1
     for service in p.data['servicestatus']:
+        if service['service_description'] == 'OKRDP Relay' and service['host_name'] == payload['hostname']:
+            continue
         if service['host_name'] in hosts or not len(hosts):
             payload['objects'].append(service)
             num_services += 1

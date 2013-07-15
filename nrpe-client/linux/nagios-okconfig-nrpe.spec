@@ -37,7 +37,7 @@ install -D -p -m 0755 usr/lib64/nagios/plugins/get_ifoperstate.sh %{buildroot}%{
 rm -rf %{buildroot}
 
 %post
-/sbin/service nrpe status && /sbin/service nrpe reload
+/sbin/service nrpe status &> /dev/null && /sbin/service nrpe reload || :
 
 %files
 %defattr(-,root,root,-)

@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#
+
+# chkconfig: 35 99 99
+
+# description: Startup script for TSM, starts TSM in schedule mode
+
+#
+
+
+
+
+
+# Source function library.
+
+. /etc/rc.d/init.d/functions
+
+
+if [ -z $DSM_CONFIG ]; then
+	export DSM_CONFIG=/opt/tivoli/tsm/client/ba/bin/dsm.opt
+fi
+
+if [ -z $DSM_DIR ]; then
+	export DSM_DIR=/opt/tivoli/tsm/client/ba/bin
+fi
+
+
+prog=`basename $DSM_CONFIG`
+
+# See how we were called.
+
+case "$1" in
+
+start)
+  echo -n "Starting TSM: "
+  if [ -f /var/lock/subsys/$prog ]; then
+    echo "Error: lockfile exists in /var/lock/subsys/$prog. Exiting"
+    exit 3
+  fi
+  # daemon /usr/bin/dsmc schedule > /dev/null 2>&amp;1 &amp;
+  /usr/bin/dsmc sched -optfile=$DSM_CONFIG >/dev/null & MY_PID=$!
+  RETVAL=$?
+  echo $MY_PID > /var/run/$prog.pid
+  touch /var/lock/subsys/$prog
+  #[ $RETVAL -eq 0 ] && touch /var/lock/subsys/dsmc
+  #return $RETVAL
+  echo
+  exit 0
+
+;;
+
+stop)
+  echo -n "Shutting down TSM: "
+  test -f /var/run/$prog.pid || exit 1
+  killproc -p /var/run/$prog.pid
+  rm -f /var/lock/subsys/$prog
+  echo
+;;
+
+status)
+  status -p /var/run/$prog.pid
+  ;;
+*)
+  echo "Usage: $0 {start|stop|status}"
+  exit 1
+
+esac

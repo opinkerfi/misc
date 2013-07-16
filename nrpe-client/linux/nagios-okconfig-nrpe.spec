@@ -14,9 +14,9 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Packager:	Tomas Edwardsson <tommi@ok.is>
 BuildArch:	noarch
 
-# Newer distros should use check_updates
+# Newer distros should use check_package_updates
 %if ( 0%{?fedora}%{?rhel} == 0 || 0%{?fedora} > 9 || 0%{?rhel} > 5)
-Requires:	nagios-okplugin-check_updates
+Requires:	nagios-okplugin-check_package_updates
 %else
 Requires:	nagios-okplugin-check_yum
 %endif

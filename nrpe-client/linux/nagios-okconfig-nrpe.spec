@@ -8,11 +8,18 @@ License:	GPLv2+
 Group:		Applications/System
 URL:		http://opensource.ok.is/trac/wiki/Nagios-OKConfig
 Source0:	http://opensource.ok.is/trac/browser#nrpe-client/linux/%{name}-%{version}.tar.gz
-Requires:	nrpe nagios-okplugin-check_yum nagios-plugins-load nagios-plugins-procs  nagios-plugins-swap
+Requires:	nrpe nagios-plugins-load nagios-plugins-procs  nagios-plugins-swap
 Requires:	nagios-plugins-check_cpu	
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Packager:	Tomas Edwardsson <tommi@ok.is>
 BuildArch:	noarch
+
+# Newer distros should use check_updates
+%if ( 0%{?fedora}%{?rhel} == 0 || 0%{?fedora} > 9 || 0%{?rhel} > 5)
+Requires:	nagios-okplugin-check_updates
+%else
+Requires:	nagios-okplugin-check_yum
+%endif
 
 
 %description

@@ -1,0 +1,16 @@
+[consol_labs_stable]
+name=consol_labs_stable
+baseurl=http://labs.consol.de/repo/stable/rhel$releasever/$basearch
+type=yum
+enabled=1
+gpgcheck=0
+gpgkey=http://labs.consol.de/repo/stable/RPM-GPG-KEY
+
+
+[consol_labs_testing]
+name=consol_labs_testing
+baseurl=http://labs.consol.de/repo/testing/rhel$releasever/$basearch
+type=yum
+enabled=0
+gpgcheck=0
+gpgkey=http://labs.consol.de/repo/testing/RPM-GPG-KEY

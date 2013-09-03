@@ -1,5 +1,5 @@
 Name:           consol-release       
-Version:        1.1
+Version:        1.2
 Release:        1%{dist}
 Summary:        This package contains the Consol Labs packages for redhat based systems.
 
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Aug 08 2013 Your Name <you@example.com> 1.2-1
+- new package built with tito
+
 * Thu Aug 08 2013 Pall Sigurdsson <palli@opensource.is> 1.1-1
 - new package built with tito
 

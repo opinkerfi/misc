@@ -13,6 +13,7 @@ Requires:	nagios-plugins-check_cpu
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Packager:	Tomas Edwardsson <tommi@ok.is>
 BuildArch:	noarch
+Requires:	bc
 
 # Newer distros should use check_package_updates
 %if ( 0%{?fedora}%{?rhel} == 0 || 0%{?fedora} > 9 || 0%{?rhel} > 5)

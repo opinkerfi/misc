@@ -1,0 +1,93 @@
+# Modules section
+
+modules/CheckSystem.dll=/modules/CheckSystem
+modules/CheckDisk.dll=/modules/CheckDisk
+modules/NSClientListener.dll=/modules/NSClientServer
+modules/NRPEListener.dll=/modules/NRPEServer
+modules/SysTray.dll=/modules/SysTray
+modules/CheckEventLog.dll=/modules/CheckEventLog
+modules/CheckHelpers.dll=/modules/CheckHelpers
+modules/CheckWMI.dll=/modules/CheckWMI
+modules/CheckNSCP.dll=/modules/CheckNSCP
+modules/CheckExternalScripts.dll=/modules/CheckExternalScripts
+modules/NSCAAgent.dll=/modules/NSCAClient
+modules/NSCAAgent.dll=/modules/Scheduler
+modules/LUAScript.dll=/modules/LUAScript
+modules/NRPEClient.dll=/modules/NRPEClient
+modules/CheckTaskSched.dll=/modules/CheckTaskSched
+modules/Scheduler.dll=/modules/Scheduler
+
+modules=/modules
+
+# Crash section
+
+crash/archive=/settings/crash/archive
+crash/submit=/settings/crash/submit
+crash/restart=/settings/crash/restart
+
+# Settings section
+
+Settings/obfuscated_password=/settings/default/obfuscated password
+Settings/password=/settings/default/password
+Settings/allowed_hosts=/settings/default/allowed hosts
+Settings/shared_session=/settings/shared session/enabled
+
+# Log section
+
+log/file=/settings/log/file name
+log/date_mask=/settings/log/date format
+# log/debug=/settings/log/level
+# log/debug
+# log/root_folder
+
+NSClient/allowed_hosts=/settings/NSClient/server/allowed hosts
+NSClient/port=/settings/NSClient/server/port
+NSClient/bind_to_address=/settings/NSClient/server/bind to address
+NSClient/socket_timeout=/settings/NSClient/server/socket timeout
+
+NRPE/allowed_hosts=/settings/NRPE/server/allowed hosts
+NRPE/port=/settings/NRPE/server/port
+NRPE/bind_to_address=/settings/NRPE/server/bind to address
+NRPE/socket_timeout=/settings/NRPE/server/socket timeout
+NRPE/command_timeout=/settings/NRPE/server/command timeout
+NRPE/allow_arguments=/settings/NRPE/server/allow arguments
+NRPE/allow_nasty_meta_chars=/settings/NRPE/server/allow nasty characters
+NRPE/use_ssl=/settings/NRPE/server/use ssl
+# NRPE/script_dir
+
+#Check System/CPUBufferSize=/settings/check/system/windows/CPUBufferSize
+#Check System/CheckResolution=/settings/CheckSystem/CheckResolution
+Check System/check_all_services[SERVICE_BOOT_START]=/settings/system/windows/service mapping/SERVICE_BOOT_START
+Check System/check_all_services[SERVICE_SYSTEM_START]=/settings/system/windows/service mapping/SERVICE_SYSTEM_START
+Check System/check_all_services[SERVICE_AUTO_START]=/settings/system/windows/service mapping/SERVICE_AUTO_START
+Check System/check_all_services[SERVICE_DEMAND_START]=/settings/system/windows/service mapping/SERVICE_DEMAND_START
+Check System/check_all_services[SERVICE_DISABLED]=/settings/system/windows/service mapping/SERVICE_DISABLED
+
+External Script/command_timeout=/settings/external scripts/command timeout
+External Script/allow_arguments=/settings/external scripts/allow arguments
+External Script/allow_nasty_meta_chars=/settings/external scripts/allow nasty characters
+External Script/script_dir=/settings/external scripts/script folder
+
+Script Wrappings/*=/settings/external scripts/wrappings
+External Scripts/*=/settings/external scripts/scripts
+External Alias/*=/settings/external scripts/alias
+Wrapped Scripts/*=/settings/external scripts/wrapped scripts
+
+includes/*=/includes
+
+NSCA Agent/interval=/settings/scheduler/schedules/default/interval
+NSCA Agent/hostname=/settings/NSCA/client/hostname
+NSCA Commands/*=/settings/scheduler/schedules
+
+
+NSCA Agent/encryption_method=/settings/NSCA/client/targets/default/encryption method
+NSCA Agent/nsca_host=/settings/NSCA/client/targets/default/host
+NSCA Agent/password=/settings/NSCA/client/targets/default/password
+NSCA Agent/nsca_port=/settings/NSCA/client/targets/default/port
+NSCA Agent/time_delay=/settings/NSCA/client/targets/default/delay
+#NSCA Agent/bind_to_address=
+
+
+#NRPE Client Handlers/*=
+
+#LUA Scripts/*=

@@ -1,5 +1,5 @@
 Name:           ok-release       
-Version:        11
+Version:        12
 Release:        1%{dist}
 Summary:        This package contains the OK packages for redhat based systems.
 
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 14 2014 Tomas Edwardsson <tommi@tommi.org> 12-1
+- Added fedora 20 releaser
+
 * Sun May 19 2013 Pall Sigurdsson <palli@opensource.is> 
 - More generic rpm packages. Handles more distros. (palli@opensource.is)
 

@@ -2,7 +2,7 @@
 
 Summary:	OKConfig nrpe base configuration package
 Name:		nagios-okconfig-nrpe
-Version:	0.0.5
+Version:	0.0.6
 Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/System
@@ -47,6 +47,17 @@ rm -rf %{buildroot}
 %{_libdir}/nagios/plugins/get_ifoperstate.sh
 
 %changelog
+* Mon Mar 31 2014 Tomas Edwardsson <tommi@tommi.org> 0.0.6-1
+- Remove Require for check_yum and package_updates (tommi@tommi.org)
+- Added get_network_interfaces_stat to ok-bundle (tommi@tommi.org)
+- bc is needed by check_cpu (tommi@tommi.org)
+- nrpe-client nrpe command check_swap updated (palli@opensource.is)
+- Renamed requirement check_package_updates (tommi@tommi.org)
+- Make check_updates default instead of check_yum for fedora10+ rhel6+
+  (tommi@tommi.org)
+- Never rpm post exit with retval > 0 (pall.valmundsson@gmail.com)
+- Fix lib64 check_procs.sh call for 32 bit systems (tommi@tommi.org)
+
 * Wed Jun 05 2013 Tomas Edwardsson <tommi@tommi.org> 0.0.5-1
 - Ignore non directories, they are not network interfaces (tommi@tommi.org)
 

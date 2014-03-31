@@ -15,14 +15,6 @@ Packager:	Tomas Edwardsson <tommi@ok.is>
 BuildArch:	noarch
 Requires:	bc
 
-# Newer distros should use check_package_updates
-%if ( 0%{?fedora}%{?rhel} == 0 || 0%{?fedora} > 9 || 0%{?rhel} > 5)
-Requires:	nagios-okplugin-check_package_updates
-%else
-Requires:	nagios-okplugin-check_yum
-%endif
-
-
 %description
 Default configuration file for base monitoring of a linux system
 

@@ -21,6 +21,7 @@ def main():
     server = apikey = ""
 
     my_hostname = platform.node()
+    encoding = "iso-8859-1"
 
     np = PluginHelper()
     np.parser.add_option("-c", "--config", dest="filename", default=config_file,
@@ -59,6 +60,11 @@ def main():
     host_regex = None
     try:
         host_regex = config.get('main', 'regex-host-include')
+    except Exception:
+        pass
+
+    try:
+        encoding = config.get('main', 'encoding')
     except Exception:
         pass
 
@@ -111,6 +117,9 @@ def main():
             continue
         if host['host_name'] not in hosts and len(hosts):
             continue
+        for k in host.keys():
+            if type(host[k]) == type(str()):
+                host[k] = host[k].decode(encoding)
         payload['objects'].append(host)
         num_hosts += 1
     for service in p.data['servicestatus']:
@@ -118,6 +127,10 @@ def main():
             continue
         if service['host_name'] not in hosts and len(hosts):
             continue
+        for k in service.keys():
+            if type(service[k]) == type(str()):
+                service[k] = service[k].decode(encoding)
+
         payload['objects'].append(service)
         num_services += 1
 

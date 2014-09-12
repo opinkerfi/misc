@@ -6,6 +6,7 @@ import os.path
 import time
 import requests
 import platform
+import re
 from subprocess import Popen, PIPE
 
 from pynag import Parsers
@@ -18,6 +19,8 @@ config_file = "/etc/okrdp.conf"
 def main():
     global config_file
     server = apikey = ""
+
+    my_hostname = platform.node()
 
     np = PluginHelper()
     np.parser.add_option("-c", "--config", dest="filename", default=config_file,
@@ -48,6 +51,25 @@ def main():
     except Exception, e:
         np.add_summary("Invalid configuration in %s: %s" % (np.options.filename, e))
         np.exit(exit_code=warning)
+    try:
+        my_hostname = config.get('main', 'hostname')
+    except Exception:
+        pass
+
+    host_regex = None
+    try:
+        host_regex = config.get('main', 'regex-host-include')
+    except Exception:
+        pass
+
+    if host_regex:
+        try:
+            host_regex = re.compile(host_regex)
+        except re.error as error:
+            np.add_summary("Invalid regex in regex-host-include: %s" % error)
+            np.exit(exit_code=unknown)
+
+
 
     if apikey == "unconfigured":
         apikey = generate_apikey()
@@ -60,7 +82,7 @@ def main():
     payload = {
         'apikey': apikey,
         'objects': [],
-        'hostname': platform.node(),
+        'hostname': my_hostname
     }
 
     # Parse the nagios configuration
@@ -85,15 +107,19 @@ def main():
 
     num_services = num_hosts = 0
     for host in p.data['hoststatus']:
-        if host['host_name'] in hosts or not len(hosts):
-            payload['objects'].append(host)
-            num_hosts += 1
-    for service in p.data['servicestatus']:
-        if service['service_description'] == 'OKRDP Relay' and service['host_name'] == payload['hostname']:
+        if host_regex and not host_regex.search(host['host_name']):
             continue
-        if service['host_name'] in hosts or not len(hosts):
-            payload['objects'].append(service)
-            num_services += 1
+        if host['host_name'] not in hosts and len(hosts):
+            continue
+        payload['objects'].append(host)
+        num_hosts += 1
+    for service in p.data['servicestatus']:
+        if host_regex and not host_regex.search(service['host_name']):
+            continue
+        if service['host_name'] not in hosts and len(hosts):
+            continue
+        payload['objects'].append(service)
+        num_services += 1
 
     if not len(payload['objects']):
         np.add_summary("No status data found")
@@ -104,7 +130,17 @@ def main():
         np.exit()
 
     try:
-        r = requests.post(server, data={ 'json': json.dumps(payload) })
+        tries = 0
+	while tries < 5:
+            tries += 1
+            try:
+                r = requests.post(server, data={ 'json': json.dumps(payload) }, timeout=5)
+            except (requests.exceptions.Timeout, requests.exceptions.SSLError):
+                continue
+            else:
+                break
+            
+        np.add_metric('transmit_tries', tries)
         if r.status_code != 200:
             np.add_summary("Error, OKRDP API returned %i, bad apikey? : %s" % (r.status_code, r.content))
             np.exit(exit_code=warning)
@@ -114,7 +150,7 @@ def main():
         np.add_metric('services', num_services)
 
     except Exception, e:
-        np.add_summary("Unable to post to OKRDP API: %s" % (e))
+        np.add_summary("Unable to post to OKRDP API: %s %s" % (e, type(e)))
         np.add_status(warning)
 
     np.exit()
